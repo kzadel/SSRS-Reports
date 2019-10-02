@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ToolsVersion="2.0">
+  <State>$base64$PFNvdXJjZUNvbnRyb2xJbmZvIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zOmRkbDI9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDAzL2VuZ2luZS8yIiB4bWxuczpkZGwyXzI9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDAzL2VuZ2luZS8yLzIiIHhtbG5zOmRkbDEwMF8xMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDA4L2VuZ2luZS8xMDAvMTAwIiB4bWxuczpkZGwyMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEwL2VuZ2luZS8yMDAiIHhtbG5zOmRkbDIwMF8yMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEwL2VuZ2luZS8yMDAvMjAwIiB4bWxuczpkd2Q9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vRGF0YVdhcmVob3VzZS9EZXNpZ25lci8xLjAiPg0KICA8RW5hYmxlZD5mYWxzZTwvRW5hYmxlZD4NCiAgPFByb2plY3ROYW1lPjwvUHJvamVjdE5hbWU+DQogIDxBdXhQYXRoPjwvQXV4UGF0aD4NCiAgPExvY2FsUGF0aD48L0xvY2FsUGF0aD4NCiAgPFByb3ZpZGVyPjwvUHJvdmlkZXI+DQo8L1NvdXJjZUNvbnRyb2xJbmZvPg==</State>
+  <DataSources>
+    <ProjectItem>
+      <Name>BIDW.rds</Name>
+      <FullPath>BIDW.rds</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>OLAP.rds</Name>
+      <FullPath>OLAP.rds</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>BIBAReports.rds</Name>
+      <FullPath>BIBAReports.rds</FullPath>
+    </ProjectItem>
+  </DataSources>
+  <DataSets />
+  <Reports>
+    <ProjectItem>
+      <Name>5 Dollar IGM Games Activated by Retailer.rdl</Name>
+      <FullPath>5 Dollar IGM Games Activated by Retailer.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Activation Rates by DO to DSR.rdl</Name>
+      <FullPath>Activation Rates by DO to DSR.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Aged Created Orders.rdl</Name>
+      <FullPath>Aged Created Orders.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Avg Facings by DO.rdl</Name>
+      <FullPath>Avg Facings by DO.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Avg Facings by DSR.rdl</Name>
+      <FullPath>Avg Facings by DSR.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Avg Games Displayed by DSR (Game Cycle View).rdl</Name>
+      <FullPath>Avg Games Displayed by DSR (Game Cycle View).rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Avg Games KPI by DSR (Game Cycle View).rdl</Name>
+      <FullPath>Avg Games KPI by DSR (Game Cycle View).rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Displayed Game Rates by DO to DSR.rdl</Name>
+      <FullPath>Displayed Game Rates by DO to DSR.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>DSR Percent of Weekly Sales Goal.rdl</Name>
+      <FullPath>DSR Percent of Weekly Sales Goal.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>End of Game.rdl</Name>
+      <FullPath>End of Game.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>IGM Activation Summary.rdl</Name>
+      <FullPath>IGM Activation Summary.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>IGM Displayed Game Summary.rdl</Name>
+      <FullPath>IGM Displayed Game Summary.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Monopoly Games Activated by Retailer.rdl</Name>
+      <FullPath>Monopoly Games Activated by Retailer.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>New Games Activations by Classifications.rdl</Name>
+      <FullPath>New Games Activations by Classifications.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>New Games Displayed by Classifications.rdl</Name>
+      <FullPath>New Games Displayed by Classifications.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Scratchers Inventory.rdl</Name>
+      <FullPath>Scratchers Inventory.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Time Activated or Time Settled Packs.rdl</Name>
+      <FullPath>Time Activated or Time Settled Packs.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Top - Bottom 10 DSRs by Displayed Game KPIs.rdl</Name>
+      <FullPath>Top - Bottom 10 DSRs by Displayed Game KPIs.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Top - Bottom 10 DSRs.rdl</Name>
+      <FullPath>Top - Bottom 10 DSRs.rdl</FullPath>
+    </ProjectItem>
+  </Reports>
+  <Configurations>
+    <Configuration>
+      <Name>Debug</Name>
+      <Platform>Win32</Platform>
+      <Options>
+        <OutputPath>bin\Debug</OutputPath>
+        <TargetServerVersion>SSRS2008R2</TargetServerVersion>
+        <TargetFolder>Ex$ell Managed Reports</TargetFolder>
+        <TargetDataSourceFolder>Data Sources</TargetDataSourceFolder>
+        <TargetDatasetFolder>Datasets</TargetDatasetFolder>
+        <TargetReportPartFolder>Report Parts</TargetReportPartFolder>
+      </Options>
+    </Configuration>
+    <Configuration>
+      <Name>DebugLocal</Name>
+      <Platform>Win32</Platform>
+      <Options>
+        <OutputPath>bin\DebugLocal</OutputPath>
+        <TargetServerVersion>SSRS2008R2</TargetServerVersion>
+        <TargetServerURL>http://bisp-sit.csl.gov/</TargetServerURL>
+        <TargetFolder>http://bisp-sit.csl.gov/Ex$ell Managed Reports</TargetFolder>
+        <TargetDataSourceFolder>http://bisp-sit.csl.gov/PPS Data Connections</TargetDataSourceFolder>
+      </Options>
+    </Configuration>
+    <Configuration>
+      <Name>Release</Name>
+      <Platform>Win32</Platform>
+      <Options>
+        <OutputPath>bin\Release</OutputPath>
+        <TargetServerVersion>SSRS2008R2</TargetServerVersion>
+        <TargetFolder>Ex$ell Managed Reports</TargetFolder>
+        <TargetDataSourceFolder>Data Sources</TargetDataSourceFolder>
+        <TargetDatasetFolder>Datasets</TargetDatasetFolder>
+        <TargetReportPartFolder>Report Parts</TargetReportPartFolder>
+      </Options>
+    </Configuration>
+  </Configurations>
+</Project>

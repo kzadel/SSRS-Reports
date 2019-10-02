@@ -1,0 +1,1691 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <Body>
+    <ReportItems>
+      <Tablix Name="Tablix2">
+        <TablixCorner>
+          <TablixCornerRows>
+            <TablixCornerRow>
+              <TablixCornerCell>
+                <CellContents>
+                  <Textbox Name="Textbox8">
+                    <CanGrow>true</CanGrow>
+                    <UserSort>
+                      <SortExpression>=CInt(Fields!RetailerID.Value)</SortExpression>
+                    </UserSort>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>Ret ID</Value>
+                            <Style>
+                              <FontSize>8pt</FontSize>
+                              <FontWeight>Bold</FontWeight>
+                              <Color>White</Color>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style>
+                          <TextAlign>Center</TextAlign>
+                        </Style>
+                      </Paragraph>
+                    </Paragraphs>
+                    <rd:DefaultName>Textbox8</rd:DefaultName>
+                    <Style>
+                      <Border>
+                        <Color>LightGrey</Color>
+                        <Style>Solid</Style>
+                      </Border>
+                      <BackgroundColor>SteelBlue</BackgroundColor>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                </CellContents>
+              </TablixCornerCell>
+            </TablixCornerRow>
+          </TablixCornerRows>
+        </TablixCorner>
+        <TablixBody>
+          <TablixColumns>
+            <TablixColumn>
+              <Width>1.70833in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>1.75in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>1in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.55in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.85in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.75in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.9in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>1.61458in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.75in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.85in</Width>
+            </TablixColumn>
+          </TablixColumns>
+          <TablixRows>
+            <TablixRow>
+              <Height>0.20208in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="RetailerName">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!RetailerName.Value</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>RetailerName</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>=iif(RowNumber(Nothing) Mod 2 = 0, "White","AliceBlue")</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="PrimaryAddress1">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!PrimaryAddress1.Value</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>PrimaryAddress1</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>=iif(RowNumber(Nothing) Mod 2 = 0, "White","AliceBlue")</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="PrimaryCity">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!PrimaryCity.Value</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>PrimaryCity</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>=iif(RowNumber(Nothing) Mod 2 = 0, "White","AliceBlue")</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="PrimaryPostalCode">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!PrimaryPostalCode.Value</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>PrimaryPostalCode</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>=iif(RowNumber(Nothing) Mod 2 = 0, "White","AliceBlue")</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="ActivationDate">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=iif(isNothing(Fields!ActivationDate.Value), nothing, 
+Format(CDate(Fields!ActivationDate.Value), "M/d/yy"))</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>ActivationDate</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>=iif(RowNumber(Nothing) Mod 2 = 0, "White","AliceBlue")</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="RetClassificationCode">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!RetClassificationCode.Value</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>RetClassificationCode</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>=iif(RowNumber(Nothing) Mod 2 = 0, "White","AliceBlue")</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="SalesRepUserId">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!SalesRepUserId.Value</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>SalesRepUserId</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>=iif(RowNumber(Nothing) Mod 2 = 0, "White","AliceBlue")</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="SalesRepName">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=UCase(Fields!SalesRepName.Value)</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>SalesRepName</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>=iif(RowNumber(Nothing) Mod 2 = 0, "White","AliceBlue")</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="LastVisitDate">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=iif(isNothing(Fields!LastVisitDate.Value), nothing, Format(CDate(Fields!LastVisitDate.Value), "M/d/yy"))</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>LastVisitDate</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>=iif(RowNumber(Nothing) Mod 2 = 0, "White","AliceBlue")</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="VisitsLast180Days">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!VisitsLast180Days.Value</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>VisitsLast180Days</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>=iif(RowNumber(Nothing) Mod 2 = 0, "White","AliceBlue")</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+          </TablixRows>
+        </TablixBody>
+        <TablixColumnHierarchy>
+          <TablixMembers>
+            <TablixMember>
+              <Group Name="ColumnGroup">
+                <GroupExpressions>
+                  <GroupExpression />
+                </GroupExpressions>
+              </Group>
+              <TablixHeader>
+                <Size>0.40416in</Size>
+                <CellContents>
+                  <Textbox Name="Textbox5">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>Retailer Name</Value>
+                            <Style>
+                              <FontSize>8pt</FontSize>
+                              <FontWeight>Bold</FontWeight>
+                              <Color>White</Color>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style>
+                          <TextAlign>Center</TextAlign>
+                        </Style>
+                      </Paragraph>
+                    </Paragraphs>
+                    <rd:DefaultName>Textbox5</rd:DefaultName>
+                    <Style>
+                      <Border>
+                        <Color>LightGrey</Color>
+                        <Style>Solid</Style>
+                      </Border>
+                      <BackgroundColor>SteelBlue</BackgroundColor>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                </CellContents>
+              </TablixHeader>
+            </TablixMember>
+            <TablixMember>
+              <TablixHeader>
+                <Size>0.40416in</Size>
+                <CellContents>
+                  <Textbox Name="Textbox13">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>Address</Value>
+                            <Style>
+                              <FontSize>8pt</FontSize>
+                              <FontWeight>Bold</FontWeight>
+                              <Color>White</Color>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style>
+                          <TextAlign>Center</TextAlign>
+                        </Style>
+                      </Paragraph>
+                    </Paragraphs>
+                    <rd:DefaultName>Textbox13</rd:DefaultName>
+                    <Style>
+                      <Border>
+                        <Color>LightGrey</Color>
+                        <Style>Solid</Style>
+                      </Border>
+                      <BackgroundColor>SteelBlue</BackgroundColor>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                </CellContents>
+              </TablixHeader>
+            </TablixMember>
+            <TablixMember>
+              <TablixHeader>
+                <Size>0.40416in</Size>
+                <CellContents>
+                  <Textbox Name="Textbox16">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>City</Value>
+                            <Style>
+                              <FontSize>8pt</FontSize>
+                              <FontWeight>Bold</FontWeight>
+                              <Color>White</Color>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style>
+                          <TextAlign>Center</TextAlign>
+                        </Style>
+                      </Paragraph>
+                    </Paragraphs>
+                    <rd:DefaultName>Textbox16</rd:DefaultName>
+                    <Style>
+                      <Border>
+                        <Color>LightGrey</Color>
+                        <Style>Solid</Style>
+                      </Border>
+                      <BackgroundColor>SteelBlue</BackgroundColor>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                </CellContents>
+              </TablixHeader>
+            </TablixMember>
+            <TablixMember>
+              <TablixHeader>
+                <Size>0.40416in</Size>
+                <CellContents>
+                  <Textbox Name="Textbox18">
+                    <CanGrow>true</CanGrow>
+                    <UserSort>
+                      <SortExpression>=CInt(Fields!PrimaryPostalCode.Value)</SortExpression>
+                    </UserSort>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>Zip</Value>
+                            <Style>
+                              <FontSize>8pt</FontSize>
+                              <FontWeight>Bold</FontWeight>
+                              <Color>White</Color>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style>
+                          <TextAlign>Center</TextAlign>
+                        </Style>
+                      </Paragraph>
+                    </Paragraphs>
+                    <rd:DefaultName>Textbox18</rd:DefaultName>
+                    <Style>
+                      <Border>
+                        <Color>LightGrey</Color>
+                        <Style>Solid</Style>
+                      </Border>
+                      <BackgroundColor>SteelBlue</BackgroundColor>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                </CellContents>
+              </TablixHeader>
+            </TablixMember>
+            <TablixMember>
+              <TablixHeader>
+                <Size>0.40416in</Size>
+                <CellContents>
+                  <Textbox Name="Textbox3">
+                    <CanGrow>true</CanGrow>
+                    <UserSort>
+                      <SortExpression>=Fields!ActivationDate.Value</SortExpression>
+                    </UserSort>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>Activation </Value>
+                            <Style>
+                              <FontSize>8pt</FontSize>
+                              <FontWeight>Bold</FontWeight>
+                              <Color>White</Color>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style>
+                          <TextAlign>Center</TextAlign>
+                        </Style>
+                      </Paragraph>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>Date</Value>
+                            <Style>
+                              <FontSize>8pt</FontSize>
+                              <FontWeight>Bold</FontWeight>
+                              <Color>White</Color>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style>
+                          <TextAlign>Center</TextAlign>
+                        </Style>
+                      </Paragraph>
+                    </Paragraphs>
+                    <rd:DefaultName>Textbox3</rd:DefaultName>
+                    <Style>
+                      <Border>
+                        <Color>LightGrey</Color>
+                        <Style>Solid</Style>
+                      </Border>
+                      <BackgroundColor>SteelBlue</BackgroundColor>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                </CellContents>
+              </TablixHeader>
+            </TablixMember>
+            <TablixMember>
+              <TablixHeader>
+                <Size>0.40416in</Size>
+                <CellContents>
+                  <Textbox Name="Textbox20">
+                    <CanGrow>true</CanGrow>
+                    <UserSort>
+                      <SortExpression>=Fields!RetClassificationCode.Value</SortExpression>
+                    </UserSort>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>Class</Value>
+                            <Style>
+                              <FontSize>8pt</FontSize>
+                              <FontWeight>Bold</FontWeight>
+                              <Color>White</Color>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style>
+                          <TextAlign>Center</TextAlign>
+                        </Style>
+                      </Paragraph>
+                    </Paragraphs>
+                    <rd:DefaultName>Textbox20</rd:DefaultName>
+                    <Style>
+                      <Border>
+                        <Color>LightGrey</Color>
+                        <Style>Solid</Style>
+                      </Border>
+                      <BackgroundColor>SteelBlue</BackgroundColor>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                </CellContents>
+              </TablixHeader>
+            </TablixMember>
+            <TablixMember>
+              <TablixHeader>
+                <Size>0.40416in</Size>
+                <CellContents>
+                  <Textbox Name="Textbox25">
+                    <CanGrow>true</CanGrow>
+                    <UserSort>
+                      <SortExpression>=CInt(Fields!SalesRepUserId.Value)</SortExpression>
+                    </UserSort>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>Assigned</Value>
+                            <Style>
+                              <FontSize>8pt</FontSize>
+                              <FontWeight>Bold</FontWeight>
+                              <Color>White</Color>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style>
+                          <TextAlign>Center</TextAlign>
+                        </Style>
+                      </Paragraph>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>DSR ID</Value>
+                            <Style>
+                              <FontSize>8pt</FontSize>
+                              <FontWeight>Bold</FontWeight>
+                              <Color>White</Color>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style>
+                          <TextAlign>Center</TextAlign>
+                        </Style>
+                      </Paragraph>
+                    </Paragraphs>
+                    <rd:DefaultName>Textbox25</rd:DefaultName>
+                    <Style>
+                      <Border>
+                        <Color>LightGrey</Color>
+                        <Style>Solid</Style>
+                      </Border>
+                      <BackgroundColor>SteelBlue</BackgroundColor>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                </CellContents>
+              </TablixHeader>
+            </TablixMember>
+            <TablixMember>
+              <TablixHeader>
+                <Size>0.40416in</Size>
+                <CellContents>
+                  <Textbox Name="Textbox28">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>Assigned DSR Name</Value>
+                            <Style>
+                              <FontSize>8pt</FontSize>
+                              <FontWeight>Bold</FontWeight>
+                              <Color>White</Color>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style>
+                          <TextAlign>Center</TextAlign>
+                        </Style>
+                      </Paragraph>
+                    </Paragraphs>
+                    <rd:DefaultName>Textbox28</rd:DefaultName>
+                    <Style>
+                      <Border>
+                        <Color>LightGrey</Color>
+                        <Style>Solid</Style>
+                      </Border>
+                      <BackgroundColor>SteelBlue</BackgroundColor>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                </CellContents>
+              </TablixHeader>
+            </TablixMember>
+            <TablixMember>
+              <TablixHeader>
+                <Size>0.40416in</Size>
+                <CellContents>
+                  <Textbox Name="Textbox30">
+                    <CanGrow>true</CanGrow>
+                    <UserSort>
+                      <SortExpression>=CDate(Fields!LastVisitDate.Value)</SortExpression>
+                    </UserSort>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>Last</Value>
+                            <Style>
+                              <FontSize>8pt</FontSize>
+                              <FontWeight>Bold</FontWeight>
+                              <Color>White</Color>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style>
+                          <TextAlign>Center</TextAlign>
+                        </Style>
+                      </Paragraph>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value> Visit Date</Value>
+                            <Style>
+                              <FontSize>8pt</FontSize>
+                              <FontWeight>Bold</FontWeight>
+                              <Color>White</Color>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style>
+                          <TextAlign>Center</TextAlign>
+                        </Style>
+                      </Paragraph>
+                    </Paragraphs>
+                    <rd:DefaultName>Textbox30</rd:DefaultName>
+                    <Style>
+                      <Border>
+                        <Color>LightGrey</Color>
+                        <Style>Solid</Style>
+                      </Border>
+                      <BackgroundColor>SteelBlue</BackgroundColor>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                </CellContents>
+              </TablixHeader>
+            </TablixMember>
+            <TablixMember>
+              <TablixHeader>
+                <Size>0.40416in</Size>
+                <CellContents>
+                  <Textbox Name="Textbox1">
+                    <CanGrow>true</CanGrow>
+                    <UserSort>
+                      <SortExpression>=Fields!VisitsLast180Days.Value</SortExpression>
+                    </UserSort>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value> Visits in Last 180 Days</Value>
+                            <Style>
+                              <FontSize>8pt</FontSize>
+                              <FontWeight>Bold</FontWeight>
+                              <Color>White</Color>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style>
+                          <TextAlign>Center</TextAlign>
+                        </Style>
+                      </Paragraph>
+                    </Paragraphs>
+                    <rd:DefaultName>Textbox1</rd:DefaultName>
+                    <Style>
+                      <Border>
+                        <Color>LightGrey</Color>
+                        <Style>Solid</Style>
+                      </Border>
+                      <BackgroundColor>SteelBlue</BackgroundColor>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                </CellContents>
+              </TablixHeader>
+            </TablixMember>
+          </TablixMembers>
+        </TablixColumnHierarchy>
+        <TablixRowHierarchy>
+          <TablixMembers>
+            <TablixMember>
+              <Group Name="RetailerID" />
+              <SortExpressions>
+                <SortExpression>
+                  <Value>=CInt(Fields!SalesRepUserId.Value)</Value>
+                </SortExpression>
+                <SortExpression>
+                  <Value>=CDate(Fields!LastVisitDate.Value)</Value>
+                </SortExpression>
+                <SortExpression>
+                  <Value>=CInt(Fields!RetailerID.Value)</Value>
+                </SortExpression>
+              </SortExpressions>
+              <TablixHeader>
+                <Size>0.72in</Size>
+                <CellContents>
+                  <Textbox Name="RetailerID">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>=Fields!RetailerID.Value</Value>
+                            <Style>
+                              <FontSize>8pt</FontSize>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style />
+                      </Paragraph>
+                    </Paragraphs>
+                    <rd:DefaultName>RetailerID</rd:DefaultName>
+                    <Style>
+                      <Border>
+                        <Color>LightGrey</Color>
+                        <Style>Solid</Style>
+                      </Border>
+                      <BackgroundColor>=iif(RowNumber(Nothing) Mod 2 = 0, "White","AliceBlue")</BackgroundColor>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                </CellContents>
+              </TablixHeader>
+            </TablixMember>
+          </TablixMembers>
+        </TablixRowHierarchy>
+        <RepeatColumnHeaders>true</RepeatColumnHeaders>
+        <RepeatRowHeaders>true</RepeatRowHeaders>
+        <FixedColumnHeaders>true</FixedColumnHeaders>
+        <DataSetName>RetNotVisitedLastXDays</DataSetName>
+        <Top>0.7732in</Top>
+        <Left>0.125in</Left>
+        <Height>0.60624in</Height>
+        <Width>11.44291in</Width>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Tablix>
+      <Textbox Name="textbox2">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Retailers Not Visited in Last </Value>
+                <Style>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=Parameters!days.Label</Value>
+                <Style>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value xml:space="preserve"> </Value>
+                <Style>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>textbox1</rd:DefaultName>
+        <Top>0.0375in</Top>
+        <Left>0.125in</Left>
+        <Height>0.235in</Height>
+        <Width>11.44291in</Width>
+        <ZIndex>1</ZIndex>
+        <Style>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Tablix Name="Tablix4">
+        <TablixBody>
+          <TablixColumns>
+            <TablixColumn>
+              <Width>11.44291in</Width>
+            </TablixColumn>
+          </TablixColumns>
+          <TablixRows>
+            <TablixRow>
+              <Height>0.19in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox50">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Data as of:  </Value>
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                            <TextRun>
+                              <Value>=Format(CDate(Parameters!we.Label), "M/d/yy")</Value>
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                            <TextRun>
+                              <Value xml:space="preserve"> </Value>
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox50</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>None</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+          </TablixRows>
+        </TablixBody>
+        <TablixColumnHierarchy>
+          <TablixMembers>
+            <TablixMember />
+          </TablixMembers>
+        </TablixColumnHierarchy>
+        <TablixRowHierarchy>
+          <TablixMembers>
+            <TablixMember />
+          </TablixMembers>
+        </TablixRowHierarchy>
+        <DataSetName>daysDefault</DataSetName>
+        <Top>0.31417in</Top>
+        <Left>0.125in</Left>
+        <Height>0.19in</Height>
+        <Width>11.44291in</Width>
+        <ZIndex>2</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Tablix>
+      <Textbox Name="Textbox14">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Note: Selected Classification: </Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                  <FontSize>8pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=Join(Parameters!RClass.Value, ",")</Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                  <FontSize>8pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>. Report </Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                  <FontSize>8pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=iif(Parameters!ExcludeChain.Value = 1, "excludes", "includes")</Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                  <FontSize>8pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value xml:space="preserve"> </Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                  <FontSize>8pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>Chain ID 1010116 retailers.</Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                  <FontSize>8pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox14</rd:DefaultName>
+        <Top>0.52612in</Top>
+        <Left>0.125in</Left>
+        <Height>0.18055in</Height>
+        <Width>11.44291in</Width>
+        <ZIndex>3</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+    </ReportItems>
+    <Height>1.37944in</Height>
+    <Style />
+  </Body>
+  <Width>11.56791in</Width>
+  <Page>
+    <Style />
+  </Page>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="BIDW">
+      <DataSourceReference>BIDW</DataSourceReference>
+      <rd:SecurityType>None</rd:SecurityType>
+      <rd:DataSourceID>ddb203f4-2e5e-4bfd-9eff-07a73c7fc09e</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="District">
+      <Query>
+        <DataSourceName>BIDW</DataSourceName>
+        <CommandText>SELECT DISTINCT 
+                         RegionName, DistrictCode, RTRIM(DistrictName) AS DistrictName, CASE WHEN RTRIM(DistrictName) 
+                         = 'Santa Fe' THEN 'Santa Fe Springs' ELSE RTRIM(DistrictName) END AS DistrictNameLabel
+FROM            DimRetailer
+WHERE        (DistrictName IS NOT NULL) AND (DistrictCode &lt;&gt; '035') AND (DistrictName NOT IN ('Redding', 'Bakersfield', 'Ventura', ''))
+ORDER BY RegionName, DistrictCode</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="RegionName">
+          <DataField>RegionName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DistrictCode">
+          <DataField>DistrictCode</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DistrictName">
+          <DataField>DistrictName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DistrictNameLabel">
+          <DataField>DistrictNameLabel</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="DSR">
+      <Query>
+        <DataSourceName>BIDW</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@District">
+            <Value>=Parameters!District.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>-- Variables used only in SSMS
+--DECLARE @District VARCHAR(250) = '021';
+
+SELECT DISTINCT SalesRepUserId
+, SalesRepName
+, CAST(SalesRepUserId AS varchar) + ' - ' + UPPER(SalesRepName) AS DSRInfo
+FROM            DimRetailer
+WHERE        (SalesRepUserId IS NOT NULL) 
+AND (CurrentFlag = 'Y') 
+AND DistrictName IN (@District)
+ORDER BY SalesRepUserId</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="SalesRepUserId">
+          <DataField>SalesRepUserId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SalesRepName">
+          <DataField>SalesRepName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DSRInfo">
+          <DataField>DSRInfo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="RetNotVisitedLastXDays">
+      <Query>
+        <DataSourceName>BIDW</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@District">
+            <Value>=Parameters!District.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@we">
+            <Value>=Parameters!we.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@ExcludeChain">
+            <Value>=Parameters!ExcludeChain.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@days">
+            <Value>=Parameters!days.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@DSR">
+            <Value>=Parameters!DSR.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@RClass">
+            <Value>=Parameters!RClass.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>/*	Retailers Not Visited - RetNotVisitedLastXDays Dataset	*/
+/* Modified: 2013-06-28 */
+
+-- Variables used only in SSMS
+ --DECLARE @District VARCHAR(250) = 'Sacramento';
+ --DECLARE @DSR VARCHAR(250) = '21026';
+ --DECLARE @RClass VARCHAR(25) = 'C';
+ --DECLARE @we INT = '20121103'
+ --DECLARE @days INT = '-13'  --14 days
+ --DECLARE @ExcludeChain CHAR(1) = '1' -- 1 means exclude 1010116 and 1024959, 2 means include 1010116 and 1024959
+ 
+----  Move passed parameters into working fields
+DECLARE @DateKey INT = @we;
+
+--  Get processing dates
+DECLARE @CalDayDate DATETIME = (SELECT TOP 1 CalDayDate FROM BIDW.dbo.DimDate WHERE @DateKey = DateKey);
+-- check to see if a daily date or a week end date was selected
+DECLARE @CurrentFlag CHAR (1) = (SELECT CASE WHEN WeekEndDateKey = DateKey THEN 'N' ELSE 'Y' END FROM BIDW.dbo.DimDate WHERE @DateKey = DateKey);
+
+DEClARE @StartDateKey INT = (SELECT TOP 1 DateKey FROM BIDW.dbo.DimDate WHERE CalDayDate = DATEADD(dd, CONVERT( INT,@days),@CalDayDate));
+DECLARE @ADateKey INT = (SELECT TOP 1 DateKey FROM BIDW.dbo.DimDate WHERE CalDayDate = DATEADD(dd, CONVERT(INT,@days),@CalDayDate));
+DECLARE @BDateKey INT = (SELECT TOP 1 DateKey FROM BIDW.dbo.DimDate WHERE CalDayDate = DATEADD(dd,CONVERT( INT,@days),@CalDayDate));
+DECLARE @CDateKey INT = (SELECT TOP 1 DateKey FROM BIDW.dbo.DimDate WHERE CalDayDate = DATEADD(dd, CONVERT( INT,@days),@CalDayDate));
+DECLARE @DDateKey INT = (SELECT TOP 1 DateKey FROM BIDW.dbo.DimDate WHERE CalDayDate = DATEADD(dd, CONVERT( INT,@days),@CalDayDate));
+DECLARE @EDateKey INT = (SELECT TOP 1 DateKey FROM BIDW.dbo.DimDate WHERE CalDayDate = DATEADD(dd, CONVERT( INT,@days),@CalDayDate));
+DECLARE @NADateKey INT = (SELECT TOP 1 DateKey FROM BIDW.dbo.DimDate WHERE CalDayDate = DATEADD(dd, CONVERT( INT,@days),@CalDayDate));
+DECLARE @180DateKey INT = (SELECT TOP 1 DateKey FROM BIDW.dbo.DimDate WHERE CalDayDate = DATEADD(dd, -179,@CalDayDate));
+
+DECLARE @ExcludeOneChain CHAR(1) = (SELECT CASE WHEN '1' IN (@ExcludeChain) THEN 'Y' ELSE 'N' END);
+DECLARE @IncludeAllChains CHAR(1) = (SELECT CASE WHEN  '2' IN (@ExcludeChain) THEN 'Y' ELSE 'N' END);
+
+SELECT	@we AS DateSelected
+,		R.RetailerID
+,		R.ActivationDate
+,		R.RetailerName
+,		SalesRepUserId
+,		R.SalesRepName
+,		RetClassificationCode
+,		PrimaryAddress1
+,		PrimaryCity
+,		PrimaryPostalCode
+,		LastVisitDate 
+,		VisitsLast180Days = COALESCE(VisitsLast180Days,0)
+FROM	BIDW.dbo.DimRetailer R				-- get all retailers
+		INNER JOIN
+		BIDW.dbo.LkpRetailerBase RB			--get all active retailers 
+		ON	R.RetailerKey = RB.RetailerKey
+		AND RB.WeekEndDateKey = @DateKey
+ 		AND 'Y' = case when @IncludeAllChains='Y' then 'Y'
+                           when @ExcludeOneChain='Y' 
+                                    AND		COALESCE(ParentChainId, '') NOT IN ('1010116') THEN 'Y'
+                           else 'N' end
+		AND	DistrictName IN (@District)
+		AND	SalesRepUserId IN (@DSR)
+		AND	RetClassificationCode IN (@RClass)
+		AND	1 = CASE WHEN @CurrentFlag = 'N' THEN 1 ELSE 0 END  --  Use weekly tables	
+		LEFT OUTER JOIN
+		(
+		SELECT	RetailerID
+		,		LastVisitDate = (CONVERT(varchar, (CONVERT(Date,CONVERT(Varchar, MAX(DateKey)))), 101))
+		,		LastVisitDateKey = MAX(DateKey)
+		,		VisitsLast180Days = COUNT(DISTINCT CASE WHEN DateKey &gt;= @180DateKey THEN DateKey ELSE NULL END)
+		FROM	BIDW.dbo.FactRetailerVisitSummary RV
+				INNER JOIN
+				BIDW.dbo.DimRetailer R
+				ON	RV.RetailerKey=R.RetailerKey
+		WHERE	RV.DateKey &lt;= @we
+		GROUP BY RetailerID
+		) RV
+		ON R.RetailerID = RV.RetailerId
+WHERE	COALESCE(RV.LastVisitDateKey, 0) &lt; (CASE WHEN RetClassificationCode IN ('A') THEN @ADateKey
+											 WHEN RetClassificationCode IN ('B') THEN @BDateKey  
+											 WHEN RetClassificationCode IN ('C') THEN @CDateKey
+											 WHEN RetClassificationCode IN ('D') THEN @DDateKey
+											 WHEN RetClassificationCode IN ('E') THEN @EDateKey
+											 WHEN RetClassificationCode IN ('N/A') THEN @NADateKey
+											 ELSE @StartDateKey
+										END)
+UNION ALL
+SELECT	@we AS DateSelected
+,		R.RetailerID
+,		R.ActivationDate
+,		R.RetailerName
+,		SalesRepUserId
+,		R.SalesRepName
+,		RetClassificationCode
+,		PrimaryAddress1
+,		PrimaryCity
+,		PrimaryPostalCode
+,		LastVisitDate 
+,		VisitsLast180Days = COALESCE(VisitsLast180Days,0)
+FROM	BIDW.dbo.DimRetailer R						-- get all retailers
+		INNER JOIN
+		BIDW.dbo.LkpRetailerBaseDaily RB			--get all active retailers 
+		ON	R.RetailerKey = RB.RetailerKey
+		AND RB.DateKey= @DateKey
+ 		AND 'Y' = case when @IncludeAllChains='Y' then 'Y'
+                           when @ExcludeOneChain='Y' 
+                                    AND		COALESCE(ParentChainId, '') NOT IN ('1010116') THEN 'Y'
+                           else 'N' end
+		AND	DistrictName IN (@District)
+		AND	SalesRepUserId IN (@DSR)
+		AND	RetClassificationCode IN (@RClass)
+		AND	1 = CASE WHEN @CurrentFlag = 'Y' THEN 1 ELSE 0 END  --  Use daily tables	
+		LEFT OUTER JOIN
+		(
+		SELECT	RetailerID
+		,		LastVisitDate = (CONVERT(varchar, (CONVERT(Date,CONVERT(Varchar, MAX(DateKey)))), 101))
+		,		LastVisitDateKey = MAX(DateKey)
+		,		VisitsLast180Days = COUNT(DISTINCT CASE WHEN DateKey &gt;= @180DateKey THEN DateKey ELSE NULL END)
+		FROM	BIDW.dbo.FactRetailerVisitSummary RV
+				INNER JOIN
+				BIDW.dbo.DimRetailer R
+				ON	RV.RetailerKey=R.RetailerKey
+		WHERE	RV.DateKey &lt;= @we
+		GROUP BY RetailerID
+		) RV
+		ON R.RetailerId = RV.RetailerId
+WHERE	COALESCE(RV.LastVisitDateKey, 0) &lt; (CASE WHEN RetClassificationCode IN ('A') THEN @ADateKey
+											 WHEN RetClassificationCode IN ('B') THEN @BDateKey  
+											 WHEN RetClassificationCode IN ('C') THEN @CDateKey
+											 WHEN RetClassificationCode IN ('D') THEN @DDateKey
+											 WHEN RetClassificationCode IN ('E') THEN @EDateKey
+											 WHEN RetClassificationCode IN ('N/A') THEN @NADateKey
+											 ELSE @StartDateKey
+										END)
+ORDER BY LastVisitDate ASC</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="RetailerID">
+          <DataField>RetailerID</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DateSelected">
+          <DataField>DateSelected</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RetailerName">
+          <DataField>RetailerName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ActivationDate">
+          <DataField>ActivationDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="SalesRepUserId">
+          <DataField>SalesRepUserId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SalesRepName">
+          <DataField>SalesRepName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RetClassificationCode">
+          <DataField>RetClassificationCode</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PrimaryAddress1">
+          <DataField>PrimaryAddress1</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PrimaryCity">
+          <DataField>PrimaryCity</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PrimaryPostalCode">
+          <DataField>PrimaryPostalCode</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LastVisitDate">
+          <DataField>LastVisitDate</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="VisitsLast180Days">
+          <DataField>VisitsLast180Days</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="RClass">
+      <Query>
+        <DataSourceName>BIDW</DataSourceName>
+        <CommandText>SELECT DISTINCT RTRIM(RetClassificationCode) AS RetClassificationCode
+FROM            DimRetailer
+WHERE        (RetailerStatusCode NOT IN (4, 7))</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="RetClassificationCode">
+          <DataField>RetClassificationCode</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="we">
+      <Query>
+        <DataSourceName>BIDW</DataSourceName>
+        <CommandText>DECLARE @Date DATETIME = GETDATE();
+DECLARE @Year VARCHAR(30) = CAST(YEAR(DATEADD(DD,-6,@Date)) AS VARCHAR(30));
+DECLARE @Month VARCHAR(30) = CAST(MONTH(DATEADD(DD,-6,@Date)) AS VARCHAR(30));
+
+SELECT        a.DateKey AS WeekEndDateKey, a.CalDayStr AS CalDayDate
+FROM            DimDate AS a INNER JOIN
+                             (SELECT DISTINCT DateKey
+                               FROM            LkpRetailerBaseDaily) AS b ON a.DateKey = b.DateKey
+UNION
+SELECT      DISTINCT 
+            WeekEndDateKey
+,			CONVERT(varchar(2), MONTH(CONVERT(varchar, CONVERT(Date, CONVERT(Varchar, WeekEndDateKey)), 101))) + '/' + CONVERT(varchar(2), 
+                         DAY(CONVERT(varchar, CONVERT(Date, CONVERT(Varchar, WeekEndDateKey)), 101))) + '/' + CONVERT(varchar(4), YEAR(CONVERT(varchar, CONVERT(Date, 
+                         CONVERT(Varchar, WeekEndDateKey)), 101))) AS WeekendString2
+FROM  DimDate
+WHERE FscYearStr = CASE WHEN @Month BETWEEN 1 AND 6 THEN @Year ELSE @Year + 1 END
+AND         ReportWeekEndDate &lt;= @Date
+ORDER BY WeekEndDateKey DESC</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="WeekEndDateKey">
+          <DataField>WeekEndDateKey</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="CalDayDate">
+          <DataField>CalDayDate</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="days">
+      <Query>
+        <DataSourceName>BIDW</DataSourceName>
+        <CommandText>SELECT DISTINCT (DayNum * -1) AS DayNumKey
+, CAST((DayNum * - 1) * -1 + 1 AS VARCHAR(8)) + ' days' AS DaysInfo
+FROM    DimReportPeriod
+WHERE   (DayNum = 6) -- 7 days
+OR	(DayNum = 13)  -- 14 days
+OR	(DayNum = 27) -- 28 days
+OR	(DayNum =  179) -- 180 days
+ORDER BY DayNumKey DESC</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="DayNumKey">
+          <DataField>DayNumKey</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DaysInfo">
+          <DataField>DaysInfo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="daysDefault">
+      <Query>
+        <DataSourceName>BIDW</DataSourceName>
+        <CommandText>SELECT DISTINCT (DayNum * -1) AS DayNumKey
+, CAST(DayNum + 1 AS VARCHAR(8)) + ' days' AS DaysInfo
+FROM    DimReportPeriod
+WHERE   (DayNum =  13) -- 14 days
+ORDER BY DayNumKey DESC, DaysInfo</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="DayNumKey">
+          <DataField>DayNumKey</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DaysInfo">
+          <DataField>DaysInfo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="ExcludeChain">
+      <Query>
+        <DataSourceName>BIDW</DataSourceName>
+        <CommandText>SELECT DISTINCT 
+      ExcludeChainNumKey = [DayNum]
+     ,ExcludeChainInfo = (CASE WHEN [DayNum] = 1 THEN 'Y' 
+					   WHEN [DayNum] = 2 THEN 'N'
+				  END
+				)
+  FROM [BIDW].[dbo].[DimReportPeriod]
+  WHERE DayNum = 1 or DayNum = 2
+  ORDER by DayNum</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="ExcludeChainNumKey">
+          <DataField>ExcludeChainNumKey</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ExcludeChainInfo">
+          <DataField>ExcludeChainInfo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportParameters>
+    <ReportParameter Name="District">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>District</DataSetName>
+          <ValueField>DistrictName</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <Prompt>District</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>District</DataSetName>
+          <ValueField>DistrictName</ValueField>
+          <LabelField>DistrictNameLabel</LabelField>
+        </DataSetReference>
+      </ValidValues>
+      <MultiValue>true</MultiValue>
+    </ReportParameter>
+    <ReportParameter Name="DSR">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>DSR</DataSetName>
+          <ValueField>SalesRepUserId</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <Prompt>DSR</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>DSR</DataSetName>
+          <ValueField>SalesRepUserId</ValueField>
+          <LabelField>DSRInfo</LabelField>
+        </DataSetReference>
+      </ValidValues>
+      <MultiValue>true</MultiValue>
+    </ReportParameter>
+    <ReportParameter Name="RClass">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>="A"</Value>
+          <Value>="B"</Value>
+          <Value>="C"</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Classification</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>RClass</DataSetName>
+          <ValueField>RetClassificationCode</ValueField>
+          <LabelField>RetClassificationCode</LabelField>
+        </DataSetReference>
+      </ValidValues>
+      <MultiValue>true</MultiValue>
+    </ReportParameter>
+    <ReportParameter Name="we">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>we</DataSetName>
+          <ValueField>WeekEndDateKey</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <Prompt>Date</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>we</DataSetName>
+          <ValueField>WeekEndDateKey</ValueField>
+          <LabelField>CalDayDate</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="days">
+      <DataType>Integer</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>daysDefault</DataSetName>
+          <ValueField>DayNumKey</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <Prompt>Not Visited in the Last</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>days</DataSetName>
+          <ValueField>DayNumKey</ValueField>
+          <LabelField>DaysInfo</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="ExcludeChain">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>ExcludeChain</DataSetName>
+          <ValueField>ExcludeChainNumKey</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <Prompt>Exclude 1010116</Prompt>
+      <Hidden>true</Hidden>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>ExcludeChain</DataSetName>
+          <ValueField>ExcludeChainNumKey</ValueField>
+          <LabelField>ExcludeChainInfo</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+  </ReportParameters>
+  <Language>en-US</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>e0740859-714d-403c-8bb1-c8442a064ae9</rd:ReportID>
+</Report>

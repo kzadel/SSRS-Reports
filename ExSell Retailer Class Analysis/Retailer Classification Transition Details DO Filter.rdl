@@ -1,0 +1,3444 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <Body>
+    <ReportItems>
+      <Textbox Name="textbox1">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>="Retailer Classification Transition Detail Report as of End of Day " + Format(First(CDate(Fields!EndDateKey.Value), "ClassificationTransitionDetails"), "M/d/y")</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>■</Value>
+                <Style>
+                  <FontStyle>Normal</FontStyle>
+                  <FontSize>22pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                  <Color>#80c5dd</Color>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value xml:space="preserve"> </Value>
+                <Style>
+                  <FontStyle>Normal</FontStyle>
+                  <FontSize>22pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>Up to A</Value>
+                <Style>
+                  <FontStyle>Normal</FontStyle>
+                  <FontSize>8pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value xml:space="preserve"> </Value>
+                <Style>
+                  <FontStyle>Normal</FontStyle>
+                  <FontSize>22pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>■</Value>
+                <Style>
+                  <FontStyle>Normal</FontStyle>
+                  <FontSize>22pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                  <Color>#b3e2e3</Color>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value xml:space="preserve"> </Value>
+                <Style>
+                  <FontStyle>Normal</FontStyle>
+                  <FontSize>22pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>Up to B</Value>
+                <Style>
+                  <FontStyle>Normal</FontStyle>
+                  <FontSize>8pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value xml:space="preserve"> </Value>
+                <Style>
+                  <FontStyle>Normal</FontStyle>
+                  <FontSize>22pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>■</Value>
+                <Style>
+                  <FontStyle>Normal</FontStyle>
+                  <FontSize>22pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                  <Color>#a6dcb5</Color>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value xml:space="preserve"> </Value>
+                <Style>
+                  <FontStyle>Normal</FontStyle>
+                  <FontSize>22pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>Up to C </Value>
+                <Style>
+                  <FontStyle>Normal</FontStyle>
+                  <FontSize>8pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>■</Value>
+                <Style>
+                  <FontStyle>Normal</FontStyle>
+                  <FontSize>22pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                  <Color>#f74f7c</Color>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value xml:space="preserve"> </Value>
+                <Style>
+                  <FontStyle>Normal</FontStyle>
+                  <FontSize>22pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>Down from A </Value>
+                <Style>
+                  <FontStyle>Normal</FontStyle>
+                  <FontSize>8pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>■</Value>
+                <Style>
+                  <FontStyle>Normal</FontStyle>
+                  <FontSize>22pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                  <Color>#fb8d76</Color>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value xml:space="preserve"> </Value>
+                <Style>
+                  <FontStyle>Normal</FontStyle>
+                  <FontSize>22pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>Down from B  </Value>
+                <Style>
+                  <FontStyle>Normal</FontStyle>
+                  <FontSize>8pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>■</Value>
+                <Style>
+                  <FontStyle>Normal</FontStyle>
+                  <FontSize>22pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                  <Color>#fbb75a</Color>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value xml:space="preserve"> </Value>
+                <Style>
+                  <FontStyle>Normal</FontStyle>
+                  <FontSize>22pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>Down from C</Value>
+                <Style>
+                  <FontStyle>Normal</FontStyle>
+                  <FontSize>8pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>textbox1</rd:DefaultName>
+        <Top>0.0375in</Top>
+        <Left>0.0375in</Left>
+        <Height>0.52515in</Height>
+        <Width>6.61583in</Width>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Tablix Name="Tablix2">
+        <TablixCorner>
+          <TablixCornerRows>
+            <TablixCornerRow>
+              <TablixCornerCell>
+                <CellContents>
+                  <Textbox Name="Textbox3">
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value />
+                            <Style>
+                              <FontSize>8pt</FontSize>
+                              <FontWeight>Bold</FontWeight>
+                              <Color>White</Color>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style />
+                      </Paragraph>
+                    </Paragraphs>
+                    <rd:DefaultName>Textbox2</rd:DefaultName>
+                    <Visibility>
+                      <Hidden>true</Hidden>
+                    </Visibility>
+                    <Style>
+                      <Border>
+                        <Color>White</Color>
+                        <Style>Solid</Style>
+                      </Border>
+                      <RightBorder>
+                        <Color>LightGrey</Color>
+                      </RightBorder>
+                    </Style>
+                  </Textbox>
+                </CellContents>
+              </TablixCornerCell>
+              <TablixCornerCell>
+                <CellContents>
+                  <Textbox Name="Textbox42">
+                    <CanGrow>true</CanGrow>
+                    <UserSort>
+                      <SortExpression>=CDbl(Fields!RetailerId.Value) * -1</SortExpression>
+                      <SortExpressionScope>City</SortExpressionScope>
+                    </UserSort>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>Ret ID</Value>
+                            <Style>
+                              <FontSize>8pt</FontSize>
+                              <FontWeight>Bold</FontWeight>
+                              <Color>White</Color>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style>
+                          <TextAlign>Center</TextAlign>
+                        </Style>
+                      </Paragraph>
+                    </Paragraphs>
+                    <rd:DefaultName>Textbox17</rd:DefaultName>
+                    <Style>
+                      <Border>
+                        <Style>Solid</Style>
+                      </Border>
+                      <TopBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </TopBorder>
+                      <BottomBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </BottomBorder>
+                      <LeftBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </LeftBorder>
+                      <RightBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </RightBorder>
+                      <BackgroundColor>SteelBlue</BackgroundColor>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                </CellContents>
+              </TablixCornerCell>
+              <TablixCornerCell>
+                <CellContents>
+                  <Textbox Name="Textbox27">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>Retailer Name</Value>
+                            <Style>
+                              <FontSize>8pt</FontSize>
+                              <FontWeight>Bold</FontWeight>
+                              <Color>White</Color>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style>
+                          <TextAlign>Center</TextAlign>
+                        </Style>
+                      </Paragraph>
+                    </Paragraphs>
+                    <rd:DefaultName>Textbox10</rd:DefaultName>
+                    <Style>
+                      <Border>
+                        <Style>Solid</Style>
+                      </Border>
+                      <TopBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </TopBorder>
+                      <BottomBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </BottomBorder>
+                      <LeftBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </LeftBorder>
+                      <RightBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </RightBorder>
+                      <BackgroundColor>SteelBlue</BackgroundColor>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                </CellContents>
+              </TablixCornerCell>
+              <TablixCornerCell>
+                <CellContents>
+                  <Textbox Name="Textbox29">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>Address</Value>
+                            <Style>
+                              <FontSize>8pt</FontSize>
+                              <FontWeight>Bold</FontWeight>
+                              <Color>White</Color>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style>
+                          <TextAlign>Center</TextAlign>
+                        </Style>
+                      </Paragraph>
+                    </Paragraphs>
+                    <rd:DefaultName>Textbox11</rd:DefaultName>
+                    <Style>
+                      <Border>
+                        <Style>Solid</Style>
+                      </Border>
+                      <TopBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </TopBorder>
+                      <BottomBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </BottomBorder>
+                      <LeftBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </LeftBorder>
+                      <RightBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </RightBorder>
+                      <BackgroundColor>SteelBlue</BackgroundColor>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                </CellContents>
+              </TablixCornerCell>
+              <TablixCornerCell>
+                <CellContents>
+                  <Textbox Name="Textbox31">
+                    <CanGrow>true</CanGrow>
+                    <UserSort>
+                      <SortExpression>=CDbl(Fields!Zip.Value)</SortExpression>
+                      <SortExpressionScope>City</SortExpressionScope>
+                    </UserSort>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>Zip</Value>
+                            <Style>
+                              <FontSize>8pt</FontSize>
+                              <FontWeight>Bold</FontWeight>
+                              <Color>White</Color>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style>
+                          <TextAlign>Center</TextAlign>
+                        </Style>
+                      </Paragraph>
+                    </Paragraphs>
+                    <rd:DefaultName>Textbox13</rd:DefaultName>
+                    <Style>
+                      <Border>
+                        <Style>Solid</Style>
+                      </Border>
+                      <TopBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </TopBorder>
+                      <BottomBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </BottomBorder>
+                      <LeftBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </LeftBorder>
+                      <RightBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </RightBorder>
+                      <BackgroundColor>SteelBlue</BackgroundColor>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                </CellContents>
+              </TablixCornerCell>
+              <TablixCornerCell>
+                <CellContents>
+                  <Textbox Name="Textbox2">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>Phone #</Value>
+                            <Style>
+                              <FontSize>8pt</FontSize>
+                              <FontWeight>Bold</FontWeight>
+                              <Color>White</Color>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style>
+                          <TextAlign>Center</TextAlign>
+                        </Style>
+                      </Paragraph>
+                    </Paragraphs>
+                    <rd:DefaultName>Textbox2</rd:DefaultName>
+                    <Style>
+                      <Border>
+                        <Style>Solid</Style>
+                      </Border>
+                      <TopBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </TopBorder>
+                      <BottomBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </BottomBorder>
+                      <LeftBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </LeftBorder>
+                      <RightBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </RightBorder>
+                      <BackgroundColor>SteelBlue</BackgroundColor>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                </CellContents>
+              </TablixCornerCell>
+            </TablixCornerRow>
+          </TablixCornerRows>
+        </TablixCorner>
+        <TablixBody>
+          <TablixColumns>
+            <TablixColumn>
+              <Width>0.5in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.5in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.5in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.28in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.83333in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.40625in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.40625in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.40625in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.39583in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.5in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.6in</Width>
+            </TablixColumn>
+          </TablixColumns>
+          <TablixRows>
+            <TablixRow>
+              <Height>0.20833in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox45">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=iif(isNothing(Fields!RetailerName.Value), nothing, Sum(IIF(Fields!NewGameFlag.Value = "Y", Fields!Active.Value, 0)))</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox5</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </TopBorder>
+                        <BottomBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </RightBorder>
+                        <BackgroundColor>=iif( Fields!BtoA.Value &gt;= 1, "#80c5dd",
+ iif( Fields!CtoA.Value &gt;= 1, "#80c5dd",
+ iif( Fields!DtoA.Value &gt;= 1, "#80c5dd",
+ iif( Fields!EtoA.Value &gt;= 1, "#80c5dd", 
+ iif( Fields!CtoB.Value &gt;= 1, "#b3e2e3",
+ iif( Fields!DtoB.Value &gt;= 1, "#b3e2e3",
+ iif( Fields!EtoB.Value &gt;= 1, "#b3e2e3",
+ iif( Fields!DtoC.Value &gt;= 1, "#a6dcb5", 
+ iif( Fields!EtoC.Value &gt;= 1, "#a6dcb5", 
+ iif( Fields!AtoB.Value &gt;= 1, "#f74f7c",
+ iif( Fields!AtoC.Value &gt;= 1, "#f74f7c",
+ iif( Fields!AtoDE.Value &gt;= 1, "#f74f7c",
+ iif( Fields!BtoC.Value &gt;= 1, "#fb8d76",
+ iif( Fields!BtoDE.Value &gt;= 1, "#fb8d76",
+ iif( Fields!CtoDE.Value &gt;= 1, "#fbb75a",
+ "White")))))))))))))))</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox53">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=iif(isNothing(Fields!RetailerName.Value), nothing ,(Sum(IIF(Fields!IdealMixGameFlag.Value = "Y" and CInt(Fields!PricePointAmount.Value) = 5, Fields!Active.Value, 0))))</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox7</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </TopBorder>
+                        <BottomBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </RightBorder>
+                        <BackgroundColor>=iif( Fields!BtoA.Value &gt;= 1, "#80c5dd",
+ iif( Fields!CtoA.Value &gt;= 1, "#80c5dd",
+ iif( Fields!DtoA.Value &gt;= 1, "#80c5dd",
+ iif( Fields!EtoA.Value &gt;= 1, "#80c5dd", 
+ iif( Fields!CtoB.Value &gt;= 1, "#b3e2e3",
+ iif( Fields!DtoB.Value &gt;= 1, "#b3e2e3",
+ iif( Fields!EtoB.Value &gt;= 1, "#b3e2e3",
+ iif( Fields!DtoC.Value &gt;= 1, "#a6dcb5", 
+ iif( Fields!EtoC.Value &gt;= 1, "#a6dcb5", 
+ iif( Fields!AtoB.Value &gt;= 1, "#f74f7c",
+ iif( Fields!AtoC.Value &gt;= 1, "#f74f7c",
+ iif( Fields!AtoDE.Value &gt;= 1, "#f74f7c",
+ iif( Fields!BtoC.Value &gt;= 1, "#fb8d76",
+ iif( Fields!BtoDE.Value &gt;= 1, "#fb8d76",
+ iif( Fields!CtoDE.Value &gt;= 1, "#fbb75a",
+ "White")))))))))))))))</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox60">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=iif(isNothing(Fields!RetailerName.Value), nothing, Sum(IIF(Fields!IdealMixGameFlag.Value = "Y", Fields!Active.Value, 0)))</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox9</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </TopBorder>
+                        <BottomBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </RightBorder>
+                        <BackgroundColor>=iif( Fields!BtoA.Value &gt;= 1, "#80c5dd",
+ iif( Fields!CtoA.Value &gt;= 1, "#80c5dd",
+ iif( Fields!DtoA.Value &gt;= 1, "#80c5dd",
+ iif( Fields!EtoA.Value &gt;= 1, "#80c5dd", 
+ iif( Fields!CtoB.Value &gt;= 1, "#b3e2e3",
+ iif( Fields!DtoB.Value &gt;= 1, "#b3e2e3",
+ iif( Fields!EtoB.Value &gt;= 1, "#b3e2e3",
+ iif( Fields!DtoC.Value &gt;= 1, "#a6dcb5", 
+ iif( Fields!EtoC.Value &gt;= 1, "#a6dcb5", 
+ iif( Fields!AtoB.Value &gt;= 1, "#f74f7c",
+ iif( Fields!AtoC.Value &gt;= 1, "#f74f7c",
+ iif( Fields!AtoDE.Value &gt;= 1, "#f74f7c",
+ iif( Fields!BtoC.Value &gt;= 1, "#fb8d76",
+ iif( Fields!BtoDE.Value &gt;= 1, "#fb8d76",
+ iif( Fields!CtoDE.Value &gt;= 1, "#fbb75a",
+ "White")))))))))))))))</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="textbox3">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=iif(isNothing(Fields!RetailerName.Value), nothing, Fields!Active.Value)</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>textbox2</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </TopBorder>
+                        <BottomBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </RightBorder>
+                        <BackgroundColor>=iif( Fields!BtoA.Value &gt;= 1, "#80c5dd",
+ iif( Fields!CtoA.Value &gt;= 1, "#80c5dd",
+ iif( Fields!DtoA.Value &gt;= 1, "#80c5dd",
+ iif( Fields!EtoA.Value &gt;= 1, "#80c5dd", 
+ iif( Fields!CtoB.Value &gt;= 1, "#b3e2e3",
+ iif( Fields!DtoB.Value &gt;= 1, "#b3e2e3",
+ iif( Fields!EtoB.Value &gt;= 1, "#b3e2e3",
+ iif( Fields!DtoC.Value &gt;= 1, "#a6dcb5", 
+ iif( Fields!EtoC.Value &gt;= 1, "#a6dcb5", 
+ iif( Fields!AtoB.Value &gt;= 1, "#f74f7c",
+ iif( Fields!AtoC.Value &gt;= 1, "#f74f7c",
+ iif( Fields!AtoDE.Value &gt;= 1, "#f74f7c",
+ iif( Fields!BtoC.Value &gt;= 1, "#fb8d76",
+ iif( Fields!BtoDE.Value &gt;= 1, "#fb8d76",
+ iif( Fields!CtoDE.Value &gt;= 1, "#fbb75a",
+ "White")))))))))))))))</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="SalesAmount2">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Avg(Fields!SettlementSales13WeeksAvgCurrent.Value)</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                                <Format>'$'#,0.00;('$'#,0.00)</Format>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>SalesAmount</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </TopBorder>
+                        <BottomBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </RightBorder>
+                        <BackgroundColor>=iif( Fields!BtoA.Value &gt;= 1, "#80c5dd",
+ iif( Fields!CtoA.Value &gt;= 1, "#80c5dd",
+ iif( Fields!DtoA.Value &gt;= 1, "#80c5dd",
+ iif( Fields!EtoA.Value &gt;= 1, "#80c5dd", 
+ iif( Fields!CtoB.Value &gt;= 1, "#b3e2e3",
+ iif( Fields!DtoB.Value &gt;= 1, "#b3e2e3",
+ iif( Fields!EtoB.Value &gt;= 1, "#b3e2e3",
+ iif( Fields!DtoC.Value &gt;= 1, "#a6dcb5", 
+ iif( Fields!EtoC.Value &gt;= 1, "#a6dcb5", 
+ iif( Fields!AtoB.Value &gt;= 1, "#f74f7c",
+ iif( Fields!AtoC.Value &gt;= 1, "#f74f7c",
+ iif( Fields!AtoDE.Value &gt;= 1, "#f74f7c",
+ iif( Fields!BtoC.Value &gt;= 1, "#fb8d76",
+ iif( Fields!BtoDE.Value &gt;= 1, "#fb8d76",
+ iif( Fields!CtoDE.Value &gt;= 1, "#fbb75a",
+ "White")))))))))))))))</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <rd:FormatSymbolCulture>en-US</rd:FormatSymbolCulture>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="SalesRep2">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!SalesRep.Value</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>SalesRep</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </TopBorder>
+                        <BottomBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </RightBorder>
+                        <BackgroundColor>=iif( Fields!BtoA.Value &gt;= 1, "#80c5dd",
+ iif( Fields!CtoA.Value &gt;= 1, "#80c5dd",
+ iif( Fields!DtoA.Value &gt;= 1, "#80c5dd",
+ iif( Fields!EtoA.Value &gt;= 1, "#80c5dd", 
+ iif( Fields!CtoB.Value &gt;= 1, "#b3e2e3",
+ iif( Fields!DtoB.Value &gt;= 1, "#b3e2e3",
+ iif( Fields!EtoB.Value &gt;= 1, "#b3e2e3",
+ iif( Fields!DtoC.Value &gt;= 1, "#a6dcb5", 
+ iif( Fields!EtoC.Value &gt;= 1, "#a6dcb5", 
+ iif( Fields!AtoB.Value &gt;= 1, "#f74f7c",
+ iif( Fields!AtoC.Value &gt;= 1, "#f74f7c",
+ iif( Fields!AtoDE.Value &gt;= 1, "#f74f7c",
+ iif( Fields!BtoC.Value &gt;= 1, "#fb8d76",
+ iif( Fields!BtoDE.Value &gt;= 1, "#fb8d76",
+ iif( Fields!CtoDE.Value &gt;= 1, "#fbb75a",
+ "White")))))))))))))))</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="IPSCallDay">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=iif(isNothing(Fields!RetailerName.Value), nothing, LEFT(Fields!IPSCallDay.Value,3))</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>IPSCallDay</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </TopBorder>
+                        <BottomBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </RightBorder>
+                        <BackgroundColor>=iif( Fields!BtoA.Value &gt;= 1, "#80c5dd",
+ iif( Fields!CtoA.Value &gt;= 1, "#80c5dd",
+ iif( Fields!DtoA.Value &gt;= 1, "#80c5dd",
+ iif( Fields!EtoA.Value &gt;= 1, "#80c5dd", 
+ iif( Fields!CtoB.Value &gt;= 1, "#b3e2e3",
+ iif( Fields!DtoB.Value &gt;= 1, "#b3e2e3",
+ iif( Fields!EtoB.Value &gt;= 1, "#b3e2e3",
+ iif( Fields!DtoC.Value &gt;= 1, "#a6dcb5", 
+ iif( Fields!EtoC.Value &gt;= 1, "#a6dcb5", 
+ iif( Fields!AtoB.Value &gt;= 1, "#f74f7c",
+ iif( Fields!AtoC.Value &gt;= 1, "#f74f7c",
+ iif( Fields!AtoDE.Value &gt;= 1, "#f74f7c",
+ iif( Fields!BtoC.Value &gt;= 1, "#fb8d76",
+ iif( Fields!BtoDE.Value &gt;= 1, "#fb8d76",
+ iif( Fields!CtoDE.Value &gt;= 1, "#fbb75a",
+ "White")))))))))))))))</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="IPSCallWeek">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=iif(isNothing(Fields!RetailerName.Value), nothing,
+ iif(Fields!IPSCallWeek.Value = "A-Week" and Fields!IPSCallCycle.Value &lt;&gt; "Weekly", "A-Wk", 
+ iif(Fields!IPSCallWeek.Value = "B-Week" and Fields!IPSCallCycle.Value &lt;&gt; "Weekly", "B-Wk",
+ iif( isNothing(Fields!IPSCallWeek.Value) and Fields!IPSCallCycle.Value &lt;&gt; "Weekly", "A-Wk",
+ iif(Fields!IPSCallCycle.Value = "Weekly", "", 
+ Fields!IPSCallWeek.Value)))))</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>IPSCallWeek</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </TopBorder>
+                        <BottomBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </RightBorder>
+                        <BackgroundColor>=iif( Fields!BtoA.Value &gt;= 1, "#80c5dd",
+ iif( Fields!CtoA.Value &gt;= 1, "#80c5dd",
+ iif( Fields!DtoA.Value &gt;= 1, "#80c5dd",
+ iif( Fields!EtoA.Value &gt;= 1, "#80c5dd", 
+ iif( Fields!CtoB.Value &gt;= 1, "#b3e2e3",
+ iif( Fields!DtoB.Value &gt;= 1, "#b3e2e3",
+ iif( Fields!EtoB.Value &gt;= 1, "#b3e2e3",
+ iif( Fields!DtoC.Value &gt;= 1, "#a6dcb5", 
+ iif( Fields!EtoC.Value &gt;= 1, "#a6dcb5", 
+ iif( Fields!AtoB.Value &gt;= 1, "#f74f7c",
+ iif( Fields!AtoC.Value &gt;= 1, "#f74f7c",
+ iif( Fields!AtoDE.Value &gt;= 1, "#f74f7c",
+ iif( Fields!BtoC.Value &gt;= 1, "#fb8d76",
+ iif( Fields!BtoDE.Value &gt;= 1, "#fb8d76",
+ iif( Fields!CtoDE.Value &gt;= 1, "#fbb75a",
+ "White")))))))))))))))</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Classification2">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!ClassificationCurrent.Value</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Classification</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </TopBorder>
+                        <BottomBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </RightBorder>
+                        <BackgroundColor>=iif( Fields!BtoA.Value &gt;= 1, "#80c5dd",
+ iif( Fields!CtoA.Value &gt;= 1, "#80c5dd",
+ iif( Fields!DtoA.Value &gt;= 1, "#80c5dd",
+ iif( Fields!EtoA.Value &gt;= 1, "#80c5dd", 
+ iif( Fields!CtoB.Value &gt;= 1, "#b3e2e3",
+ iif( Fields!DtoB.Value &gt;= 1, "#b3e2e3",
+ iif( Fields!EtoB.Value &gt;= 1, "#b3e2e3",
+ iif( Fields!DtoC.Value &gt;= 1, "#a6dcb5", 
+ iif( Fields!EtoC.Value &gt;= 1, "#a6dcb5", 
+ iif( Fields!AtoB.Value &gt;= 1, "#f74f7c",
+ iif( Fields!AtoC.Value &gt;= 1, "#f74f7c",
+ iif( Fields!AtoDE.Value &gt;= 1, "#f74f7c",
+ iif( Fields!BtoC.Value &gt;= 1, "#fb8d76",
+ iif( Fields!BtoDE.Value &gt;= 1, "#fb8d76",
+ iif( Fields!CtoDE.Value &gt;= 1, "#fbb75a",
+ "White")))))))))))))))</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Facings2">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!Facings.Value</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Facings</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </TopBorder>
+                        <BottomBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </RightBorder>
+                        <BackgroundColor>=iif( Fields!BtoA.Value &gt;= 1, "#80c5dd",
+ iif( Fields!CtoA.Value &gt;= 1, "#80c5dd",
+ iif( Fields!DtoA.Value &gt;= 1, "#80c5dd",
+ iif( Fields!EtoA.Value &gt;= 1, "#80c5dd", 
+ iif( Fields!CtoB.Value &gt;= 1, "#b3e2e3",
+ iif( Fields!DtoB.Value &gt;= 1, "#b3e2e3",
+ iif( Fields!EtoB.Value &gt;= 1, "#b3e2e3",
+ iif( Fields!DtoC.Value &gt;= 1, "#a6dcb5", 
+ iif( Fields!EtoC.Value &gt;= 1, "#a6dcb5", 
+ iif( Fields!AtoB.Value &gt;= 1, "#f74f7c",
+ iif( Fields!AtoC.Value &gt;= 1, "#f74f7c",
+ iif( Fields!AtoDE.Value &gt;= 1, "#f74f7c",
+ iif( Fields!BtoC.Value &gt;= 1, "#fb8d76",
+ iif( Fields!BtoDE.Value &gt;= 1, "#fb8d76",
+ iif( Fields!CtoDE.Value &gt;= 1, "#fbb75a",
+ "White")))))))))))))))</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="EndedGameFlag1">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=iif(isNothing(Fields!RetailerName.Value), nothing, Sum(IIF(Fields!EndedGameFlag.Value = "Y", Fields!Ended.Value, 0)))</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>EndedGameFlag1</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </TopBorder>
+                        <BottomBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </RightBorder>
+                        <BackgroundColor>=iif( Fields!BtoA.Value &gt;= 1, "#80c5dd",
+ iif( Fields!CtoA.Value &gt;= 1, "#80c5dd",
+ iif( Fields!DtoA.Value &gt;= 1, "#80c5dd",
+ iif( Fields!EtoA.Value &gt;= 1, "#80c5dd", 
+ iif( Fields!CtoB.Value &gt;= 1, "#b3e2e3",
+ iif( Fields!DtoB.Value &gt;= 1, "#b3e2e3",
+ iif( Fields!EtoB.Value &gt;= 1, "#b3e2e3",
+ iif( Fields!DtoC.Value &gt;= 1, "#a6dcb5", 
+ iif( Fields!EtoC.Value &gt;= 1, "#a6dcb5", 
+ iif( Fields!AtoB.Value &gt;= 1, "#f74f7c",
+ iif( Fields!AtoC.Value &gt;= 1, "#f74f7c",
+ iif( Fields!AtoDE.Value &gt;= 1, "#f74f7c",
+ iif( Fields!BtoC.Value &gt;= 1, "#fb8d76",
+ iif( Fields!BtoDE.Value &gt;= 1, "#fb8d76",
+ iif( Fields!CtoDE.Value &gt;= 1, "#fbb75a",
+ "White")))))))))))))))</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+          </TablixRows>
+        </TablixBody>
+        <TablixColumnHierarchy>
+          <TablixMembers>
+            <TablixMember>
+              <TablixHeader>
+                <Size>0.25in</Size>
+                <CellContents>
+                  <Textbox Name="Textbox23">
+                    <CanGrow>true</CanGrow>
+                    <UserSort>
+                      <SortExpression>=Sum(IIF(Fields!NewGameFlag.Value = "Y", Fields!Active.Value, 0))</SortExpression>
+                      <SortExpressionScope>City</SortExpressionScope>
+                    </UserSort>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>New</Value>
+                            <Style>
+                              <FontSize>8pt</FontSize>
+                              <FontWeight>Bold</FontWeight>
+                              <Color>White</Color>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style>
+                          <TextAlign>Center</TextAlign>
+                        </Style>
+                      </Paragraph>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>Ct</Value>
+                            <Style>
+                              <FontSize>8pt</FontSize>
+                              <FontWeight>Bold</FontWeight>
+                              <Color>White</Color>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style>
+                          <TextAlign>Center</TextAlign>
+                        </Style>
+                      </Paragraph>
+                    </Paragraphs>
+                    <rd:DefaultName>Textbox4</rd:DefaultName>
+                    <Style>
+                      <Border>
+                        <Style>Solid</Style>
+                      </Border>
+                      <TopBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </TopBorder>
+                      <BottomBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </BottomBorder>
+                      <LeftBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </LeftBorder>
+                      <RightBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </RightBorder>
+                      <BackgroundColor>SteelBlue</BackgroundColor>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                </CellContents>
+              </TablixHeader>
+            </TablixMember>
+            <TablixMember>
+              <TablixHeader>
+                <Size>0.25in</Size>
+                <CellContents>
+                  <Textbox Name="Textbox48">
+                    <CanGrow>true</CanGrow>
+                    <UserSort>
+                      <SortExpression>=Sum(IIF(CInt(Fields!PricePointAmount.Value) = 5, Fields!Active.Value, 0))</SortExpression>
+                      <SortExpressionScope>City</SortExpressionScope>
+                    </UserSort>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>$5</Value>
+                            <Style>
+                              <FontSize>8pt</FontSize>
+                              <FontWeight>Bold</FontWeight>
+                              <Color>White</Color>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style>
+                          <TextAlign>Center</TextAlign>
+                        </Style>
+                      </Paragraph>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>Ct</Value>
+                            <Style>
+                              <FontSize>8pt</FontSize>
+                              <FontWeight>Bold</FontWeight>
+                              <Color>White</Color>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style>
+                          <TextAlign>Center</TextAlign>
+                        </Style>
+                      </Paragraph>
+                    </Paragraphs>
+                    <rd:DefaultName>Textbox6</rd:DefaultName>
+                    <Style>
+                      <Border>
+                        <Style>Solid</Style>
+                      </Border>
+                      <TopBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </TopBorder>
+                      <BottomBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </BottomBorder>
+                      <LeftBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </LeftBorder>
+                      <RightBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </RightBorder>
+                      <BackgroundColor>SteelBlue</BackgroundColor>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                </CellContents>
+              </TablixHeader>
+            </TablixMember>
+            <TablixMember>
+              <TablixHeader>
+                <Size>0.25in</Size>
+                <CellContents>
+                  <Textbox Name="Textbox55">
+                    <CanGrow>true</CanGrow>
+                    <UserSort>
+                      <SortExpression>=Sum(Fields!Active.Value)</SortExpression>
+                      <SortExpressionScope>City</SortExpressionScope>
+                    </UserSort>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>IGM</Value>
+                            <Style>
+                              <FontSize>8pt</FontSize>
+                              <FontWeight>Bold</FontWeight>
+                              <Color>White</Color>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style>
+                          <TextAlign>Center</TextAlign>
+                        </Style>
+                      </Paragraph>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>Ct</Value>
+                            <Style>
+                              <FontSize>8pt</FontSize>
+                              <FontWeight>Bold</FontWeight>
+                              <Color>White</Color>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style>
+                          <TextAlign>Center</TextAlign>
+                        </Style>
+                      </Paragraph>
+                    </Paragraphs>
+                    <rd:DefaultName>Textbox8</rd:DefaultName>
+                    <Style>
+                      <Border>
+                        <Style>Solid</Style>
+                      </Border>
+                      <TopBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </TopBorder>
+                      <BottomBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </BottomBorder>
+                      <LeftBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </LeftBorder>
+                      <RightBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </RightBorder>
+                      <BackgroundColor>SteelBlue</BackgroundColor>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                </CellContents>
+              </TablixHeader>
+            </TablixMember>
+            <TablixMember>
+              <Group Name="ColumnGroup">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!ProductNumber.Value</GroupExpression>
+                </GroupExpressions>
+              </Group>
+              <SortExpressions>
+                <SortExpression>
+                  <Value>=Fields!NewGameFlag.Value</Value>
+                  <Direction>Descending</Direction>
+                </SortExpression>
+                <SortExpression>
+                  <Value>=CDbl(Fields!PricePointAmount.Value)</Value>
+                  <Direction>Descending</Direction>
+                </SortExpression>
+                <SortExpression>
+                  <Value>=Fields!ProductNumber.Value</Value>
+                  <Direction>Descending</Direction>
+                </SortExpression>
+              </SortExpressions>
+              <TablixHeader>
+                <Size>0.25in</Size>
+                <CellContents>
+                  <Textbox Name="Game__2">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>=Fields!ProductNumber.Value &amp; Chr(10) &amp; "$"&amp;Cint(Fields!PricePointAmount.Value)</Value>
+                            <Style>
+                              <FontSize>8pt</FontSize>
+                              <FontWeight>Bold</FontWeight>
+                              <Color>White</Color>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style>
+                          <TextAlign>Center</TextAlign>
+                        </Style>
+                      </Paragraph>
+                    </Paragraphs>
+                    <rd:DefaultName>Game__</rd:DefaultName>
+                    <Style>
+                      <Border>
+                        <Style>Solid</Style>
+                      </Border>
+                      <TopBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </TopBorder>
+                      <BottomBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </BottomBorder>
+                      <LeftBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </LeftBorder>
+                      <RightBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </RightBorder>
+                      <BackgroundColor>SteelBlue</BackgroundColor>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                </CellContents>
+              </TablixHeader>
+              <Visibility>
+                <Hidden>=iif( CInt(Fields!PricePointAmount.Value) = 0, true, 
+ iif( Fields!NewGameFlag.Value = "Y" 
+     or ( Fields!IdealMixGameFlag.Value = "Y" and CInt(Fields!PricePointAmount.Value) = 5)
+     or ( Fields!IdealMixGameFlag.Value = "Y" and CInt(Fields!PricePointAmount.Value) = 10)
+, false,  true))</Hidden>
+              </Visibility>
+            </TablixMember>
+            <TablixMember>
+              <TablixHeader>
+                <Size>0.25in</Size>
+                <CellContents>
+                  <Textbox Name="Textbox25">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>13 Wk Avg Settlement Sales </Value>
+                            <Style>
+                              <FontSize>8pt</FontSize>
+                              <FontWeight>Bold</FontWeight>
+                              <Color>White</Color>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style>
+                          <TextAlign>Center</TextAlign>
+                        </Style>
+                      </Paragraph>
+                    </Paragraphs>
+                    <rd:DefaultName>Textbox25</rd:DefaultName>
+                    <Style>
+                      <Border>
+                        <Style>Solid</Style>
+                      </Border>
+                      <TopBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </TopBorder>
+                      <BottomBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </BottomBorder>
+                      <LeftBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </LeftBorder>
+                      <RightBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </RightBorder>
+                      <BackgroundColor>SteelBlue</BackgroundColor>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                </CellContents>
+              </TablixHeader>
+            </TablixMember>
+            <TablixMember>
+              <TablixHeader>
+                <Size>0.25in</Size>
+                <CellContents>
+                  <Textbox Name="Textbox4">
+                    <CanGrow>true</CanGrow>
+                    <UserSort>
+                      <SortExpression>=Fields!SalesRep.Value</SortExpression>
+                      <SortExpressionScope>City</SortExpressionScope>
+                    </UserSort>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>DSR</Value>
+                            <Style>
+                              <FontSize>8pt</FontSize>
+                              <FontWeight>Bold</FontWeight>
+                              <Color>White</Color>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style>
+                          <TextAlign>Center</TextAlign>
+                        </Style>
+                      </Paragraph>
+                    </Paragraphs>
+                    <rd:DefaultName>Textbox4</rd:DefaultName>
+                    <Style>
+                      <Border>
+                        <Style>Solid</Style>
+                      </Border>
+                      <TopBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </TopBorder>
+                      <BottomBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </BottomBorder>
+                      <LeftBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </LeftBorder>
+                      <RightBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </RightBorder>
+                      <BackgroundColor>SteelBlue</BackgroundColor>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                </CellContents>
+              </TablixHeader>
+            </TablixMember>
+            <TablixMember>
+              <TablixHeader>
+                <Size>0.25in</Size>
+                <CellContents>
+                  <Textbox Name="Textbox6">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>LTSS Call Day</Value>
+                            <Style>
+                              <FontSize>8pt</FontSize>
+                              <FontWeight>Bold</FontWeight>
+                              <Color>White</Color>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style>
+                          <TextAlign>Center</TextAlign>
+                        </Style>
+                      </Paragraph>
+                    </Paragraphs>
+                    <rd:DefaultName>Textbox6</rd:DefaultName>
+                    <Style>
+                      <Border>
+                        <Style>Solid</Style>
+                      </Border>
+                      <TopBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </TopBorder>
+                      <BottomBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </BottomBorder>
+                      <LeftBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </LeftBorder>
+                      <RightBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </RightBorder>
+                      <BackgroundColor>SteelBlue</BackgroundColor>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                </CellContents>
+              </TablixHeader>
+            </TablixMember>
+            <TablixMember>
+              <TablixHeader>
+                <Size>0.25in</Size>
+                <CellContents>
+                  <Textbox Name="Textbox8">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>LTSS Call Wk</Value>
+                            <Style>
+                              <FontSize>8pt</FontSize>
+                              <FontWeight>Bold</FontWeight>
+                              <Color>White</Color>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style>
+                          <TextAlign>Center</TextAlign>
+                        </Style>
+                      </Paragraph>
+                    </Paragraphs>
+                    <rd:DefaultName>Textbox8</rd:DefaultName>
+                    <Style>
+                      <Border>
+                        <Style>Solid</Style>
+                      </Border>
+                      <TopBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </TopBorder>
+                      <BottomBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </BottomBorder>
+                      <LeftBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </LeftBorder>
+                      <RightBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </RightBorder>
+                      <BackgroundColor>SteelBlue</BackgroundColor>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                </CellContents>
+              </TablixHeader>
+            </TablixMember>
+            <TablixMember>
+              <TablixHeader>
+                <Size>0.25in</Size>
+                <CellContents>
+                  <Textbox Name="Textbox13">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>Class</Value>
+                            <Style>
+                              <FontSize>8pt</FontSize>
+                              <FontWeight>Bold</FontWeight>
+                              <Color>White</Color>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style>
+                          <TextAlign>Center</TextAlign>
+                        </Style>
+                      </Paragraph>
+                    </Paragraphs>
+                    <rd:DefaultName>Textbox13</rd:DefaultName>
+                    <Style>
+                      <Border>
+                        <Style>Solid</Style>
+                      </Border>
+                      <TopBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </TopBorder>
+                      <BottomBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </BottomBorder>
+                      <LeftBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </LeftBorder>
+                      <RightBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </RightBorder>
+                      <BackgroundColor>SteelBlue</BackgroundColor>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                </CellContents>
+              </TablixHeader>
+            </TablixMember>
+            <TablixMember>
+              <TablixHeader>
+                <Size>0.25in</Size>
+                <CellContents>
+                  <Textbox Name="Textbox15">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>Facings</Value>
+                            <Style>
+                              <FontSize>8pt</FontSize>
+                              <FontWeight>Bold</FontWeight>
+                              <Color>White</Color>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style>
+                          <TextAlign>Center</TextAlign>
+                        </Style>
+                      </Paragraph>
+                    </Paragraphs>
+                    <rd:DefaultName>Textbox15</rd:DefaultName>
+                    <Style>
+                      <Border>
+                        <Style>Solid</Style>
+                      </Border>
+                      <TopBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </TopBorder>
+                      <BottomBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </BottomBorder>
+                      <LeftBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </LeftBorder>
+                      <RightBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </RightBorder>
+                      <BackgroundColor>SteelBlue</BackgroundColor>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                </CellContents>
+              </TablixHeader>
+            </TablixMember>
+            <TablixMember>
+              <TablixHeader>
+                <Size>0.25in</Size>
+                <CellContents>
+                  <Textbox Name="Textbox10">
+                    <CanGrow>true</CanGrow>
+                    <UserSort>
+                      <SortExpression>=Sum(IIF(Fields!EndedGameFlag.Value = "Y", Fields!Ended.Value, 0))</SortExpression>
+                      <SortExpressionScope>City</SortExpressionScope>
+                    </UserSort>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>Ended</Value>
+                            <Style>
+                              <FontSize>8pt</FontSize>
+                              <FontWeight>Bold</FontWeight>
+                              <Color>White</Color>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style>
+                          <TextAlign>Center</TextAlign>
+                        </Style>
+                      </Paragraph>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>Ct</Value>
+                            <Style>
+                              <FontSize>8pt</FontSize>
+                              <FontWeight>Bold</FontWeight>
+                              <Color>White</Color>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style>
+                          <TextAlign>Center</TextAlign>
+                        </Style>
+                      </Paragraph>
+                    </Paragraphs>
+                    <rd:DefaultName>Textbox10</rd:DefaultName>
+                    <Style>
+                      <Border>
+                        <Style>Solid</Style>
+                      </Border>
+                      <TopBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </TopBorder>
+                      <BottomBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </BottomBorder>
+                      <LeftBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </LeftBorder>
+                      <RightBorder>
+                        <Color>Black</Color>
+                        <Style>Solid</Style>
+                        <Width>1pt</Width>
+                      </RightBorder>
+                      <BackgroundColor>SteelBlue</BackgroundColor>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                </CellContents>
+              </TablixHeader>
+            </TablixMember>
+          </TablixMembers>
+        </TablixColumnHierarchy>
+        <TablixRowHierarchy>
+          <TablixMembers>
+            <TablixMember>
+              <Group Name="City">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!RetailerId.Value</GroupExpression>
+                </GroupExpressions>
+              </Group>
+              <SortExpressions>
+                <SortExpression>
+                  <Value>=Fields!CtoDE.Value</Value>
+                </SortExpression>
+                <SortExpression>
+                  <Value>=Fields!BtoDE.Value</Value>
+                </SortExpression>
+                <SortExpression>
+                  <Value>=Fields!BtoC.Value</Value>
+                </SortExpression>
+                <SortExpression>
+                  <Value>=Fields!AtoDE.Value</Value>
+                </SortExpression>
+                <SortExpression>
+                  <Value>=Fields!AtoC.Value</Value>
+                </SortExpression>
+                <SortExpression>
+                  <Value>=Fields!AtoB.Value</Value>
+                </SortExpression>
+                <SortExpression>
+                  <Value>=Fields!EtoC.Value</Value>
+                </SortExpression>
+                <SortExpression>
+                  <Value>=Fields!DtoC.Value</Value>
+                </SortExpression>
+                <SortExpression>
+                  <Value>=Fields!EtoB.Value</Value>
+                </SortExpression>
+                <SortExpression>
+                  <Value>=Fields!DtoB.Value</Value>
+                </SortExpression>
+                <SortExpression>
+                  <Value>=Fields!CtoB.Value</Value>
+                </SortExpression>
+                <SortExpression>
+                  <Value>=Fields!EtoA.Value</Value>
+                </SortExpression>
+                <SortExpression>
+                  <Value>=Fields!DtoA.Value</Value>
+                </SortExpression>
+                <SortExpression>
+                  <Value>=Fields!CtoA.Value</Value>
+                </SortExpression>
+                <SortExpression>
+                  <Value>=Fields!BtoA.Value</Value>
+                </SortExpression>
+                <SortExpression>
+                  <Value>=CDbl(Fields!RetailerId.Value)</Value>
+                </SortExpression>
+              </SortExpressions>
+              <TablixMembers>
+                <TablixMember>
+                  <TablixHeader>
+                    <Size>0.03125in</Size>
+                    <CellContents>
+                      <Textbox Name="RowColorGroup">
+                        <KeepTogether>true</KeepTogether>
+                        <Paragraphs>
+                          <Paragraph>
+                            <TextRuns>
+                              <TextRun>
+                                <Value>=iif(RunningValue(Fields!District.Value &amp; Fields!Address.Value &amp; Fields!City.Value &amp; Fields!Zip.Value &amp; Fields!SalesRep.Value, CountDistinct,Nothing ) Mod 2, "White", "AliceBlue")</Value>
+                                <Style>
+                                  <FontSize>8pt</FontSize>
+                                  <Color>White</Color>
+                                </Style>
+                              </TextRun>
+                            </TextRuns>
+                            <Style />
+                          </Paragraph>
+                        </Paragraphs>
+                        <Visibility>
+                          <Hidden>true</Hidden>
+                        </Visibility>
+                        <Style>
+                          <Border>
+                            <Color>White</Color>
+                            <Style>Solid</Style>
+                          </Border>
+                          <RightBorder>
+                            <Color>LightGrey</Color>
+                          </RightBorder>
+                          <BackgroundColor>=iif( Fields!BtoA.Value &gt;= 1, "#80c5dd",
+ iif( Fields!CtoA.Value &gt;= 1, "#80c5dd",
+ iif( Fields!DtoA.Value &gt;= 1, "#80c5dd",
+ iif( Fields!EtoA.Value &gt;= 1, "#80c5dd", 
+ iif( Fields!CtoB.Value &gt;= 1, "#b3e2e3",
+ iif( Fields!DtoB.Value &gt;= 1, "#b3e2e3",
+ iif( Fields!EtoB.Value &gt;= 1, "#b3e2e3",
+ iif( Fields!DtoC.Value &gt;= 1, "#a6dcb5", 
+ iif( Fields!EtoC.Value &gt;= 1, "#a6dcb5", 
+ iif( Fields!AtoB.Value &gt;= 1, "#f74f7c",
+ iif( Fields!AtoC.Value &gt;= 1, "#f74f7c",
+ iif( Fields!AtoDE.Value &gt;= 1, "#f74f7c",
+ iif( Fields!BtoC.Value &gt;= 1, "#fb8d76",
+ iif( Fields!BtoDE.Value &gt;= 1, "#fb8d76",
+ iif( Fields!CtoDE.Value &gt;= 1, "#fbb75a",
+ "White")))))))))))))))</BackgroundColor>
+                        </Style>
+                      </Textbox>
+                    </CellContents>
+                  </TablixHeader>
+                  <TablixMembers>
+                    <TablixMember>
+                      <TablixHeader>
+                        <Size>0.72in</Size>
+                        <CellContents>
+                          <Textbox Name="Retailer_Number2">
+                            <CanGrow>true</CanGrow>
+                            <KeepTogether>true</KeepTogether>
+                            <Paragraphs>
+                              <Paragraph>
+                                <TextRuns>
+                                  <TextRun>
+                                    <Value>=Fields!RetailerId.Value</Value>
+                                    <Style>
+                                      <FontSize>8pt</FontSize>
+                                      <Color>Blue</Color>
+                                    </Style>
+                                  </TextRun>
+                                </TextRuns>
+                                <Style />
+                              </Paragraph>
+                            </Paragraphs>
+                            <rd:DefaultName>Retailer_Number1</rd:DefaultName>
+                            <ActionInfo>
+                              <Actions>
+                                <Action>
+                                  <Hyperlink>=iif(Globals!RenderFormat.Name = "EXCEL", Parameters!ReportServerURL.Value &amp; "/ReportServer/Pages/ReportViewer.aspx?" &amp; Parameters!BIBASiteURL.Value &amp; "/Ex$ell%20Analysis/Retailer Details.rdl&amp;RetailerId=" + Fields!RetailerId.Value, "javascript:void(window.open('" &amp; "/_layouts/ReportServer/RSViewerPage.aspx?rv:RelativeReportUrl=/Ex$ell Analysis/Retailer Details.rdl&amp;rp:RetailerId=" &amp; Fields!RetailerId.Value &amp; "'))")</Hyperlink>
+                                </Action>
+                              </Actions>
+                            </ActionInfo>
+                            <Style>
+                              <Border>
+                                <Style>Solid</Style>
+                              </Border>
+                              <BackgroundColor>=iif( Fields!BtoA.Value &gt;= 1, "#80c5dd",
+ iif( Fields!CtoA.Value &gt;= 1, "#80c5dd",
+ iif( Fields!DtoA.Value &gt;= 1, "#80c5dd",
+ iif( Fields!EtoA.Value &gt;= 1, "#80c5dd", 
+ iif( Fields!CtoB.Value &gt;= 1, "#b3e2e3",
+ iif( Fields!DtoB.Value &gt;= 1, "#b3e2e3",
+ iif( Fields!EtoB.Value &gt;= 1, "#b3e2e3",
+ iif( Fields!DtoC.Value &gt;= 1, "#a6dcb5", 
+ iif( Fields!EtoC.Value &gt;= 1, "#a6dcb5", 
+ iif( Fields!AtoB.Value &gt;= 1, "#f74f7c",
+ iif( Fields!AtoC.Value &gt;= 1, "#f74f7c",
+ iif( Fields!AtoDE.Value &gt;= 1, "#f74f7c",
+ iif( Fields!BtoC.Value &gt;= 1, "#fb8d76",
+ iif( Fields!BtoDE.Value &gt;= 1, "#fb8d76",
+ iif( Fields!CtoDE.Value &gt;= 1, "#fbb75a",
+ "White")))))))))))))))</BackgroundColor>
+                              <PaddingLeft>2pt</PaddingLeft>
+                              <PaddingRight>2pt</PaddingRight>
+                              <PaddingTop>2pt</PaddingTop>
+                              <PaddingBottom>2pt</PaddingBottom>
+                            </Style>
+                          </Textbox>
+                          <rd:Selected>true</rd:Selected>
+                        </CellContents>
+                      </TablixHeader>
+                      <TablixMembers>
+                        <TablixMember>
+                          <TablixHeader>
+                            <Size>1.45833in</Size>
+                            <CellContents>
+                              <Textbox Name="RetailerName">
+                                <CanGrow>true</CanGrow>
+                                <KeepTogether>true</KeepTogether>
+                                <Paragraphs>
+                                  <Paragraph>
+                                    <TextRuns>
+                                      <TextRun>
+                                        <Value>=Fields!RetailerName.Value</Value>
+                                        <Style>
+                                          <FontSize>8pt</FontSize>
+                                        </Style>
+                                      </TextRun>
+                                    </TextRuns>
+                                    <Style />
+                                  </Paragraph>
+                                </Paragraphs>
+                                <rd:DefaultName>RetailerName</rd:DefaultName>
+                                <Style>
+                                  <Border>
+                                    <Style>Solid</Style>
+                                  </Border>
+                                  <TopBorder>
+                                    <Color>Black</Color>
+                                    <Style>Solid</Style>
+                                    <Width>1pt</Width>
+                                  </TopBorder>
+                                  <BottomBorder>
+                                    <Color>Black</Color>
+                                    <Style>Solid</Style>
+                                    <Width>1pt</Width>
+                                  </BottomBorder>
+                                  <LeftBorder>
+                                    <Color>Black</Color>
+                                    <Style>Solid</Style>
+                                    <Width>1pt</Width>
+                                  </LeftBorder>
+                                  <RightBorder>
+                                    <Color>Black</Color>
+                                    <Style>Solid</Style>
+                                    <Width>1pt</Width>
+                                  </RightBorder>
+                                  <BackgroundColor>=iif( Fields!BtoA.Value &gt;= 1, "#80c5dd",
+ iif( Fields!CtoA.Value &gt;= 1, "#80c5dd",
+ iif( Fields!DtoA.Value &gt;= 1, "#80c5dd",
+ iif( Fields!EtoA.Value &gt;= 1, "#80c5dd", 
+ iif( Fields!CtoB.Value &gt;= 1, "#b3e2e3",
+ iif( Fields!DtoB.Value &gt;= 1, "#b3e2e3",
+ iif( Fields!EtoB.Value &gt;= 1, "#b3e2e3",
+ iif( Fields!DtoC.Value &gt;= 1, "#a6dcb5", 
+ iif( Fields!EtoC.Value &gt;= 1, "#a6dcb5", 
+ iif( Fields!AtoB.Value &gt;= 1, "#f74f7c",
+ iif( Fields!AtoC.Value &gt;= 1, "#f74f7c",
+ iif( Fields!AtoDE.Value &gt;= 1, "#f74f7c",
+ iif( Fields!BtoC.Value &gt;= 1, "#fb8d76",
+ iif( Fields!BtoDE.Value &gt;= 1, "#fb8d76",
+ iif( Fields!CtoDE.Value &gt;= 1, "#fbb75a",
+ "White")))))))))))))))</BackgroundColor>
+                                  <PaddingLeft>2pt</PaddingLeft>
+                                  <PaddingRight>2pt</PaddingRight>
+                                  <PaddingTop>2pt</PaddingTop>
+                                  <PaddingBottom>2pt</PaddingBottom>
+                                </Style>
+                              </Textbox>
+                            </CellContents>
+                          </TablixHeader>
+                          <TablixMembers>
+                            <TablixMember>
+                              <TablixHeader>
+                                <Size>1.5in</Size>
+                                <CellContents>
+                                  <Textbox Name="Address">
+                                    <CanGrow>true</CanGrow>
+                                    <KeepTogether>true</KeepTogether>
+                                    <Paragraphs>
+                                      <Paragraph>
+                                        <TextRuns>
+                                          <TextRun>
+                                            <Value>=Fields!Address.Value</Value>
+                                            <Style>
+                                              <FontSize>8pt</FontSize>
+                                            </Style>
+                                          </TextRun>
+                                        </TextRuns>
+                                        <Style>
+                                          <TextAlign>Left</TextAlign>
+                                        </Style>
+                                      </Paragraph>
+                                    </Paragraphs>
+                                    <rd:DefaultName>Address</rd:DefaultName>
+                                    <Style>
+                                      <Border>
+                                        <Style>Solid</Style>
+                                      </Border>
+                                      <TopBorder>
+                                        <Color>Black</Color>
+                                        <Style>Solid</Style>
+                                        <Width>1pt</Width>
+                                      </TopBorder>
+                                      <BottomBorder>
+                                        <Color>Black</Color>
+                                        <Style>Solid</Style>
+                                        <Width>1pt</Width>
+                                      </BottomBorder>
+                                      <LeftBorder>
+                                        <Color>Black</Color>
+                                        <Style>Solid</Style>
+                                        <Width>1pt</Width>
+                                      </LeftBorder>
+                                      <RightBorder>
+                                        <Color>Black</Color>
+                                        <Style>Solid</Style>
+                                        <Width>1pt</Width>
+                                      </RightBorder>
+                                      <BackgroundColor>=iif( Fields!BtoA.Value &gt;= 1, "#80c5dd",
+ iif( Fields!CtoA.Value &gt;= 1, "#80c5dd",
+ iif( Fields!DtoA.Value &gt;= 1, "#80c5dd",
+ iif( Fields!EtoA.Value &gt;= 1, "#80c5dd", 
+ iif( Fields!CtoB.Value &gt;= 1, "#b3e2e3",
+ iif( Fields!DtoB.Value &gt;= 1, "#b3e2e3",
+ iif( Fields!EtoB.Value &gt;= 1, "#b3e2e3",
+ iif( Fields!DtoC.Value &gt;= 1, "#a6dcb5", 
+ iif( Fields!EtoC.Value &gt;= 1, "#a6dcb5", 
+ iif( Fields!AtoB.Value &gt;= 1, "#f74f7c",
+ iif( Fields!AtoC.Value &gt;= 1, "#f74f7c",
+ iif( Fields!AtoDE.Value &gt;= 1, "#f74f7c",
+ iif( Fields!BtoC.Value &gt;= 1, "#fb8d76",
+ iif( Fields!BtoDE.Value &gt;= 1, "#fb8d76",
+ iif( Fields!CtoDE.Value &gt;= 1, "#fbb75a",
+ "White")))))))))))))))</BackgroundColor>
+                                      <PaddingLeft>2pt</PaddingLeft>
+                                      <PaddingRight>2pt</PaddingRight>
+                                      <PaddingTop>2pt</PaddingTop>
+                                      <PaddingBottom>2pt</PaddingBottom>
+                                    </Style>
+                                  </Textbox>
+                                </CellContents>
+                              </TablixHeader>
+                              <TablixMembers>
+                                <TablixMember>
+                                  <TablixHeader>
+                                    <Size>0.40625in</Size>
+                                    <CellContents>
+                                      <Textbox Name="Zip">
+                                        <CanGrow>true</CanGrow>
+                                        <KeepTogether>true</KeepTogether>
+                                        <Paragraphs>
+                                          <Paragraph>
+                                            <TextRuns>
+                                              <TextRun>
+                                                <Value>=Fields!Zip.Value</Value>
+                                                <Style>
+                                                  <FontSize>8pt</FontSize>
+                                                </Style>
+                                              </TextRun>
+                                            </TextRuns>
+                                            <Style>
+                                              <TextAlign>Left</TextAlign>
+                                            </Style>
+                                          </Paragraph>
+                                        </Paragraphs>
+                                        <rd:DefaultName>Zip</rd:DefaultName>
+                                        <Style>
+                                          <Border>
+                                            <Style>Solid</Style>
+                                          </Border>
+                                          <TopBorder>
+                                            <Color>Black</Color>
+                                            <Style>Solid</Style>
+                                            <Width>1pt</Width>
+                                          </TopBorder>
+                                          <BottomBorder>
+                                            <Color>Black</Color>
+                                            <Style>Solid</Style>
+                                            <Width>1pt</Width>
+                                          </BottomBorder>
+                                          <LeftBorder>
+                                            <Color>Black</Color>
+                                            <Style>Solid</Style>
+                                            <Width>1pt</Width>
+                                          </LeftBorder>
+                                          <RightBorder>
+                                            <Color>Black</Color>
+                                            <Style>Solid</Style>
+                                            <Width>1pt</Width>
+                                          </RightBorder>
+                                          <BackgroundColor>=iif( Fields!BtoA.Value &gt;= 1, "#80c5dd",
+ iif( Fields!CtoA.Value &gt;= 1, "#80c5dd",
+ iif( Fields!DtoA.Value &gt;= 1, "#80c5dd",
+ iif( Fields!EtoA.Value &gt;= 1, "#80c5dd", 
+ iif( Fields!CtoB.Value &gt;= 1, "#b3e2e3",
+ iif( Fields!DtoB.Value &gt;= 1, "#b3e2e3",
+ iif( Fields!EtoB.Value &gt;= 1, "#b3e2e3",
+ iif( Fields!DtoC.Value &gt;= 1, "#a6dcb5", 
+ iif( Fields!EtoC.Value &gt;= 1, "#a6dcb5", 
+ iif( Fields!AtoB.Value &gt;= 1, "#f74f7c",
+ iif( Fields!AtoC.Value &gt;= 1, "#f74f7c",
+ iif( Fields!AtoDE.Value &gt;= 1, "#f74f7c",
+ iif( Fields!BtoC.Value &gt;= 1, "#fb8d76",
+ iif( Fields!BtoDE.Value &gt;= 1, "#fb8d76",
+ iif( Fields!CtoDE.Value &gt;= 1, "#fbb75a",
+ "White")))))))))))))))</BackgroundColor>
+                                          <PaddingLeft>2pt</PaddingLeft>
+                                          <PaddingRight>2pt</PaddingRight>
+                                          <PaddingTop>2pt</PaddingTop>
+                                          <PaddingBottom>2pt</PaddingBottom>
+                                        </Style>
+                                      </Textbox>
+                                    </CellContents>
+                                  </TablixHeader>
+                                  <TablixMembers>
+                                    <TablixMember>
+                                      <TablixHeader>
+                                        <Size>1in</Size>
+                                        <CellContents>
+                                          <Textbox Name="PrimaryPhoneNum">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value>=iif(isNothing(Fields!RetailerName.Value), nothing, System.Text.RegularExpressions.Regex.Replace(Fields!PrimaryPhoneNum.Value, "(\d{3})[ -.]*(\d{3})[ -.]*(\d{4})", "($1) $2-$3"))</Value>
+                                                    <Style>
+                                                      <FontSize>8pt</FontSize>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style>
+                                                  <TextAlign>Left</TextAlign>
+                                                </Style>
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <rd:DefaultName>PrimaryPhoneNum</rd:DefaultName>
+                                            <Style>
+                                              <Border>
+                                                <Style>Solid</Style>
+                                              </Border>
+                                              <TopBorder>
+                                                <Color>Black</Color>
+                                                <Style>Solid</Style>
+                                                <Width>1pt</Width>
+                                              </TopBorder>
+                                              <BottomBorder>
+                                                <Color>Black</Color>
+                                                <Style>Solid</Style>
+                                                <Width>1pt</Width>
+                                              </BottomBorder>
+                                              <LeftBorder>
+                                                <Color>Black</Color>
+                                                <Style>Solid</Style>
+                                                <Width>1pt</Width>
+                                              </LeftBorder>
+                                              <RightBorder>
+                                                <Color>Black</Color>
+                                                <Style>Solid</Style>
+                                                <Width>1pt</Width>
+                                              </RightBorder>
+                                              <BackgroundColor>=iif( Fields!BtoA.Value &gt;= 1, "#80c5dd",
+ iif( Fields!CtoA.Value &gt;= 1, "#80c5dd",
+ iif( Fields!DtoA.Value &gt;= 1, "#80c5dd",
+ iif( Fields!EtoA.Value &gt;= 1, "#80c5dd", 
+ iif( Fields!CtoB.Value &gt;= 1, "#b3e2e3",
+ iif( Fields!DtoB.Value &gt;= 1, "#b3e2e3",
+ iif( Fields!EtoB.Value &gt;= 1, "#b3e2e3",
+ iif( Fields!DtoC.Value &gt;= 1, "#a6dcb5", 
+ iif( Fields!EtoC.Value &gt;= 1, "#a6dcb5", 
+ iif( Fields!AtoB.Value &gt;= 1, "#f74f7c",
+ iif( Fields!AtoC.Value &gt;= 1, "#f74f7c",
+ iif( Fields!AtoDE.Value &gt;= 1, "#f74f7c",
+ iif( Fields!BtoC.Value &gt;= 1, "#fb8d76",
+ iif( Fields!BtoDE.Value &gt;= 1, "#fb8d76",
+ iif( Fields!CtoDE.Value &gt;= 1, "#fbb75a",
+ "White")))))))))))))))</BackgroundColor>
+                                              <PaddingLeft>2pt</PaddingLeft>
+                                              <PaddingRight>2pt</PaddingRight>
+                                              <PaddingTop>2pt</PaddingTop>
+                                              <PaddingBottom>2pt</PaddingBottom>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixHeader>
+                                      <TablixMembers>
+                                        <TablixMember />
+                                      </TablixMembers>
+                                    </TablixMember>
+                                  </TablixMembers>
+                                </TablixMember>
+                              </TablixMembers>
+                            </TablixMember>
+                          </TablixMembers>
+                        </TablixMember>
+                      </TablixMembers>
+                    </TablixMember>
+                  </TablixMembers>
+                </TablixMember>
+              </TablixMembers>
+            </TablixMember>
+          </TablixMembers>
+        </TablixRowHierarchy>
+        <RepeatColumnHeaders>true</RepeatColumnHeaders>
+        <FixedColumnHeaders>true</FixedColumnHeaders>
+        <DataSetName>ClassificationTransitionDetails</DataSetName>
+        <SortExpressions>
+          <SortExpression>
+            <Value>=Fields!RetailerId.Value</Value>
+          </SortExpression>
+          <SortExpression>
+            <Value>=Fields!City.Value</Value>
+          </SortExpression>
+          <SortExpression>
+            <Value>=Fields!SettlementSales13WeeksAvgCurrent.Value</Value>
+          </SortExpression>
+        </SortExpressions>
+        <Top>0.60709in</Top>
+        <Left>0.0375in</Left>
+        <Height>0.45833in</Height>
+        <Width>10.44374in</Width>
+        <ZIndex>1</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Tablix>
+    </ReportItems>
+    <Height>1.06542in</Height>
+    <Style />
+  </Body>
+  <Width>10.48124in</Width>
+  <Page>
+    <LeftMargin>1in</LeftMargin>
+    <RightMargin>1in</RightMargin>
+    <TopMargin>1in</TopMargin>
+    <BottomMargin>1in</BottomMargin>
+    <Style />
+  </Page>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="BIDW">
+      <DataSourceReference>BIDW</DataSourceReference>
+      <rd:SecurityType>None</rd:SecurityType>
+      <rd:DataSourceID>7b2afcc0-5883-4efc-b674-a9edcac95bf4</rd:DataSourceID>
+    </DataSource>
+    <DataSource Name="BIBAReports">
+      <DataSourceReference>BIBAReports</DataSourceReference>
+      <rd:SecurityType>None</rd:SecurityType>
+      <rd:DataSourceID>8cf4a672-8e48-463e-bbc2-e98d25111aa2</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="ClassificationTransitionDetails">
+      <Query>
+        <DataSourceName>BIDW</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@DSR">
+            <Value>=Parameters!DSR.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@SelectedQTRWeDate">
+            <Value>=Parameters!SelectedQTRWeDate.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@EndOfDay">
+            <Value>=Parameters!EndOfDay.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@DistrictOffice">
+            <Value>=Parameters!DistrictOffice.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>/* Retailer Classification Transition Details DO Filter*/
+/* Modified 2014-11-03*/
+
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+
+/*   Variables only used for testing this script in SSMS */
+--DECLARE @EndOfDay DATETIME = '20130307';
+--DECLARE @DSR VARCHAR(250) = '21071';
+--DECLARE @DistrictOffice VARCHAR(250) = 'Sacramento';
+--DECLARE @SelectedQTRWeDate int = 20121201;
+
+--  Move passed parameters into working fields
+DECLARE @DateKey INT = @SelectedQTRWeDate;
+
+--  Get processing dates
+DECLARE @EndDateKey INT = CONVERT(INT, CONVERT(CHAR(8), @EndOfDay, 112));
+DECLARE @EndDateCalDayDate DATETIME = (SELECT TOP 1 CalDayDate FROM BIDW.dbo.DimDate WHERE @EndDateKey = DateKey);
+DECLARE @SelectedQTRCalDayDate DATETIME = (SELECT TOP 1 CalDayDate FROM BIDW.dbo.DimDate WHERE @DateKey = DateKey);
+DECLARE @SelectedDSRCalQtrEndDate DATE = (SELECT DISTINCT DSRCalQtrEndDate FROM BIDW.dbo.Dimdate WHERE CalDayDate=@SelectedQTRCalDayDate);
+--  Get dates in string format
+DECLARE @SelectedQtrDate VARCHAR(30) = (SELECT DISTINCT CalDayStr FROM BIDW.dbo.Dimdate WHERE CalDayDate=@SelectedQTRCalDayDate);
+
+--Get next qtr start date
+DECLARE @NextQuarterCalQtrStr VARCHAR(100) = (SELECT DISTINCT DSRCalQtrStr FROM BIDW.dbo.Dimdate WHERE CalDayDate = DATEADD(dd, CONVERT(INT, +91), @SelectedQTRCalDayDate));
+
+
+--Get game list for report
+DECLARE @DimScratchersProductType TABLE 
+(		ProductKey SMALLINT NOT NULL
+,		ProductNumber VARCHAR(10) NOT NULL
+,		PricePointAmount TINYINT NOT NULL
+,		NewGameFlag CHAR(1) NOT NULL
+,		IdealMixGameFlag CHAR(1) NOT NULL
+,		EndedGameFlag CHAR(1) NOT NULL
+)
+INSERT INTO @DimScratchersProductType
+SELECT	DISTINCT PT.ProductKey
+,		ProductNumber
+,		PricePointAmount
+,		PT.NewGameFlag
+,		PT.IdealMixGameFlag
+,		EndedGameFlag = CASE WHEN DATEADD(DD,-181,P.ProductDisableDate) &lt; GETDATE() THEN 'Y' ELSE 'N' END
+FROM	BIDW.dbo.DimScratchersProductType PT
+		INNER JOIN
+		BIDW.dbo.DimProduct P
+		ON	PT.ProductKey = P.ProductKey
+		INNER JOIN
+		BIDW.dbo.RptPenetrationSnapshotDaily RPS
+		ON	PT.ProductKey=RPS.ProductKey
+WHERE	ProductTypeCode = 1
+AND		EffectiveStartDate &lt;= @EndOfDay
+AND		COALESCE(EffectiveEndDate,'01/01/2038') &gt;= @EndOfDay
+AND		ProductLaunchDate &lt;= CONVERT(DATE,GETDATE(),101)
+AND	(	PT.IdealMixGameFlag = 'Y' OR DATEADD(DD,-181,P.ProductDisableDate) &lt; GETDATE())
+AND		DateKey=@EndDateKey;
+
+
+--Get retailer base for report.
+CREATE TABLE #RetailerBaseTransactionDetailsDO
+(		ProductKey SMALLINT NOT NULL
+,		ProductNumber VARCHAR(10) NOT NULL
+,		PricePointAmount TINYINT NOT NULL
+,		NewGameFlag CHAR(1) NOT NULL
+,		IdealMixGameFlag CHAR(1) NOT NULL
+,		EndedGameFlag CHAR(1) NOT NULL
+,		DateKey INT NOT NULL
+,		Retailerkey INT NOT NULL
+,		RetailerId VARCHAR(80) NOT NULL
+,		RetailerName VARCHAR(255) NULL
+,		[Address] VARCHAR(30) NULL
+,		City VARCHAR(30) NULL
+,		Zip VARCHAR(10) NULL
+,		District VARCHAR(255) NULL
+,		SalesRep INT NULL
+,		LTSS INT NULL
+,		KAS INT NULL
+,		Chain VARCHAR(255) NULL
+,		[Chain ID] VARCHAR(30) NULL
+,		ClassificationSelectedQtr VARCHAR(20) NULL
+,		Facings INT NULL
+,		SettlementSales13WeeksAvg DECIMAL(18,3) NULL
+,		PrimaryPhoneNum VARCHAR(30) NULL
+,		IPSCallDay VARCHAR(20) NULL
+,		IPSCallWeek VARCHAR(20) NULL
+,       IPSCallCycle VARCHAR(20) NULL
+,		IPSCallWeekLabel VARCHAR(20) NULL
+,		Active INT NOT NULL DEFAULT 0
+,		Ended INT NOT NULL DEFAULT 0
+,		SettlementSales13WeeksAvgCurrent decimal(18,3)
+,		ClassificationCurrent VARCHAR(20) NULL
+,		NewOrCHOW INT null
+,		SpecialChain VARCHAR(2) null
+,		CurrentRetailerkey INT NULL
+,		PRIMARY KEY CLUSTERED (Retailerkey, ProductKey)
+)
+INSERT INTO #RetailerBaseTransactionDetailsDO
+(		Retailerkey
+,		DateKey
+,		RetailerId
+,		ClassificationSelectedQtr
+,		SettlementSales13WeeksAvg
+,		PrimaryPhoneNum
+,		IPSCallDay
+,		IPSCallWeek
+,       IPSCallCycle
+,		IPSCallWeekLabel
+,		ProductKey
+,		ProductNumber
+,		PricePointAmount
+,		NewGameFlag
+,		IdealMixGameFlag
+,		EndedGameFlag
+,		NewOrCHOW
+,		SpecialChain
+)
+SELECT	RB.Retailerkey
+,		WeekEndDateKey
+,		RB.RetailerId
+,		R.RetClassificationCode
+,		RB.SalesAmount
+,		R.PrimaryPhoneNum
+,		R.IPSCallDay
+,		R.IPSCallWeek
+,       R.IPSCallCycle
+,		IPSCallWeekLabel = CASE WHEN R.IPSCallWeek IS NULL AND R.IPSCallCycle &lt;&gt; 'Weekly' THEN 'A-Week'
+							    WHEN R.IPSCallCycle = 'Weekly' THEN 'A/B-Week'
+							ELSE COALESCE(R.IPSCallWeek,'A/B-Week')
+							END
+,		ProductKey
+,		ProductNumber
+,		PricePointAmount
+,		NewGameFlag
+,		IdealMixGameFlag
+,		EndedGameFlag
+,		NewOrCHOW = CASE when DATEDIFF(wk, COALESCE(r.ActivationDate, r.StatusDate), DATEADD(d,-1,@SelectedDSRCalQtrEndDate)) &lt; 26 THEN 1 ELSE 0 END	
+,		SpecialChain = CASE WHEN ParentChainId IN ( '51087', '54506', '1007148', '1007150', '50482' ,
+													'52153', '50791', '54459', '54404', '51717',
+													'52000', '50200', '1010116', '1016343', '54499',
+													'54543', '1004241', '1010602', '1010909',
+													'53069', '53078', '53139', '53290', '53652',
+													'53670', '53120', '53096', '53661', '53111',
+													'54511', '53209', '53254', '53193', '53272',
+													'53227', '54519', '1015957', '54353', '50937',
+													'1022454', '1014844', '53801', '1026442'
+													) THEN 'Y'
+						ELSE 'N'
+						END
+FROM	BIDW.dbo.LkpRetailerBase RB
+		INNER JOIN BIDW.dbo.DimRetailer R
+		ON	RB.Retailerkey = R.RetailerKey
+		CROSS JOIN
+		@DimScratchersProductType P
+WHERE	WeekEndDateKey = @SelectedQTRWeDate
+AND		IPSOrderRestriction != 'No Order'
+AND		R.SalesRepUserId IN (@DSR)
+AND		R.DistrictName IN (@DistrictOffice)
+AND		R.RetClassificationCode NOT IN ('N/A');
+
+--Get Current Retailer Info
+UPDATE #RetailerBaseTransactionDetailsDO
+SET		SettlementSales13WeeksAvgCurrent = a.SettlementSales13WeeksAvg
+		, ClassificationCurrent = a.Classification
+		, RetailerName	= a.RetailerName
+		, Address = a.Address
+		, City = a.City
+		, Zip = a.Zip
+		, District = a.District
+		, SalesRep = a.SalesRep
+		, LTSS = a.LTSS
+		, KAS = a.KAS
+		, Chain = a.Chain
+		, [Chain ID] = a.ChainID
+		, Facings = a.Facings
+		, CurrentRetailerkey = a.RetailerKey		
+FROM	#RetailerBaseTransactionDetailsDO rb
+		inner join
+		(
+		SELECT	RetailerKey
+			,	RetailerId
+			,	Classification
+			,	RetailerName
+			,	Address
+			,	City
+			,	Zip
+			,	District
+			,	SalesRep
+			,	LTSS
+			,	KAS
+			,   Chain
+			,	ChainID = COALESCE([Chain ID], '')
+			,	Facings
+			,	SettlementSales13WeeksAvg = sum(SalesAmount)
+		FROM	BIDW.dbo.LkpRetailerBaseDaily
+		WHERE	DateKey = @EndDateKey
+		GROUP BY RetailerKey, RetailerId, Classification, RetailerName, Address, City, Zip, District, SalesRep, LTSS
+				, KAS, Chain, [Chain ID], Facings
+		) a
+		ON rb.RetailerID=a.RetailerId
+
+UPDATE	#RetailerBaseTransactionDetailsDO
+SET		Active = CASE WHEN B.ActivatedRetailerID IS NOT NULL THEN 1 ELSE 0 END
+,		Ended = CASE WHEN A.EndedGameFlag = 'Y' AND (COALESCE(B.ActivatedRetailerID,B.ConfirmedRetailerID,B.IssuedRetailerID) IS NOT NULL) THEN 1 ELSE 0 END
+FROM	#RetailerBaseTransactionDetailsDO A
+		INNER JOIN
+		BIDW.dbo.RptPenetrationSnapshotDaily B
+		ON	A.ProductKey = B.ProductKey
+		AND	A.CurrentRetailerkey = B.RetailerKey;
+
+DELETE FROM #RetailerBaseTransactionDetailsDO WHERE EndedGameFlag = 'Y' AND Ended = 0;
+
+SELECT  EndDateKey = @EndDateCalDayDate
+,		Retailerkey
+,		DateKey
+,		RetailerId
+,		RetailerName
+,		[Address]
+,		City
+,		Zip
+,		District
+,		SalesRep
+,		LTSS
+,		KAS
+,		Chain
+,		[Chain ID]
+,		SpecialChain
+,		ClassificationSelectedQtr
+,		ClassificationCurrent
+,		Facings
+,		SettlementSales13WeeksAvg
+,		SettlementSales13WeeksAvgCurrent
+,		PrimaryPhoneNum
+,		IPSCallDay
+,		IPSCallWeek
+,       IPSCallCycle
+,		IPSCallWeekLabel
+,		Active
+,		Ended
+,		ProductKey
+,		ProductNumber
+,		PricePointAmount
+,		NewGameFlag
+,		IdealMixGameFlag
+,		EndedGameFlag
+,		NewOrCHOW
+,		AtoB = CASE WHEN NewOrCHOW = 0 AND rb.ClassificationSelectedQtr = 'A'
+			  AND SUM(SettlementSales13WeeksAvg) &lt; 6001 AND SUM(SettlementSales13WeeksAvg) &gt;= 3001 THEN 1 ELSE 0 END -- Into B, Out of A
+,		AtoC = CASE WHEN NewOrCHOW = 0 AND rb.ClassificationSelectedQtr = 'A'
+			  AND SUM(SettlementSales13WeeksAvg) &lt; 3001 AND SUM(SettlementSales13WeeksAvg) &gt;= 1251 THEN 1 -- Into C, Out of A
+			  WHEN NewOrCHOW = 0 AND rb.ClassificationSelectedQtr = 'A'
+			  AND SUM(SettlementSales13WeeksAvg) &lt; 1251 AND SpecialChain = 'Y' THEN 1 --Special Chains that are not classified as A or B are to be classified as C
+			  ELSE 0 END -- Into C, Out of A
+,		AtoDE = CASE WHEN NewOrCHOW = 0 AND rb.ClassificationSelectedQtr = 'A'
+			  AND SUM(SettlementSales13WeeksAvg) &lt; 1251 AND SpecialChain = 'N' THEN 1 ELSE 0 END -- Into D or E, Out of A (but special chains cannot move down to a D or E)
+,		BtoA = CASE WHEN rb.ClassificationSelectedQtr = 'B' AND SUM(SettlementSales13WeeksAvg) &gt;= 6001 THEN 1 ELSE 0 END  -- B Into A, Out of B
+,		BtoC = CASE WHEN NewOrCHOW = 0 AND rb.ClassificationSelectedQtr = 'B'
+			  AND SUM(SettlementSales13WeeksAvg) &lt; 3001 AND SUM(SettlementSales13WeeksAvg) &gt;= 1251 THEN 1
+			  WHEN NewOrCHOW = 0 AND rb.ClassificationSelectedQtr = 'B'
+			  AND SUM(SettlementSales13WeeksAvg) &lt; 1251 AND SpecialChain = 'Y' THEN 1 --Special Chains that are not classified as A or B are to be classified as C 
+			  ELSE 0 END -- Into C, Out of B 
+,		BtoDE = CASE WHEN NewOrCHOW = 0 AND rb.ClassificationSelectedQtr = 'B'
+			  AND SUM(SettlementSales13WeeksAvg) &lt; 1251 AND SpecialChain = 'N' THEN 1 ELSE 0 END -- Into D or E, Out of B (but special chains cannot move down to a D or E)
+,		CtoA = CASE WHEN rb.ClassificationSelectedQtr = 'C' AND SUM(SettlementSales13WeeksAvg) &gt;= 6001 THEN 1 ELSE 0 END  -- Into A, Out of C
+,		CtoB = CASE WHEN NewOrCHOW = 0 AND rb.ClassificationSelectedQtr = 'C'
+			  AND SUM(SettlementSales13WeeksAvg) &lt; 6001 AND SUM(SettlementSales13WeeksAvg) &gt;= 3001 THEN 1 ELSE 0 END -- Into B, Out of C
+,		CtoDE = CASE WHEN NewOrCHOW = 0 AND rb.ClassificationSelectedQtr = 'C'
+			  AND SUM(SettlementSales13WeeksAvg) &lt; 1251 AND SpecialChain = 'N' THEN 1 ELSE 0 END -- Into D or E, Out of C (but special chains cannot move down to a D or E)
+,		DtoA = CASE WHEN rb.ClassificationSelectedQtr = 'D' AND SUM(SettlementSales13WeeksAvg) &gt;= 6001 THEN 1 ELSE 0 END  -- D Moved Into A, Out of D
+,		DtoB = CASE WHEN NewOrCHOW = 0 AND rb.ClassificationSelectedQtr = 'D'
+			  AND SUM(SettlementSales13WeeksAvg) &lt; 6001 AND SUM(SettlementSales13WeeksAvg) &gt;= 3001 THEN 1 ELSE 0 END -- Into B, Out of D
+,		DtoC = CASE WHEN NewOrCHOW = 0 AND rb.ClassificationSelectedQtr = 'D'
+			  AND SUM(SettlementSales13WeeksAvg) &lt; 3001 AND SUM(SettlementSales13WeeksAvg) &gt;= 1251 THEN 1 ELSE 0 END -- Into C, Out of D      
+,		EtoA = CASE WHEN rb.ClassificationSelectedQtr = 'E' AND SUM(SettlementSales13WeeksAvg) &gt;= 6001 THEN 1 ELSE 0 END  -- Into A, Out of E
+,		EtoB = CASE WHEN NewOrCHOW = 0 AND rb.ClassificationSelectedQtr = 'E'
+			  AND SUM(SettlementSales13WeeksAvg) &lt; 6001 AND SUM(SettlementSales13WeeksAvg) &gt;= 3001 THEN 1 ELSE 0 END -- Into B, Out of E
+,		EtoC = CASE WHEN NewOrCHOW = 0 AND rb.ClassificationSelectedQtr = 'E'
+			  AND SUM(SettlementSales13WeeksAvg) &lt; 3001 AND SUM(SettlementSales13WeeksAvg) &gt;= 1251 THEN 1 ELSE 0 END -- Into C, Out of E
+FROM #RetailerBaseTransactionDetailsDO rb
+GROUP BY Retailerkey
+,		DateKey
+,		RetailerId
+,		RetailerName
+,		[Address]
+,		City
+,		Zip
+,		District
+,		SalesRep
+,		LTSS
+,		KAS
+,		Chain
+,		[Chain ID]
+,		SpecialChain
+,		ClassificationSelectedQtr
+,		ClassificationCurrent
+,		Facings
+,		SettlementSales13WeeksAvg
+,		SettlementSales13WeeksAvgCurrent
+,		PrimaryPhoneNum
+,		IPSCallDay
+,		IPSCallWeek
+,       IPSCallCycle
+,		IPSCallWeekLabel
+,		Active
+,		Ended
+,		ProductKey
+,		ProductNumber
+,		PricePointAmount
+,		NewGameFlag
+,		IdealMixGameFlag
+,		EndedGameFlag
+,		NewOrCHOW
+-- Return retailers that were identified as Moved Up or Moved Down
+HAVING
+(
+		(CASE WHEN NewOrCHOW = 0 AND rb.ClassificationSelectedQtr = 'A' AND SUM(SettlementSales13WeeksAvg) &lt; 6001 
+			  AND SUM(SettlementSales13WeeksAvg) &gt;= 3001 THEN 1 ELSE 0 END ) = 1 -- Into B, Out of A
+		OR
+		(CASE WHEN NewOrCHOW = 0 AND rb.ClassificationSelectedQtr = 'A'
+			  AND SUM(SettlementSales13WeeksAvg) &lt; 3001 AND SUM(SettlementSales13WeeksAvg) &gt;= 1251 THEN 1 ELSE 0 END ) = 1 -- Into C, Out of A
+		OR
+		(CASE WHEN NewOrCHOW = 0 AND rb.ClassificationSelectedQtr = 'A'
+			  AND SUM(SettlementSales13WeeksAvg) &lt; 1251 AND SpecialChain = 'Y' THEN 1 --Special Chains that are not classified as A or B are to be classified as C
+			  ELSE 0 END ) = 1 -- Into C, Out of A
+		OR
+		(CASE WHEN NewOrCHOW = 0 AND rb.ClassificationSelectedQtr = 'A'
+			  AND SUM(SettlementSales13WeeksAvg) &lt; 1251 AND SpecialChain = 'N' THEN 1 ELSE 0 END ) = 1 -- Into D or E, Out of A (but special chains cannot move down to a D or E)
+		OR
+		(CASE WHEN rb.ClassificationSelectedQtr = 'B' AND SUM(SettlementSales13WeeksAvg) &gt;= 6001 THEN 1 ELSE 0 END ) = 1  -- B Into A, Out of B
+		OR
+		(CASE WHEN NewOrCHOW = 0 AND rb.ClassificationSelectedQtr = 'B'
+			  AND SUM(SettlementSales13WeeksAvg) &lt; 3001 AND SUM(SettlementSales13WeeksAvg) &gt;= 1251 THEN 1 ELSE 0 END ) = 1 -- Into C, Out of B
+	    OR
+	    (CASE WHEN NewOrCHOW = 0 AND rb.ClassificationSelectedQtr = 'B'
+			  AND SUM(SettlementSales13WeeksAvg) &lt; 1251 AND SpecialChain = 'Y' THEN 1 --Special Chains that are not classified as A or B are to be classified as C 
+			  ELSE 0 END ) = 1 -- Into C, Out of B 
+		OR 
+		(CASE WHEN NewOrCHOW = 0 AND rb.ClassificationSelectedQtr = 'B'
+			  AND SUM(SettlementSales13WeeksAvg) &lt; 1251 AND SpecialChain = 'N' THEN 1 ELSE 0 END ) = 1 -- Into D or E, Out of B (but special chains cannot move down to a D or E)
+		OR
+		(CASE WHEN rb.ClassificationSelectedQtr = 'C' AND SUM(SettlementSales13WeeksAvg) &gt;= 6001 THEN 1 ELSE 0 END ) = 1  -- Into A, Out of C
+		OR
+		(CASE WHEN NewOrCHOW = 0 AND rb.ClassificationSelectedQtr = 'C'
+			  AND SUM(SettlementSales13WeeksAvg) &lt; 6001 AND SUM(SettlementSales13WeeksAvg) &gt;= 3001 THEN 1 ELSE 0 END ) = 1 -- Into B, Out of C
+		OR
+		(CASE WHEN NewOrCHOW = 0 AND rb.ClassificationSelectedQtr = 'C'
+			  AND SUM(SettlementSales13WeeksAvg) &lt; 1251 AND SpecialChain = 'N' THEN 1 ELSE 0 END ) = 1 -- Into D or E, Out of C (but special chains cannot move down to a D or E)
+		OR
+		(CASE WHEN rb.ClassificationSelectedQtr = 'D' AND SUM(SettlementSales13WeeksAvg) &gt;= 6001 THEN 1 ELSE 0 END ) = 1  -- D Moved Into A, Out of D
+		OR
+		(CASE WHEN NewOrCHOW = 0 AND rb.ClassificationSelectedQtr = 'D'
+			  AND SUM(SettlementSales13WeeksAvg) &lt; 6001 AND SUM(SettlementSales13WeeksAvg) &gt;= 3001 THEN 1 ELSE 0 END ) = 1 -- Into B, Out of D
+		OR
+		(CASE WHEN NewOrCHOW = 0 AND rb.ClassificationSelectedQtr = 'D'
+			  AND SUM(SettlementSales13WeeksAvg) &lt; 3001 AND SUM(SettlementSales13WeeksAvg) &gt;= 1251 THEN 1 ELSE 0 END ) = 1 -- Into C, Out of D      
+		OR
+		(CASE WHEN rb.ClassificationSelectedQtr = 'E' AND SUM(SettlementSales13WeeksAvg) &gt;= 6001 THEN 1 ELSE 0 END ) = 1  -- Into A, Out of E
+		OR
+		(CASE WHEN NewOrCHOW = 0 AND rb.ClassificationSelectedQtr = 'E'
+			  AND SUM(SettlementSales13WeeksAvg) &lt; 6001 AND SUM(SettlementSales13WeeksAvg) &gt;= 3001 THEN 1 ELSE 0 END ) = 1 -- Into B, Out of E
+		OR
+		(CASE WHEN NewOrCHOW = 0 AND rb.ClassificationSelectedQtr = 'E'
+			  AND SUM(SettlementSales13WeeksAvg) &lt; 3001 AND SUM(SettlementSales13WeeksAvg) &gt;= 1251 THEN 1 ELSE 0 END ) = 1 -- Into C, Out of E
+)	
+ORDER BY RetailerId,NewGameFlag DESC,PricePointAmount DESC,ProductNumber DESC;
+
+DROP TABLE #RetailerBaseTransactionDetailsDO;</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="DateKey">
+          <DataField>DateKey</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="EndDateKey">
+          <DataField>EndDateKey</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="ProductKey">
+          <DataField>ProductKey</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="RetailerKey">
+          <DataField>Retailerkey</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="RetailerId">
+          <DataField>RetailerId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RetailerName">
+          <DataField>RetailerName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="IdealMixGameFlag">
+          <DataField>IdealMixGameFlag</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Address">
+          <DataField>Address</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="EndedGameFlag">
+          <DataField>EndedGameFlag</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="City">
+          <DataField>City</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Zip">
+          <DataField>Zip</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="District">
+          <DataField>District</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SalesRep">
+          <DataField>SalesRep</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="LTSS">
+          <DataField>LTSS</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="KAS">
+          <DataField>KAS</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Chain">
+          <DataField>Chain</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ClassificationSelectedQtr">
+          <DataField>ClassificationSelectedQtr</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ClassificationCurrent">
+          <DataField>ClassificationCurrent</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SettlementSales13WeeksAvg">
+          <DataField>SettlementSales13WeeksAvg</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Chain_ID">
+          <DataField>Chain ID</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Facings">
+          <DataField>Facings</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SettlementSales13WeeksAvgCurrent">
+          <DataField>SettlementSales13WeeksAvgCurrent</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ProductNumber">
+          <DataField>ProductNumber</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NewGameFlag">
+          <DataField>NewGameFlag</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PricePointAmount">
+          <DataField>PricePointAmount</DataField>
+          <rd:TypeName>System.Byte</rd:TypeName>
+        </Field>
+        <Field Name="IPSCallDay">
+          <DataField>IPSCallDay</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Active">
+          <DataField>Active</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="PrimaryPhoneNum">
+          <DataField>PrimaryPhoneNum</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Ended">
+          <DataField>Ended</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="IPSCallWeek">
+          <DataField>IPSCallWeek</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="IPSCallWeekLabel">
+          <DataField>IPSCallWeekLabel</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="IPSCallCycle">
+          <DataField>IPSCallCycle</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SpecialChain">
+          <DataField>SpecialChain</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="AtoB">
+          <DataField>AtoB</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="AtoC">
+          <DataField>AtoC</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="NewOrCHOW">
+          <DataField>NewOrCHOW</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="AtoDE">
+          <DataField>AtoDE</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="BtoA">
+          <DataField>BtoA</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="BtoC">
+          <DataField>BtoC</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="CtoDE">
+          <DataField>CtoDE</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="BtoDE">
+          <DataField>BtoDE</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="CtoA">
+          <DataField>CtoA</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="CtoB">
+          <DataField>CtoB</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DtoA">
+          <DataField>DtoA</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DtoB">
+          <DataField>DtoB</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DtoC">
+          <DataField>DtoC</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="EtoA">
+          <DataField>EtoA</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="EtoB">
+          <DataField>EtoB</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="EtoC">
+          <DataField>EtoC</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="EndOfDay">
+      <Query>
+        <DataSourceName>BIDW</DataSourceName>
+        <CommandText>SELECT DISTINCT TOP (1) B.CalDayDate
+FROM            dbo.LkpRetailerBaseDaily AS A INNER JOIN
+                         dbo.DimDate AS B ON A.DateKey = B.DateKey
+ORDER BY B.CalDayDate DESC</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="CalDayDate">
+          <DataField>CalDayDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="DSR">
+      <Query>
+        <DataSourceName>BIDW</DataSourceName>
+        <CommandText>SELECT DISTINCT SalesRepUserId,SalesRepName,
+				(cast(SalesRepUserId as varchar) + ' - ' + Upper(SalesRepName)) AS DSRInfo
+FROM            DimRetailer
+WHERE        (SalesRepUserId IS NOT NULL and CurrentFlag = 'Y' )
+AND			SalesRepUserId NOT IN ('35900', '35999')
+ORDER BY SalesRepUserId</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="SalesRepUserId">
+          <DataField>SalesRepUserId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SalesRepName">
+          <DataField>SalesRepName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DSRInfo">
+          <DataField>DSRInfo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="QTRWeekEndDate">
+      <Query>
+        <DataSourceName>BIDW</DataSourceName>
+        <CommandText>/****** QTR WeekEnd Dates  ******/
+SELECT DISTINCT WeekEndDateKey
+	  ,DSRCalQtrStr
+      ,DSRCalQtrEndDate
+  FROM BIDW.dbo.DimDate
+  WHERE DSRCalQtrWeekNum = 13
+  AND DSRCalQtrEndDate &lt; GETDATE()
+  ORDER BY WeekEndDateKey DESC</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="WeekEndDateKey">
+          <DataField>WeekEndDateKey</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DSRCalQtrStr">
+          <DataField>DSRCalQtrStr</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DSRCalQtrEndDate">
+          <DataField>DSRCalQtrEndDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="DistrictOffice">
+      <Query>
+        <DataSourceName>BIDW</DataSourceName>
+        <CommandText>SELECT DISTINCT DistrictName, DistrictCode
+FROM            DimRetailer
+WHERE        (DistrictName IS NOT NULL AND DistrictCode &lt;&gt; '030' AND DistrictCode &lt;&gt; '035' AND DistrictCode &lt;&gt; '032')
+ORDER BY DistrictName</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="DistrictName">
+          <DataField>DistrictName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DistrictCode">
+          <DataField>DistrictCode</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="BIBAServerProperties">
+      <Query>
+        <DataSourceName>BIBAReports</DataSourceName>
+        <CommandText>/* BIBA Server Properties */
+/* Modified: 2015-01-23 */
+
+SELECT [BIBASiteURL]
+  ,[ReportServerURL]
+FROM [BIBAReports].[dbo].[BIBAServerProperties]</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="BIBASiteURL">
+          <DataField>BIBASiteURL</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ReportServerURL">
+          <DataField>ReportServerURL</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportParameters>
+    <ReportParameter Name="EndOfDay">
+      <DataType>DateTime</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>EndOfDay</DataSetName>
+          <ValueField>CalDayDate</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <Prompt>End Of Day</Prompt>
+      <Hidden>true</Hidden>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>EndOfDay</DataSetName>
+          <ValueField>CalDayDate</ValueField>
+          <LabelField>CalDayDate</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="SelectedQTRWeDate">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>QTRWeekEndDate</DataSetName>
+          <ValueField>WeekEndDateKey</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <Prompt>QTR</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>QTRWeekEndDate</DataSetName>
+          <ValueField>WeekEndDateKey</ValueField>
+          <LabelField>DSRCalQtrStr</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="DSR">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>DSR</DataSetName>
+          <ValueField>SalesRepUserId</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <Prompt>DSR</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>DSR</DataSetName>
+          <ValueField>SalesRepUserId</ValueField>
+          <LabelField>DSRInfo</LabelField>
+        </DataSetReference>
+      </ValidValues>
+      <MultiValue>true</MultiValue>
+    </ReportParameter>
+    <ReportParameter Name="DistrictOffice">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>DistrictOffice</DataSetName>
+          <ValueField>DistrictName</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <Prompt>District Office</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>DistrictOffice</DataSetName>
+          <ValueField>DistrictName</ValueField>
+          <LabelField>DistrictName</LabelField>
+        </DataSetReference>
+      </ValidValues>
+      <MultiValue>true</MultiValue>
+    </ReportParameter>
+    <ReportParameter Name="BIBASiteURL">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>BIBAServerProperties</DataSetName>
+          <ValueField>BIBASiteURL</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <Prompt>BIBASiteURL</Prompt>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="ReportServerURL">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>BIBAServerProperties</DataSetName>
+          <ValueField>ReportServerURL</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <Prompt>ReportServerURL</Prompt>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+  </ReportParameters>
+  <Language>en-US</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>e0740859-714d-403c-8bb1-c8442a064ae9</rd:ReportID>
+</Report>

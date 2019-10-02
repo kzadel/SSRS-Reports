@@ -1,0 +1,3105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:cl="http://schemas.microsoft.com/sqlserver/reporting/2010/01/componentdefinition" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/reportdefinition">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="BIDW">
+      <DataSourceReference>BIDW</DataSourceReference>
+      <rd:SecurityType>None</rd:SecurityType>
+      <rd:DataSourceID>92a0b0af-c232-49e3-a855-3b7c5b708d30</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="WeekendDates">
+      <Query>
+        <DataSourceName>BIDW</DataSourceName>
+        <CommandText>/* List of the weekend dates for the current game set  */
+/* Modified 2013-09-30 */
+
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+
+--Get most recent full completed weekend date
+declare @we int = (SELECT a.DateKey AS WeekEndDateKey FROM BIDW.dbo.DimDate AS a 
+													  INNER JOIN
+													  (SELECT DISTINCT TOP 1 WeekEndKey
+													   FROM BIDW.dbo.RptPenetrationSnapshot
+													  ORDER BY WeekEndKey DESC
+													  ) AS b 
+													  ON a.DateKey = b.WeekEndKey )
+
+--Move passed parameters into working fields
+declare @DateKey int = @we;
+
+--  Get processing dates
+declare @CalDayDate datetime = (select top 1 CalDayDate from BIDW.dbo.DimDate where @DateKey = DateKey);
+DECLARE @MaxWEDate DATE = (SELECT MAX(WeeklyEffectiveStartDate) FROM BIDW.dbo.DimScratchersProductType WHERE WeeklyEffectiveStartDate &lt;= @CalDayDate);
+
+select DISTINCT WeekEndDateKey
+From BIDW.dbo.DimDate
+where CalDayDate BETWEEN @MaxWEDate and @CalDayDate
+order by WeekEndDateKey</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="WeekEndDateKey">
+          <DataField>WeekEndDateKey</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="AvgGames">
+      <Query>
+        <DataSourceName>BIDW</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@we">
+            <Value>=Parameters!we.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@weDates">
+            <Value>=Parameters!weDates.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>/* Average Games KPI by DSR(Game Cycle View)   */
+/* Modified 2013-10-22 */
+
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+
+--  Variables only used for testing this script in SSMS
+--declare @we int = 20130921;
+--declare @weDates int = 20130921;
+
+--  Move passed parameters into working fields
+declare @DateKey int = @we;
+
+--  Get processing dates
+declare @CalDayDate datetime = (select top 1 CalDayDate from BIDW.dbo.DimDate where @DateKey = DateKey);
+
+--Get game list for report
+declare @DimScratchersProductType table 
+(ProductKey smallint not null
+,ProductNumber varchar(10) not null
+,GameNumber varchar(30) not null
+,PricePointAmount tinyint not null
+,NewGameFlag char(1) not null
+,IdealMixGameFlag char(1) not null)
+insert into @DimScratchersProductType
+select P.ProductKey
+      ,P.ProductNumber
+      ,GameNumber = (case when ProductGroup is null then convert(varchar,P.ProductNumber) else ProductGroup end)
+      ,PricePointAmount
+      ,NewGameFlag
+      ,IdealMixGameFlag
+from BIDW.dbo.DimScratchersProductType PT
+inner join BIDW.dbo.DimProduct P
+      on PT.ProductKey = P.ProductKey
+left outer join BIDW.dbo.LkpInstantProductGroup PG
+      on P.ProductNumber = PG.ProductNumber
+where ProductTypeCode = 1
+and   pt.WeeklyEffectiveStartDate &lt;= @CalDayDate
+and	  pt.IdealMixGameFlag = 'Y'
+and	  p.ProductLaunchDate &lt; CONVERT(DATE, GETDATE(), 101)
+and   COALESCE(WeeklyEffectiveEndDate, '01/01/2038') &gt;= @CalDayDate
+order by ProductNumber desc
+
+--Get retailer base for report.
+create table #RetailerBase
+(Retailerkey int not null --PRIMARY KEY CLUSTERED
+,WeekEndDateKey int not null
+,CalDayStr varchar(30) not null
+,DistrictCode varchar(30) null
+,RetClassificationCode varchar(20) null
+,District varchar(255) null
+,SalesRepID int null
+,RegionCode varchar(30) null
+,RegionName varchar(255) null
+,RetailerBase int not null default 1
+,NewIGMGameCount int null
+,NotNewIGMGameCount int null
+,NewFiveDollarGameCount int null
+,NotNewFiveDollarGameCount int null
+,TenDollarGameCountCurr int null
+)
+insert into #RetailerBase (Retailerkey,WeekEndDateKey, CalDayStr, DistrictCode, SalesRepID, RetClassificationCode,District,RegionCode,RegionName)
+select rb.Retailerkey
+	  , rb.WeekEndDateKey
+	  , d.CalDayStr 
+      , r.DistrictCode 
+      , r.SalesRepUserId
+      , r.RetClassificationCode
+      , r.DistrictName as District
+      , r.RegionCode
+      , r.RegionName 
+from BIDW.dbo.LkpRetailerBase rb
+inner join BIDW.dbo.DimRetailer r
+      on rb.Retailerkey = r.RetailerKey
+inner join BIDW.dbo.DimDate D
+	  on rb.WeekEndDateKey = d.WeekEndDateKey
+	  and CONVERT(DATE, CAST(rb.WeekEndDateKey AS VARCHAR(30))) = d.CalDayDate			--only return the selected weekend date	  
+where rb.WeekEndDateKey IN (@weDates)
+      and COALESCE(r.ParentChainId, '') NOT IN ('1010116', '1024959')
+	  and r.RetClassificationCode in ('A','B','C')
+	  and IPSOrderRestriction &lt;&gt; 'No Order';
+	  
+--Get detailed KPI data. 
+update #RetailerBase
+set	NewIGMGameCount = c.NewIGMGameCount
+,	NotNewIGMGameCount = c.NotNewIGMGameCount
+,	NewFiveDollarGameCount = c.NewFiveDollarGameCount
+,	NotNewFiveDollarGameCount = c.NotNewFiveDollarGameCount
+,	TenDollarGameCountCurr =  c.TenDollarGameCountCurr
+from	#RetailerBase rb
+		inner join
+		(
+		select	RetailerKey
+		,		WeekEndKey
+		,		NewIGMGameCount = sum(NewIGMGameCount)
+		,		NotNewIGMGameCount = SUM(NotNewIGMGameCount)
+		,		NewFiveDollarGameCount = sum(NewFiveDollarGameCount)
+		,		NotNewFiveDollarGameCount = sum(NotNewFiveDollarGameCount)
+		,		TenDollarGameCountCurr =  sum(TenDollarGameCountCurr)
+		from	(
+				select	RetailerKey
+				,		WeekEndKey
+				,		PricePointAmount
+				,		NewGameFlag
+				,		NewIGMGameCount = sum(case when NewGameFlag = 'Y' and ActivatedRetailerID is not null then 1 else 0 end)
+				,		NotNewIGMGameCount = sum(case when NewGameFlag = 'N' and ActivatedRetailerID is not null then 1 else 0 end)
+				,		NewFiveDollarGameCount = sum(case when NewGameFlag = 'Y' and PricePointAmount = 5 and ActivatedRetailerID is not null then 1 else 0 end)
+				,		NotNewFiveDollarGameCount = sum(case when NewGameFlag = 'N' and PricePointAmount = 5 and ActivatedRetailerID is not null then 1 else 0 end)
+				,		TenDollarGameCountCurr =  sum(case when PricePointAmount = 10 and ActivatedRetailerID is not null then 1 else 0 end)
+
+				from	(  --This step is required due to product groupings.
+						select	RetailerKey
+						,		GameNumber
+						,		PricePointAmount
+						,		pt.NewGameFlag
+						,		ActivatedRetailerID = max(ActivatedRetailerID)
+						,		EverActivatedRetailerID = max(EverActivatedRetailerID)
+						,		WeekEndKey
+						from	BIDW.dbo.RptPenetrationSnapshot rps
+						inner join @DimScratchersProductType pt
+								on	rps.ProductKey = pt.ProductKey
+						where rps.WeekEndKey IN (@weDates)
+						group by  WeekEndKey, RetailerKey, GameNumber, PricePointAmount, pt.NewGameFlag
+						) a
+				group by WeekEndKey
+				,		RetailerKey
+				,		PricePointAmount
+				,		NewGameFlag
+				) b
+		group by WeekEndKey, RetailerKey
+		) c
+		on	rb.Retailerkey=c.RetailerKey 
+		and rb.WeekEndDateKey = c.WeekEndKey	
+
+--Return data set for report.
+select  WeekEndDateKey
+	  , rb.CalDayStr
+      ,rb.RegionCode 
+      ,max(rb.RegionName) as RegionName
+      ,rb.DistrictCode
+      ,max(rb.District) as DistrictName
+      ,rb.SalesRepID
+      ,SUM(RetailerBase) as RetailerBase
+      ,sum(NewIGMGameCount) as NewIGMGameCount
+      ,SUM(NotNewIGMGameCount) as NotNewIGMGameCount
+      ,sum(NewFiveDollarGameCount) as NewFiveDollarGameCount
+      ,sum(NotNewFiveDollarGameCount) as NotNewFiveDollarGameCount
+      ,sum(TenDollarGameCountCurr) as TenDollarGameCountCurr
+from #RetailerBase rb
+group by  WeekEndDateKey
+	  , rb.CalDayStr
+	  ,	rb.RegionCode
+      , rb.DistrictCode
+      , rb.SalesRepID
+--order by rb.RegionCode
+--      , rb.DistrictCode
+order by WeekEndDateKey
+drop table #RetailerBase</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="WeekEndDateKey">
+          <DataField>WeekEndDateKey</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="CalDayStr">
+          <DataField>CalDayStr</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RegionCode">
+          <DataField>RegionCode</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RegionName">
+          <DataField>RegionName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DistrictCode">
+          <DataField>DistrictCode</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DistrictName">
+          <DataField>DistrictName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RetailerBase">
+          <DataField>RetailerBase</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SalesRepID">
+          <DataField>SalesRepID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="NewIGMGameCount">
+          <DataField>NewIGMGameCount</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="NotNewIGMGameCount">
+          <DataField>NotNewIGMGameCount</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="NewFiveDollarGameCount">
+          <DataField>NewFiveDollarGameCount</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="NotNewFiveDollarGameCount">
+          <DataField>NotNewFiveDollarGameCount</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="TenDollarGameCountCurr">
+          <DataField>TenDollarGameCountCurr</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="CompletedWeekend">
+      <Query>
+        <DataSourceName>BIDW</DataSourceName>
+        <CommandText>/* Get most recent full completed weekend date */
+/* Modified: 2013-06-24 */
+
+SELECT a.DateKey AS WeekEndDateKey
+, CalDayDate
+FROM BIDW.dbo.DimDate AS a 
+INNER JOIN
+(	SELECT DISTINCT TOP 1 WeekEndKey
+	FROM BIDW.dbo.RptPenetrationSnapshot
+	ORDER BY WeekEndKey DESC
+) AS b 
+ON a.DateKey = b.WeekEndKey</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="WeekEndDateKey">
+          <DataField>WeekEndDateKey</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="CalDayDate">
+          <DataField>CalDayDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="IdealGameMixList">
+      <Query>
+        <DataSourceName>BIDW</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@we">
+            <Value>=Parameters!we.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>/* IdealGameMixList */
+/* Modified 2015-01-30 */
+/* Modified 2015-03-26 added new product groupings */
+/* Modified 2015-05-21, 6-10,7-21 added new product groupings*/
+
+--  Variables only used for testing this script in SSMS
+--DECLARE @we INT = '20160725';
+ 
+--  Move passed parameters into working fields
+DECLARE @DateKey INT = @we;
+--  Get processing dates
+DECLARE @CalDayDate DATETIME = (SELECT TOP 1 CalDayDate FROM BIDW.dbo.DimDate WHERE @DateKey = DateKey);
+
+SELECT DISTINCT PricePoint = '$'+ CONVERT(VARCHAR(2), CONVERT(INT,PricePointAmount))
+			,	P.PricePointAmount
+			,	NewGameFlag = UPPER(NewGameFlag) 
+			,ProductDesc = (CASE WHEN ProductGroup = '1201/1226' 
+					THEN 'MEGA CROSSWORD/MEGA CROSSWORD'
+					ELSE ProductDesc END)	
+			,	GameNumber = (CASE WHEN ProductGroup IS NULL THEN CONVERT(varchar,P.ProductNumber) ELSE ProductGroup END)
+			,	ProductLaunchDate = (CASE WHEN PG.ProductLaunchDate IS NULL THEN (CONVERT(varchar, (CONVERT(Date,CONVERT(Varchar, P.ProductLaunchDate))), 101)) ELSE (CONVERT(varchar, (CONVERT(Date,CONVERT(Varchar, PG.ProductLaunchDate))), 101)) END)
+			,	EffectiveEndDate
+FROM	BIDW.dbo.DimScratchersProductType PT
+		INNER JOIN BIDW.dbo.DimProduct P
+		ON PT.ProductKey = P.ProductKey
+		LEFT OUTER JOIN 
+		BIDW.dbo.LkpInstantProductGroup PG
+		ON P.ProductNumber = PG.ProductNumber
+WHERE ProductTypeCode = 1 
+AND IdealMixGameFlag = 'Y'
+AND WeeklyEffectiveStartDate &lt;= @CalDayDate
+AND	P.ProductLaunchDate &lt; CONVERT(DATE,GETDATE(),101)
+AND (COALESCE(WeeklyEffectiveEndDate,'01/01/2038') &gt;= @CalDayDate)
+ORDER BY PricePointAmount, GameNumber</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="PricePoint">
+          <DataField>PricePoint</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PricePointAmount">
+          <DataField>PricePointAmount</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="NewGameFlag">
+          <DataField>NewGameFlag</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ProductDesc">
+          <DataField>ProductDesc</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="GameNumber">
+          <DataField>GameNumber</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ProductLaunchDate">
+          <DataField>ProductLaunchDate</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="EffectiveEndDate">
+          <DataField>EffectiveEndDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="DistrictOffices">
+      <Query>
+        <DataSourceName>BIDW</DataSourceName>
+        <CommandText>/* Get list of DOs */
+/* Modified: 2013-06-03 */
+
+Select DISTINCT DistrictCode
+, DistrictName
+FROM BIDW.dbo.DimRetailer
+WHERE DistrictName IS NOT NULL
+AND DistrictCode NOT IN ('030', '032', '035')
+ORDER BY DistrictCode</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="DistrictCode">
+          <DataField>DistrictCode</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DistrictName">
+          <DataField>DistrictName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Tablix Name="Tablix9">
+            <TablixBody>
+              <TablixColumns>
+                <TablixColumn>
+                  <Width>1in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>0.35in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>0.63in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>3.11108in</Width>
+                </TablixColumn>
+              </TablixColumns>
+              <TablixRows>
+                <TablixRow>
+                  <Height>0.15625in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox30">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>List of Ideal Games</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <TextDecoration>Underline</TextDecoration>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox25</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                        <ColSpan>4</ColSpan>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell />
+                    <TablixCell />
+                    <TablixCell />
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.125in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox18">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Game #</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <TextDecoration>Underline</TextDecoration>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox4</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox20">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Price</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <TextDecoration>Underline</TextDecoration>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox5</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox21">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Launch Dt</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <TextDecoration>Underline</TextDecoration>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox6</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox26">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Game Name</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <TextDecoration>Underline</TextDecoration>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox7</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.14583in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="ProductNum5">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!GameNumber.Value</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>=iif(Fields!NewGameFlag.Value = "Y", "Bold", "Default")</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>ProductNum</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>1pt</PaddingTop>
+                            <PaddingBottom>1pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Price5">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!PricePoint.Value</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>=iif(Fields!NewGameFlag.Value = "Y", "Bold", "Default")</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Price</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>1pt</PaddingTop>
+                            <PaddingBottom>1pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Reporting_Product_Launch_Date1">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Format(CDate(Fields!ProductLaunchDate.Value), "M/d/yy")</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>=iif(Fields!NewGameFlag.Value = "Y", "Bold", "Default")</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Reporting_Product_Launch_Date1</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>1pt</PaddingTop>
+                            <PaddingBottom>1pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="ProductDesc6">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=IIF(Fields!NewGameFlag.Value = "Y", RTRIM(Fields!ProductDesc.Value) + "  (New Game)", RTRIM(Fields!ProductDesc.Value))</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>=IIF(Fields!NewGameFlag.Value="Y","Bold","Default")</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>ProductDesc</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>1pt</PaddingTop>
+                            <PaddingBottom>1pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <TablixColumnHierarchy>
+              <TablixMembers>
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+              </TablixMembers>
+            </TablixColumnHierarchy>
+            <TablixRowHierarchy>
+              <TablixMembers>
+                <TablixMember>
+                  <KeepWithGroup>After</KeepWithGroup>
+                </TablixMember>
+                <TablixMember>
+                  <KeepWithGroup>After</KeepWithGroup>
+                </TablixMember>
+                <TablixMember>
+                  <Group Name="Details5">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!GameNumber.Value</GroupExpression>
+                    </GroupExpressions>
+                  </Group>
+                </TablixMember>
+              </TablixMembers>
+            </TablixRowHierarchy>
+            <DataSetName>IdealGameMixList</DataSetName>
+            <PageBreak>
+              <BreakLocation>Start</BreakLocation>
+            </PageBreak>
+            <PageName>Ideal Game List</PageName>
+            <SortExpressions>
+              <SortExpression>
+                <Value>=Fields!PricePointAmount.Value</Value>
+              </SortExpression>
+              <SortExpression>
+                <Value>=Fields!GameNumber.Value</Value>
+              </SortExpression>
+            </SortExpressions>
+            <Top>1.80042in</Top>
+            <Left>0.03125in</Left>
+            <Height>0.42708in</Height>
+            <Width>5.09108in</Width>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Tablix>
+          <Tablix Name="Tablix7">
+            <TablixBody>
+              <TablixColumns>
+                <TablixColumn>
+                  <Width>0.23958in</Width>
+                </TablixColumn>
+              </TablixColumns>
+              <TablixRows>
+                <TablixRow>
+                  <Height>0.125in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox155">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox155</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.14583in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox145">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox145</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <TablixColumnHierarchy>
+              <TablixMembers>
+                <TablixMember />
+              </TablixMembers>
+            </TablixColumnHierarchy>
+            <TablixRowHierarchy>
+              <TablixMembers>
+                <TablixMember>
+                  <TablixHeader>
+                    <Size>0.53125in</Size>
+                    <CellContents>
+                      <Textbox Name="Textbox153">
+                        <CanGrow>true</CanGrow>
+                        <KeepTogether>true</KeepTogether>
+                        <Paragraphs>
+                          <Paragraph>
+                            <TextRuns>
+                              <TextRun>
+                                <Value>DO #</Value>
+                                <Style>
+                                  <FontSize>8pt</FontSize>
+                                  <FontWeight>Bold</FontWeight>
+                                  <TextDecoration>Underline</TextDecoration>
+                                </Style>
+                              </TextRun>
+                            </TextRuns>
+                            <Style />
+                          </Paragraph>
+                        </Paragraphs>
+                        <rd:DefaultName>Textbox153</rd:DefaultName>
+                        <Style>
+                          <Border>
+                            <Color>LightGrey</Color>
+                            <Style>None</Style>
+                          </Border>
+                          <PaddingLeft>2pt</PaddingLeft>
+                          <PaddingRight>2pt</PaddingRight>
+                          <PaddingTop>2pt</PaddingTop>
+                          <PaddingBottom>2pt</PaddingBottom>
+                        </Style>
+                      </Textbox>
+                    </CellContents>
+                  </TablixHeader>
+                  <TablixMembers>
+                    <TablixMember>
+                      <TablixHeader>
+                        <Size>1in</Size>
+                        <CellContents>
+                          <Textbox Name="Textbox154">
+                            <CanGrow>true</CanGrow>
+                            <KeepTogether>true</KeepTogether>
+                            <Paragraphs>
+                              <Paragraph>
+                                <TextRuns>
+                                  <TextRun>
+                                    <Value>District</Value>
+                                    <Style>
+                                      <FontSize>8pt</FontSize>
+                                      <FontWeight>Bold</FontWeight>
+                                      <TextDecoration>Underline</TextDecoration>
+                                    </Style>
+                                  </TextRun>
+                                </TextRuns>
+                                <Style />
+                              </Paragraph>
+                            </Paragraphs>
+                            <rd:DefaultName>Textbox154</rd:DefaultName>
+                            <Style>
+                              <Border>
+                                <Color>LightGrey</Color>
+                                <Style>None</Style>
+                              </Border>
+                              <PaddingLeft>2pt</PaddingLeft>
+                              <PaddingRight>2pt</PaddingRight>
+                              <PaddingTop>2pt</PaddingTop>
+                              <PaddingBottom>2pt</PaddingBottom>
+                            </Style>
+                          </Textbox>
+                        </CellContents>
+                      </TablixHeader>
+                    </TablixMember>
+                  </TablixMembers>
+                  <KeepWithGroup>After</KeepWithGroup>
+                </TablixMember>
+                <TablixMember>
+                  <Group Name="District_Code">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!DistrictCode.Value</GroupExpression>
+                    </GroupExpressions>
+                  </Group>
+                  <SortExpressions>
+                    <SortExpression>
+                      <Value>=Fields!DistrictCode.Value</Value>
+                    </SortExpression>
+                  </SortExpressions>
+                  <TablixHeader>
+                    <Size>0.53125in</Size>
+                    <CellContents>
+                      <Textbox Name="DistrictCode">
+                        <CanGrow>true</CanGrow>
+                        <KeepTogether>true</KeepTogether>
+                        <Paragraphs>
+                          <Paragraph>
+                            <TextRuns>
+                              <TextRun>
+                                <Value>=Fields!DistrictCode.Value</Value>
+                                <Style>
+                                  <FontSize>8pt</FontSize>
+                                </Style>
+                              </TextRun>
+                            </TextRuns>
+                            <Style />
+                          </Paragraph>
+                        </Paragraphs>
+                        <rd:DefaultName>DistrictCode</rd:DefaultName>
+                        <Style>
+                          <Border>
+                            <Color>LightGrey</Color>
+                            <Style>None</Style>
+                          </Border>
+                          <PaddingLeft>2pt</PaddingLeft>
+                          <PaddingRight>2pt</PaddingRight>
+                          <PaddingTop>2pt</PaddingTop>
+                          <PaddingBottom>2pt</PaddingBottom>
+                        </Style>
+                      </Textbox>
+                    </CellContents>
+                  </TablixHeader>
+                  <TablixMembers>
+                    <TablixMember>
+                      <TablixHeader>
+                        <Size>1in</Size>
+                        <CellContents>
+                          <Textbox Name="DistrictName">
+                            <CanGrow>true</CanGrow>
+                            <KeepTogether>true</KeepTogether>
+                            <Paragraphs>
+                              <Paragraph>
+                                <TextRuns>
+                                  <TextRun>
+                                    <Value>=Fields!DistrictName.Value</Value>
+                                    <Style>
+                                      <FontSize>8pt</FontSize>
+                                    </Style>
+                                  </TextRun>
+                                </TextRuns>
+                                <Style />
+                              </Paragraph>
+                            </Paragraphs>
+                            <rd:DefaultName>DistrictName</rd:DefaultName>
+                            <Style>
+                              <Border>
+                                <Color>LightGrey</Color>
+                                <Style>None</Style>
+                              </Border>
+                              <PaddingLeft>2pt</PaddingLeft>
+                              <PaddingRight>2pt</PaddingRight>
+                              <PaddingTop>2pt</PaddingTop>
+                              <PaddingBottom>2pt</PaddingBottom>
+                            </Style>
+                          </Textbox>
+                        </CellContents>
+                      </TablixHeader>
+                      <TablixMembers>
+                        <TablixMember />
+                      </TablixMembers>
+                    </TablixMember>
+                  </TablixMembers>
+                </TablixMember>
+              </TablixMembers>
+            </TablixRowHierarchy>
+            <DataSetName>DistrictOffices</DataSetName>
+            <PageBreak>
+              <BreakLocation>Start</BreakLocation>
+            </PageBreak>
+            <Top>1.95667in</Top>
+            <Left>5.16594in</Left>
+            <Height>0.27083in</Height>
+            <Width>1.77083in</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Tablix>
+          <Textbox Name="Textbox19">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Note: Report includes classification A,B,C retailers only. Report excludes Chain ID 1010116 and 1024959 retailers.</Value>
+                    <Style>
+                      <FontStyle>Italic</FontStyle>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>Normal</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox8</rd:DefaultName>
+            <Top>2.26917in</Top>
+            <Left>0.03125in</Left>
+            <Height>0.17014in</Height>
+            <Width>10.45834in</Width>
+            <ZIndex>2</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Tablix Name="Tablix2">
+            <TablixCorner>
+              <TablixCornerRows>
+                <TablixCornerRow>
+                  <TablixCornerCell>
+                    <CellContents>
+                      <Textbox Name="Textbox16">
+                        <KeepTogether>true</KeepTogether>
+                        <Paragraphs>
+                          <Paragraph>
+                            <TextRuns>
+                              <TextRun>
+                                <Value />
+                                <Style>
+                                  <FontSize>8pt</FontSize>
+                                  <FontWeight>Bold</FontWeight>
+                                  <Color>White</Color>
+                                </Style>
+                              </TextRun>
+                            </TextRuns>
+                            <Style />
+                          </Paragraph>
+                        </Paragraphs>
+                        <rd:DefaultName>Textbox15</rd:DefaultName>
+                        <Style>
+                          <Border>
+                            <Color>White</Color>
+                            <Style>Solid</Style>
+                          </Border>
+                          <TopBorder>
+                            <Color>LightGrey</Color>
+                            <Width>2.5pt</Width>
+                          </TopBorder>
+                          <LeftBorder>
+                            <Color>LightGrey</Color>
+                            <Width>2.5pt</Width>
+                          </LeftBorder>
+                          <RightBorder>
+                            <Width>2.5pt</Width>
+                          </RightBorder>
+                          <BackgroundColor>SteelBlue</BackgroundColor>
+                          <PaddingLeft>2pt</PaddingLeft>
+                          <PaddingRight>2pt</PaddingRight>
+                          <PaddingTop>2pt</PaddingTop>
+                          <PaddingBottom>2pt</PaddingBottom>
+                        </Style>
+                      </Textbox>
+                    </CellContents>
+                  </TablixCornerCell>
+                </TablixCornerRow>
+                <TablixCornerRow>
+                  <TablixCornerCell>
+                    <CellContents>
+                      <Textbox Name="Textbox13">
+                        <CanGrow>true</CanGrow>
+                        <KeepTogether>true</KeepTogether>
+                        <Paragraphs>
+                          <Paragraph>
+                            <TextRuns>
+                              <TextRun>
+                                <Value>DSR ID</Value>
+                                <Style>
+                                  <FontSize>8pt</FontSize>
+                                  <FontWeight>Bold</FontWeight>
+                                  <Color>White</Color>
+                                </Style>
+                              </TextRun>
+                            </TextRuns>
+                            <Style />
+                          </Paragraph>
+                        </Paragraphs>
+                        <rd:DefaultName>Textbox12</rd:DefaultName>
+                        <Style>
+                          <Border>
+                            <Color>White</Color>
+                            <Style>Solid</Style>
+                          </Border>
+                          <LeftBorder>
+                            <Color>LightGrey</Color>
+                            <Width>2.5pt</Width>
+                          </LeftBorder>
+                          <RightBorder>
+                            <Width>2.5pt</Width>
+                          </RightBorder>
+                          <BackgroundColor>SteelBlue</BackgroundColor>
+                          <PaddingLeft>2pt</PaddingLeft>
+                          <PaddingRight>2pt</PaddingRight>
+                          <PaddingTop>2pt</PaddingTop>
+                          <PaddingBottom>2pt</PaddingBottom>
+                        </Style>
+                      </Textbox>
+                    </CellContents>
+                  </TablixCornerCell>
+                </TablixCornerRow>
+              </TablixCornerRows>
+            </TablixCorner>
+            <TablixBody>
+              <TablixColumns>
+                <TablixColumn>
+                  <Width>0.52083in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>0.50001in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>0.53126in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>0.52in</Width>
+                </TablixColumn>
+              </TablixColumns>
+              <TablixRows>
+                <TablixRow>
+                  <Height>0.20833in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox7">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(Fields!NewIGMGameCount.Value) / Sum(Fields!RetailerBase.Value)</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <Format>0.00;(0.00)</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox3</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <LeftBorder>
+                              <Width>=IIF(Fields!WeekEndDateKey.Value=First(Fields!WeekEndDateKey.Value,"Group4"),"2.5pt","1pt")</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Width>=IIF(Fields!WeekEndDateKey.Value=Last(Fields!WeekEndDateKey.Value,"Group4"),"2.5pt","1pt")</Width>
+                            </RightBorder>
+                            <BackgroundColor>=IIF(Fields!DistrictCode.Value="025",
+ IIF(Fields!SalesRepID.Value="25037" or 
+     Fields!SalesRepID.Value="25055" or 
+     Fields!SalesRepID.Value="25091" or 
+     Fields!SalesRepID.Value="25132" or 
+     Fields!SalesRepID.Value="25228","PaleTurquoise",
+ IIF(Fields!SalesRepID.Value="25073" or 
+     Fields!SalesRepID.Value="25105" or 
+     Fields!SalesRepID.Value="25123" or 
+     Fields!SalesRepID.Value="25141" or 
+     Fields!SalesRepID.Value="25178" or 
+     Fields!SalesRepID.Value="25187" or 
+     Fields!SalesRepID.Value="25196" or 
+     Fields!SalesRepID.Value="25219","Bisque","White")),
+iif( RunningValue(Fields!SalesRepID.Value,CountDistinct,Nothing) Mod 2, "White","AliceBlue"))</BackgroundColor>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox51">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(Fields!TenDollarGameCountCurr.Value) / Sum(Fields!RetailerBase.Value)</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <Format>0.00;(0.00)</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox31</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <LeftBorder>
+                              <Width>=IIF(Fields!WeekEndDateKey.Value=First(Fields!WeekEndDateKey.Value,"Group9"),"2.5pt","1pt")</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Width>=IIF(Fields!WeekEndDateKey.Value=Last(Fields!WeekEndDateKey.Value,"Group9"),"2.5pt","1pt")</Width>
+                            </RightBorder>
+                            <BackgroundColor>=IIF(Fields!DistrictCode.Value="025",
+ IIF(Fields!SalesRepID.Value="25037" or 
+     Fields!SalesRepID.Value="25055" or 
+     Fields!SalesRepID.Value="25091" or 
+     Fields!SalesRepID.Value="25132" or 
+     Fields!SalesRepID.Value="25228","PaleTurquoise",
+ IIF(Fields!SalesRepID.Value="25073" or 
+     Fields!SalesRepID.Value="25105" or 
+     Fields!SalesRepID.Value="25123" or 
+     Fields!SalesRepID.Value="25141" or 
+     Fields!SalesRepID.Value="25178" or 
+     Fields!SalesRepID.Value="25187" or 
+     Fields!SalesRepID.Value="25196" or 
+     Fields!SalesRepID.Value="25219","Bisque","White")),
+iif( RunningValue(Fields!SalesRepID.Value,CountDistinct,Nothing) Mod 2, "White","AliceBlue"))</BackgroundColor>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox27">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=(Sum(Fields!NewFiveDollarGameCount.Value) + Sum(Fields!NotNewFiveDollarGameCount.Value)) / Sum(Fields!RetailerBase.Value)</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <Format>0.00;(0.00)</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox23</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <LeftBorder>
+                              <Width>=IIF(Fields!WeekEndDateKey.Value=First(Fields!WeekEndDateKey.Value,"Group5"),"2.5pt","1pt")</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Width>=IIF(Fields!WeekEndDateKey.Value=Last(Fields!WeekEndDateKey.Value,"Group5"),"2.5pt","1pt")</Width>
+                            </RightBorder>
+                            <BackgroundColor>=IIF(Fields!DistrictCode.Value="025",
+ IIF(Fields!SalesRepID.Value="25037" or 
+     Fields!SalesRepID.Value="25055" or 
+     Fields!SalesRepID.Value="25091" or 
+     Fields!SalesRepID.Value="25132" or 
+     Fields!SalesRepID.Value="25228","PaleTurquoise",
+ IIF(Fields!SalesRepID.Value="25073" or 
+     Fields!SalesRepID.Value="25105" or 
+     Fields!SalesRepID.Value="25123" or 
+     Fields!SalesRepID.Value="25141" or 
+     Fields!SalesRepID.Value="25178" or 
+     Fields!SalesRepID.Value="25187" or 
+     Fields!SalesRepID.Value="25196" or 
+     Fields!SalesRepID.Value="25219","Bisque","White")),
+iif( RunningValue(Fields!SalesRepID.Value,CountDistinct,Nothing) Mod 2, "White","AliceBlue"))</BackgroundColor>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox35">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=(Sum(Fields!NewIGMGameCount.Value) + Sum(Fields!NotNewIGMGameCount.Value)) / Sum(Fields!RetailerBase.Value)</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <Format>0.00;(0.00)</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox31</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <LeftBorder>
+                              <Width>=IIF(Fields!WeekEndDateKey.Value=First(Fields!WeekEndDateKey.Value,"Group6"),"2.5pt","1pt")</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Width>=IIF(Fields!WeekEndDateKey.Value=Last(Fields!WeekEndDateKey.Value,"Group6"),"2.5pt","1pt")</Width>
+                            </RightBorder>
+                            <BackgroundColor>=IIF(Fields!DistrictCode.Value="025",
+ IIF(Fields!SalesRepID.Value="25037" or 
+     Fields!SalesRepID.Value="25055" or 
+     Fields!SalesRepID.Value="25091" or 
+     Fields!SalesRepID.Value="25132" or 
+     Fields!SalesRepID.Value="25228","PaleTurquoise",
+ IIF(Fields!SalesRepID.Value="25073" or 
+     Fields!SalesRepID.Value="25105" or 
+     Fields!SalesRepID.Value="25123" or 
+     Fields!SalesRepID.Value="25141" or 
+     Fields!SalesRepID.Value="25178" or 
+     Fields!SalesRepID.Value="25187" or 
+     Fields!SalesRepID.Value="25196" or 
+     Fields!SalesRepID.Value="25219","Bisque","White")),
+iif( RunningValue(Fields!SalesRepID.Value,CountDistinct,Nothing) Mod 2, "White","AliceBlue"))</BackgroundColor>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.20833in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox8">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(Fields!NewIGMGameCount.Value) / Sum(Fields!RetailerBase.Value)</Value>
+                                  <Style>
+                                    <FontSize>9pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>0.00;(0.00)</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox3</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <LeftBorder>
+                              <Width>=IIF(Fields!WeekEndDateKey.Value=First(Fields!WeekEndDateKey.Value,"Group4"),"2.5pt","1pt")</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Width>=IIF(Fields!WeekEndDateKey.Value=Last(Fields!WeekEndDateKey.Value,"Group4"),"2.5pt","1pt")</Width>
+                            </RightBorder>
+                            <BackgroundColor>WhiteSmoke</BackgroundColor>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox61">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(Fields!TenDollarGameCountCurr.Value) / Sum(Fields!RetailerBase.Value)</Value>
+                                  <Style>
+                                    <FontSize>9pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>0.00;(0.00)</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox31</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <LeftBorder>
+                              <Width>=IIF(Fields!WeekEndDateKey.Value=First(Fields!WeekEndDateKey.Value,"Group9"),"2.5pt","1pt")</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Width>=IIF(Fields!WeekEndDateKey.Value=Last(Fields!WeekEndDateKey.Value,"Group9"),"2.5pt","1pt")</Width>
+                            </RightBorder>
+                            <BackgroundColor>WhiteSmoke</BackgroundColor>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox28">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=(Sum(Fields!NewFiveDollarGameCount.Value) + Sum(Fields!NotNewFiveDollarGameCount.Value)) / Sum(Fields!RetailerBase.Value)</Value>
+                                  <Style>
+                                    <FontSize>9pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>0.00;(0.00)</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox23</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <LeftBorder>
+                              <Width>=IIF(Fields!WeekEndDateKey.Value=First(Fields!WeekEndDateKey.Value,"Group5"),"2.5pt","1pt")</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Width>=IIF(Fields!WeekEndDateKey.Value=Last(Fields!WeekEndDateKey.Value,"Group5"),"2.5pt","1pt")</Width>
+                            </RightBorder>
+                            <BackgroundColor>WhiteSmoke</BackgroundColor>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox36">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=(Sum(Fields!NewIGMGameCount.Value) + Sum(Fields!NotNewIGMGameCount.Value)) / Sum(Fields!RetailerBase.Value)</Value>
+                                  <Style>
+                                    <FontSize>9pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>0.00;(0.00)</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox31</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <LeftBorder>
+                              <Width>=IIF(Fields!WeekEndDateKey.Value=First(Fields!WeekEndDateKey.Value,"Group6"),"2.5pt","1pt")</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Width>=IIF(Fields!WeekEndDateKey.Value=Last(Fields!WeekEndDateKey.Value,"Group6"),"2.5pt","1pt")</Width>
+                            </RightBorder>
+                            <BackgroundColor>WhiteSmoke</BackgroundColor>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.25in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox9">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(Fields!NewIGMGameCount.Value, "Week_End_Date3") / Sum(Fields!RetailerBase.Value, "Week_End_Date3")</Value>
+                                  <Style>
+                                    <FontSize>9pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>0.00;(0.00)</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox3</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BottomBorder>
+                              <Width>2.5pt</Width>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Width>=IIF(Fields!WeekEndDateKey.Value=First(Fields!WeekEndDateKey.Value,"Group4"),"2.5pt","1pt")</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Width>=IIF(Fields!WeekEndDateKey.Value=Last(Fields!WeekEndDateKey.Value,"Group4"),"2.5pt","1pt")</Width>
+                            </RightBorder>
+                            <BackgroundColor>WhiteSmoke</BackgroundColor>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox68">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(Fields!TenDollarGameCountCurr.Value, "Week_End_Date9") / Sum(Fields!RetailerBase.Value, "Week_End_Date9")</Value>
+                                  <Style>
+                                    <FontSize>9pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>0.00;(0.00)</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox31</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BottomBorder>
+                              <Width>2.5pt</Width>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Width>=IIF(Fields!WeekEndDateKey.Value=First(Fields!WeekEndDateKey.Value,"Group9"),"2.5pt","1pt")</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Width>=IIF(Fields!WeekEndDateKey.Value=Last(Fields!WeekEndDateKey.Value,"Group9"),"2.5pt","1pt")</Width>
+                            </RightBorder>
+                            <BackgroundColor>WhiteSmoke</BackgroundColor>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox29">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=(Sum(Fields!NewFiveDollarGameCount.Value, "Week_End_Date4") + Sum(Fields!NotNewFiveDollarGameCount.Value, "Week_End_Date4")) / Sum(Fields!RetailerBase.Value, "Week_End_Date4")</Value>
+                                  <Style>
+                                    <FontSize>9pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>0.00;(0.00)</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox23</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BottomBorder>
+                              <Width>2.5pt</Width>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Width>=IIF(Fields!WeekEndDateKey.Value=First(Fields!WeekEndDateKey.Value,"Group5"),"2.5pt","1pt")</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Width>=IIF(Fields!WeekEndDateKey.Value=Last(Fields!WeekEndDateKey.Value,"Group5"),"2.5pt","1pt")</Width>
+                            </RightBorder>
+                            <BackgroundColor>WhiteSmoke</BackgroundColor>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox37">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=(Sum(Fields!NewIGMGameCount.Value, "Week_End_Date5") + Sum(Fields!NotNewIGMGameCount.Value, "Week_End_Date5")) / Sum(Fields!RetailerBase.Value, "Week_End_Date5")</Value>
+                                  <Style>
+                                    <FontSize>9pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>0.00;(0.00)</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox31</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BottomBorder>
+                              <Width>2.5pt</Width>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Width>=IIF(Fields!WeekEndDateKey.Value=First(Fields!WeekEndDateKey.Value,"Group6"),"2.5pt","1pt")</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Width>=IIF(Fields!WeekEndDateKey.Value=Last(Fields!WeekEndDateKey.Value,"Group6"),"2.5pt","1pt")</Width>
+                            </RightBorder>
+                            <BackgroundColor>WhiteSmoke</BackgroundColor>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.25in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox63">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style>
+                                    <FontSize>9pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox61</rd:DefaultName>
+                          <Visibility>
+                            <Hidden>true</Hidden>
+                          </Visibility>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <BottomBorder>
+                              <Width>1.5pt</Width>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Width>=IIF(Fields!WeekEndDateKey.Value=First(Fields!WeekEndDateKey.Value,"Group4"),"1.5pt","1pt")</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Width>=IIF(Fields!WeekEndDateKey.Value=Last(Fields!WeekEndDateKey.Value,"Group4"),"1.5pt","1pt")</Width>
+                            </RightBorder>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox11">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style>
+                                    <FontSize>9pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox11</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <BottomBorder>
+                              <Width>1.5pt</Width>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Width>=IIF(Fields!WeekEndDateKey.Value=First(Fields!WeekEndDateKey.Value,"Group9"),"1.5pt","1pt")</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Width>=IIF(Fields!WeekEndDateKey.Value=Last(Fields!WeekEndDateKey.Value,"Group9"),"1.5pt","1pt")</Width>
+                            </RightBorder>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox54">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style>
+                                    <FontSize>9pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox52</rd:DefaultName>
+                          <Visibility>
+                            <Hidden>true</Hidden>
+                          </Visibility>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <BottomBorder>
+                              <Width>1.5pt</Width>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Width>=IIF(Fields!WeekEndDateKey.Value=First(Fields!WeekEndDateKey.Value,"Group5"),"1.5pt","1pt")</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Width>=IIF(Fields!WeekEndDateKey.Value=Last(Fields!WeekEndDateKey.Value,"Group5"),"1.5pt","1pt")</Width>
+                            </RightBorder>
+                            <BackgroundColor>White</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox55">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style>
+                                    <FontSize>9pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox53</rd:DefaultName>
+                          <Visibility>
+                            <Hidden>true</Hidden>
+                          </Visibility>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <BottomBorder>
+                              <Width>1.5pt</Width>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Width>=IIF(Fields!WeekEndDateKey.Value=First(Fields!WeekEndDateKey.Value,"Group6"),"1.5pt","1pt")</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Width>=IIF(Fields!WeekEndDateKey.Value=Last(Fields!WeekEndDateKey.Value,"Group6"),"1.5pt","1pt")</Width>
+                            </RightBorder>
+                            <BackgroundColor>White</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.25in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox64">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style>
+                                    <FontSize>9pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox62</rd:DefaultName>
+                          <Visibility>
+                            <Hidden>true</Hidden>
+                          </Visibility>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <BottomBorder>
+                              <Color>DimGray</Color>
+                              <Width>1.5pt</Width>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Color>=IIF(Fields!WeekEndDateKey.Value=First(Fields!WeekEndDateKey.Value,"Group4"),"DimGray","LightGrey")</Color>
+                              <Width>=IIF(Fields!WeekEndDateKey.Value=First(Fields!WeekEndDateKey.Value,"Group4"),"1.5pt","1pt")</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Color>=IIF(Fields!WeekEndDateKey.Value=Last(Fields!WeekEndDateKey.Value,"Group4"),"DimGray","LightGrey")</Color>
+                              <Width>=IIF(Fields!WeekEndDateKey.Value=Last(Fields!WeekEndDateKey.Value,"Group4"),"1.5pt","1pt")</Width>
+                            </RightBorder>
+                            <BackgroundColor>White</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox12">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style>
+                                    <FontSize>9pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox12</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <BottomBorder>
+                              <Color>DimGray</Color>
+                              <Width>1.5pt</Width>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Color>=IIF(Fields!WeekEndDateKey.Value=First(Fields!WeekEndDateKey.Value,"Group9"),"DimGray","LightGrey")</Color>
+                              <Width>=IIF(Fields!WeekEndDateKey.Value=First(Fields!WeekEndDateKey.Value,"Group9"),"1.5pt","1pt")</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Color>=IIF(Fields!WeekEndDateKey.Value=Last(Fields!WeekEndDateKey.Value,"Group9"),"DimGray","LightGrey")</Color>
+                              <Width>=IIF(Fields!WeekEndDateKey.Value=Last(Fields!WeekEndDateKey.Value,"Group9"),"1.5pt","1pt")</Width>
+                            </RightBorder>
+                            <BackgroundColor>White</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox58">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style>
+                                    <FontSize>9pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox56</rd:DefaultName>
+                          <Visibility>
+                            <Hidden>true</Hidden>
+                          </Visibility>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <BottomBorder>
+                              <Color>DimGray</Color>
+                              <Width>1.5pt</Width>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Color>=IIF(Fields!WeekEndDateKey.Value=First(Fields!WeekEndDateKey.Value,"Group5"),"DimGray","LightGrey")</Color>
+                              <Width>=IIF(Fields!WeekEndDateKey.Value=First(Fields!WeekEndDateKey.Value,"Group5"),"1.5pt","1pt")</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Color>=IIF(Fields!WeekEndDateKey.Value=Last(Fields!WeekEndDateKey.Value,"Group5"),"DimGray","LightGrey")</Color>
+                              <Width>=IIF(Fields!WeekEndDateKey.Value=Last(Fields!WeekEndDateKey.Value,"Group5"),"1.5pt","1pt")</Width>
+                            </RightBorder>
+                            <BackgroundColor>White</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox60">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style>
+                                    <FontSize>9pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox57</rd:DefaultName>
+                          <Visibility>
+                            <Hidden>true</Hidden>
+                          </Visibility>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <BottomBorder>
+                              <Width>1.5pt</Width>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Width>=IIF(Fields!WeekEndDateKey.Value=First(Fields!WeekEndDateKey.Value,"Group6"),"1.5pt","1pt")</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Width>=IIF(Fields!WeekEndDateKey.Value=Last(Fields!WeekEndDateKey.Value,"Group6"),"1.5pt","1pt")</Width>
+                            </RightBorder>
+                            <BackgroundColor>White</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <TablixColumnHierarchy>
+              <TablixMembers>
+                <TablixMember>
+                  <Group Name="Group4">
+                    <GroupExpressions>
+                      <GroupExpression>1</GroupExpression>
+                    </GroupExpressions>
+                  </Group>
+                  <SortExpressions>
+                    <SortExpression>
+                      <Value>=CDate(Fields!CalDayStr.Value)</Value>
+                    </SortExpression>
+                  </SortExpressions>
+                  <TablixHeader>
+                    <Size>0.33333in</Size>
+                    <CellContents>
+                      <Textbox Name="Textbox22">
+                        <KeepTogether>true</KeepTogether>
+                        <Paragraphs>
+                          <Paragraph>
+                            <TextRuns>
+                              <TextRun>
+                                <Value>New Games</Value>
+                                <Style>
+                                  <FontSize>8pt</FontSize>
+                                  <FontWeight>Bold</FontWeight>
+                                  <Color>White</Color>
+                                </Style>
+                              </TextRun>
+                            </TextRuns>
+                            <Style>
+                              <TextAlign>Center</TextAlign>
+                            </Style>
+                          </Paragraph>
+                        </Paragraphs>
+                        <rd:DefaultName>Textbox17</rd:DefaultName>
+                        <Style>
+                          <Border>
+                            <Color>White</Color>
+                            <Style>Solid</Style>
+                          </Border>
+                          <TopBorder>
+                            <Color>LightGrey</Color>
+                            <Width>2.5pt</Width>
+                          </TopBorder>
+                          <LeftBorder>
+                            <Width>2.5pt</Width>
+                          </LeftBorder>
+                          <RightBorder>
+                            <Width>2.5pt</Width>
+                          </RightBorder>
+                          <BackgroundColor>SteelBlue</BackgroundColor>
+                          <PaddingLeft>2pt</PaddingLeft>
+                          <PaddingRight>2pt</PaddingRight>
+                          <PaddingTop>2pt</PaddingTop>
+                          <PaddingBottom>2pt</PaddingBottom>
+                        </Style>
+                      </Textbox>
+                    </CellContents>
+                  </TablixHeader>
+                  <TablixMembers>
+                    <TablixMember>
+                      <Group Name="Week_End_Date3">
+                        <GroupExpressions>
+                          <GroupExpression>=Fields!WeekEndDateKey.Value</GroupExpression>
+                        </GroupExpressions>
+                      </Group>
+                      <SortExpressions>
+                        <SortExpression>
+                          <Value>=CDATE(Fields!CalDayStr.Value)</Value>
+                        </SortExpression>
+                      </SortExpressions>
+                      <TablixMembers>
+                        <TablixMember>
+                          <TablixHeader>
+                            <Size>0.25in</Size>
+                            <CellContents>
+                              <Textbox Name="Week_End_Date4">
+                                <CanGrow>true</CanGrow>
+                                <KeepTogether>true</KeepTogether>
+                                <Paragraphs>
+                                  <Paragraph>
+                                    <TextRuns>
+                                      <TextRun>
+                                        <Value>=Format(CDate(Fields!CalDayStr.Value), "M/d/yy")</Value>
+                                        <Style>
+                                          <FontSize>8pt</FontSize>
+                                          <FontWeight>Bold</FontWeight>
+                                          <Color>White</Color>
+                                        </Style>
+                                      </TextRun>
+                                    </TextRuns>
+                                    <Style>
+                                      <TextAlign>Center</TextAlign>
+                                    </Style>
+                                  </Paragraph>
+                                </Paragraphs>
+                                <rd:DefaultName>Week_End_Date</rd:DefaultName>
+                                <Style>
+                                  <Border>
+                                    <Color>White</Color>
+                                    <Style>Solid</Style>
+                                  </Border>
+                                  <LeftBorder>
+                                    <Width>=IIF(Fields!WeekEndDateKey.Value=First(Fields!WeekEndDateKey.Value,"Group4"),"2.5pt","1pt")</Width>
+                                  </LeftBorder>
+                                  <RightBorder>
+                                    <Width>=IIF(Fields!WeekEndDateKey.Value=Last(Fields!WeekEndDateKey.Value,"Group4"),"2.5pt","1pt")</Width>
+                                  </RightBorder>
+                                  <BackgroundColor>SteelBlue</BackgroundColor>
+                                  <PaddingLeft>2pt</PaddingLeft>
+                                  <PaddingRight>2pt</PaddingRight>
+                                  <PaddingTop>2pt</PaddingTop>
+                                  <PaddingBottom>2pt</PaddingBottom>
+                                </Style>
+                              </Textbox>
+                            </CellContents>
+                          </TablixHeader>
+                          <TablixMembers>
+                            <TablixMember />
+                          </TablixMembers>
+                        </TablixMember>
+                      </TablixMembers>
+                    </TablixMember>
+                  </TablixMembers>
+                </TablixMember>
+                <TablixMember>
+                  <Group Name="Group9">
+                    <GroupExpressions>
+                      <GroupExpression>1</GroupExpression>
+                    </GroupExpressions>
+                  </Group>
+                  <SortExpressions>
+                    <SortExpression>
+                      <Value>=CDate(Fields!CalDayStr.Value)</Value>
+                    </SortExpression>
+                  </SortExpressions>
+                  <TablixHeader>
+                    <Size>0.33333in</Size>
+                    <CellContents>
+                      <Textbox Name="WeekEndDateKey1">
+                        <CanGrow>true</CanGrow>
+                        <KeepTogether>true</KeepTogether>
+                        <Paragraphs>
+                          <Paragraph>
+                            <TextRuns>
+                              <TextRun>
+                                <Value>$10 Games</Value>
+                                <Style>
+                                  <FontSize>8pt</FontSize>
+                                  <FontWeight>Bold</FontWeight>
+                                  <Color>White</Color>
+                                </Style>
+                              </TextRun>
+                            </TextRuns>
+                            <Style>
+                              <TextAlign>Center</TextAlign>
+                            </Style>
+                          </Paragraph>
+                        </Paragraphs>
+                        <rd:DefaultName>WeekEndDateKey1</rd:DefaultName>
+                        <Style>
+                          <Border>
+                            <Color>White</Color>
+                            <Style>Solid</Style>
+                          </Border>
+                          <TopBorder>
+                            <Color>LightGrey</Color>
+                            <Width>2.5pt</Width>
+                          </TopBorder>
+                          <LeftBorder>
+                            <Width>2.5pt</Width>
+                          </LeftBorder>
+                          <RightBorder>
+                            <Width>2.5pt</Width>
+                          </RightBorder>
+                          <BackgroundColor>SteelBlue</BackgroundColor>
+                          <PaddingLeft>2pt</PaddingLeft>
+                          <PaddingRight>2pt</PaddingRight>
+                          <PaddingTop>2pt</PaddingTop>
+                          <PaddingBottom>2pt</PaddingBottom>
+                        </Style>
+                      </Textbox>
+                    </CellContents>
+                  </TablixHeader>
+                  <TablixMembers>
+                    <TablixMember>
+                      <Group Name="Week_End_Date9">
+                        <GroupExpressions>
+                          <GroupExpression>=Fields!WeekEndDateKey.Value</GroupExpression>
+                        </GroupExpressions>
+                      </Group>
+                      <SortExpressions>
+                        <SortExpression>
+                          <Value>=CDATE(Fields!CalDayStr.Value)</Value>
+                        </SortExpression>
+                      </SortExpressions>
+                      <TablixMembers>
+                        <TablixMember>
+                          <TablixHeader>
+                            <Size>0.25in</Size>
+                            <CellContents>
+                              <Textbox Name="Week_End_Date11">
+                                <CanGrow>true</CanGrow>
+                                <KeepTogether>true</KeepTogether>
+                                <Paragraphs>
+                                  <Paragraph>
+                                    <TextRuns>
+                                      <TextRun>
+                                        <Value>=Format(CDate(Fields!CalDayStr.Value), "M/d/yy")</Value>
+                                        <Style>
+                                          <FontSize>8pt</FontSize>
+                                          <FontWeight>Bold</FontWeight>
+                                          <Color>White</Color>
+                                        </Style>
+                                      </TextRun>
+                                    </TextRuns>
+                                    <Style>
+                                      <TextAlign>Center</TextAlign>
+                                    </Style>
+                                  </Paragraph>
+                                </Paragraphs>
+                                <rd:DefaultName>Week_End_Date</rd:DefaultName>
+                                <Style>
+                                  <Border>
+                                    <Color>White</Color>
+                                    <Style>Solid</Style>
+                                  </Border>
+                                  <LeftBorder>
+                                    <Width>=IIF(Fields!WeekEndDateKey.Value=First(Fields!WeekEndDateKey.Value,"Group9"),"2.5pt","1pt")</Width>
+                                  </LeftBorder>
+                                  <RightBorder>
+                                    <Color>=IIF(Fields!WeekEndDateKey.Value=Last(Fields!WeekEndDateKey.Value,"Group9"),"LightGrey","White")</Color>
+                                    <Width>=IIF(Fields!WeekEndDateKey.Value=Last(Fields!WeekEndDateKey.Value,"Group9"),"2.5pt","1pt")</Width>
+                                  </RightBorder>
+                                  <BackgroundColor>SteelBlue</BackgroundColor>
+                                  <PaddingLeft>2pt</PaddingLeft>
+                                  <PaddingRight>2pt</PaddingRight>
+                                  <PaddingTop>2pt</PaddingTop>
+                                  <PaddingBottom>2pt</PaddingBottom>
+                                </Style>
+                              </Textbox>
+                            </CellContents>
+                          </TablixHeader>
+                        </TablixMember>
+                      </TablixMembers>
+                    </TablixMember>
+                  </TablixMembers>
+                </TablixMember>
+                <TablixMember>
+                  <Group Name="Group5">
+                    <GroupExpressions>
+                      <GroupExpression>1</GroupExpression>
+                    </GroupExpressions>
+                  </Group>
+                  <SortExpressions>
+                    <SortExpression>
+                      <Value>1</Value>
+                    </SortExpression>
+                  </SortExpressions>
+                  <TablixHeader>
+                    <Size>0.33333in</Size>
+                    <CellContents>
+                      <Textbox Name="Textbox42">
+                        <KeepTogether>true</KeepTogether>
+                        <Paragraphs>
+                          <Paragraph>
+                            <TextRuns>
+                              <TextRun>
+                                <Value>$5 Games</Value>
+                                <Style>
+                                  <FontSize>8pt</FontSize>
+                                  <FontWeight>Bold</FontWeight>
+                                  <Color>White</Color>
+                                </Style>
+                              </TextRun>
+                            </TextRuns>
+                            <Style>
+                              <TextAlign>Center</TextAlign>
+                            </Style>
+                          </Paragraph>
+                        </Paragraphs>
+                        <rd:DefaultName>Textbox40</rd:DefaultName>
+                        <Style>
+                          <Border>
+                            <Color>White</Color>
+                            <Style>Solid</Style>
+                          </Border>
+                          <TopBorder>
+                            <Color>LightGrey</Color>
+                            <Width>2.5pt</Width>
+                          </TopBorder>
+                          <LeftBorder>
+                            <Width>2.5pt</Width>
+                          </LeftBorder>
+                          <RightBorder>
+                            <Width>2.5pt</Width>
+                          </RightBorder>
+                          <BackgroundColor>SteelBlue</BackgroundColor>
+                          <PaddingLeft>2pt</PaddingLeft>
+                          <PaddingRight>2pt</PaddingRight>
+                          <PaddingTop>2pt</PaddingTop>
+                          <PaddingBottom>2pt</PaddingBottom>
+                        </Style>
+                      </Textbox>
+                    </CellContents>
+                  </TablixHeader>
+                  <TablixMembers>
+                    <TablixMember>
+                      <Group Name="Week_End_Date4">
+                        <GroupExpressions>
+                          <GroupExpression>=Fields!WeekEndDateKey.Value</GroupExpression>
+                        </GroupExpressions>
+                      </Group>
+                      <SortExpressions>
+                        <SortExpression>
+                          <Value>=CDATE(Fields!CalDayStr.Value)</Value>
+                        </SortExpression>
+                      </SortExpressions>
+                      <TablixMembers>
+                        <TablixMember>
+                          <TablixHeader>
+                            <Size>0.25in</Size>
+                            <CellContents>
+                              <Textbox Name="Week_End_Date5">
+                                <CanGrow>true</CanGrow>
+                                <KeepTogether>true</KeepTogether>
+                                <Paragraphs>
+                                  <Paragraph>
+                                    <TextRuns>
+                                      <TextRun>
+                                        <Value>=Format(CDate(Fields!CalDayStr.Value), "M/d/yy")</Value>
+                                        <Style>
+                                          <FontSize>8pt</FontSize>
+                                          <FontWeight>Bold</FontWeight>
+                                          <Color>White</Color>
+                                        </Style>
+                                      </TextRun>
+                                    </TextRuns>
+                                    <Style>
+                                      <TextAlign>Center</TextAlign>
+                                    </Style>
+                                  </Paragraph>
+                                </Paragraphs>
+                                <rd:DefaultName>Week_End_Date</rd:DefaultName>
+                                <Style>
+                                  <Border>
+                                    <Color>White</Color>
+                                    <Style>Solid</Style>
+                                  </Border>
+                                  <LeftBorder>
+                                    <Width>=IIF(Fields!WeekEndDateKey.Value=First(Fields!WeekEndDateKey.Value,"Group5"),"2.5pt","1pt")</Width>
+                                  </LeftBorder>
+                                  <RightBorder>
+                                    <Width>=IIF(Fields!WeekEndDateKey.Value=Last(Fields!WeekEndDateKey.Value,"Group5"),"2.5pt","1pt")</Width>
+                                  </RightBorder>
+                                  <BackgroundColor>SteelBlue</BackgroundColor>
+                                  <PaddingLeft>2pt</PaddingLeft>
+                                  <PaddingRight>2pt</PaddingRight>
+                                  <PaddingTop>2pt</PaddingTop>
+                                  <PaddingBottom>2pt</PaddingBottom>
+                                </Style>
+                              </Textbox>
+                            </CellContents>
+                          </TablixHeader>
+                        </TablixMember>
+                      </TablixMembers>
+                    </TablixMember>
+                  </TablixMembers>
+                </TablixMember>
+                <TablixMember>
+                  <Group Name="Group6">
+                    <GroupExpressions>
+                      <GroupExpression>1</GroupExpression>
+                    </GroupExpressions>
+                  </Group>
+                  <SortExpressions>
+                    <SortExpression>
+                      <Value>1</Value>
+                    </SortExpression>
+                  </SortExpressions>
+                  <TablixHeader>
+                    <Size>0.33333in</Size>
+                    <CellContents>
+                      <Textbox Name="Group4">
+                        <KeepTogether>true</KeepTogether>
+                        <Paragraphs>
+                          <Paragraph>
+                            <TextRuns>
+                              <TextRun>
+                                <Value>Ideal Game Mix</Value>
+                                <Style>
+                                  <FontSize>8pt</FontSize>
+                                  <FontWeight>Bold</FontWeight>
+                                  <Color>White</Color>
+                                </Style>
+                              </TextRun>
+                            </TextRuns>
+                            <Style>
+                              <TextAlign>Center</TextAlign>
+                            </Style>
+                          </Paragraph>
+                        </Paragraphs>
+                        <rd:DefaultName>Group3</rd:DefaultName>
+                        <Style>
+                          <Border>
+                            <Color>White</Color>
+                            <Style>Solid</Style>
+                          </Border>
+                          <TopBorder>
+                            <Color>LightGrey</Color>
+                            <Width>2.5pt</Width>
+                          </TopBorder>
+                          <LeftBorder>
+                            <Width>2.5pt</Width>
+                          </LeftBorder>
+                          <RightBorder>
+                            <Color>LightGrey</Color>
+                            <Width>2.5pt</Width>
+                          </RightBorder>
+                          <BackgroundColor>SteelBlue</BackgroundColor>
+                          <PaddingLeft>2pt</PaddingLeft>
+                          <PaddingRight>2pt</PaddingRight>
+                          <PaddingTop>2pt</PaddingTop>
+                          <PaddingBottom>2pt</PaddingBottom>
+                        </Style>
+                      </Textbox>
+                    </CellContents>
+                  </TablixHeader>
+                  <TablixMembers>
+                    <TablixMember>
+                      <Group Name="Week_End_Date5">
+                        <GroupExpressions>
+                          <GroupExpression>=Fields!WeekEndDateKey.Value</GroupExpression>
+                        </GroupExpressions>
+                      </Group>
+                      <SortExpressions>
+                        <SortExpression>
+                          <Value>=CDATE(Fields!CalDayStr.Value)</Value>
+                        </SortExpression>
+                      </SortExpressions>
+                      <TablixMembers>
+                        <TablixMember>
+                          <TablixHeader>
+                            <Size>0.25in</Size>
+                            <CellContents>
+                              <Textbox Name="Week_End_Date6">
+                                <CanGrow>true</CanGrow>
+                                <KeepTogether>true</KeepTogether>
+                                <Paragraphs>
+                                  <Paragraph>
+                                    <TextRuns>
+                                      <TextRun>
+                                        <Value>=Format(CDate(Fields!CalDayStr.Value), "M/d/yy")</Value>
+                                        <Style>
+                                          <FontSize>8pt</FontSize>
+                                          <FontWeight>Bold</FontWeight>
+                                          <Color>White</Color>
+                                        </Style>
+                                      </TextRun>
+                                    </TextRuns>
+                                    <Style>
+                                      <TextAlign>Center</TextAlign>
+                                    </Style>
+                                  </Paragraph>
+                                </Paragraphs>
+                                <rd:DefaultName>Week_End_Date</rd:DefaultName>
+                                <Style>
+                                  <Border>
+                                    <Color>White</Color>
+                                    <Style>Solid</Style>
+                                  </Border>
+                                  <LeftBorder>
+                                    <Width>=IIF(Fields!WeekEndDateKey.Value=First(Fields!WeekEndDateKey.Value,"Group6"),"2.5pt","1pt")</Width>
+                                  </LeftBorder>
+                                  <RightBorder>
+                                    <Color>=IIF(Fields!WeekEndDateKey.Value=Last(Fields!WeekEndDateKey.Value,"Group6"),"LightGrey","White")</Color>
+                                    <Width>=IIF(Fields!WeekEndDateKey.Value=Last(Fields!WeekEndDateKey.Value,"Group6"),"2.5pt","1pt")</Width>
+                                  </RightBorder>
+                                  <BackgroundColor>SteelBlue</BackgroundColor>
+                                  <PaddingLeft>2pt</PaddingLeft>
+                                  <PaddingRight>2pt</PaddingRight>
+                                  <PaddingTop>2pt</PaddingTop>
+                                  <PaddingBottom>2pt</PaddingBottom>
+                                </Style>
+                              </Textbox>
+                            </CellContents>
+                          </TablixHeader>
+                        </TablixMember>
+                      </TablixMembers>
+                    </TablixMember>
+                  </TablixMembers>
+                </TablixMember>
+              </TablixMembers>
+            </TablixColumnHierarchy>
+            <TablixRowHierarchy>
+              <TablixMembers>
+                <TablixMember>
+                  <Group Name="District_Office2">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!DistrictCode.Value</GroupExpression>
+                    </GroupExpressions>
+                    <PageBreak>
+                      <BreakLocation>Between</BreakLocation>
+                    </PageBreak>
+                    <PageName>=Fields!DistrictCode.Value</PageName>
+                    <Filters>
+                      <Filter>
+                        <FilterExpression>=Fields!DistrictCode.Value</FilterExpression>
+                        <Operator>In</Operator>
+                        <FilterValues>
+                          <FilterValue>=Parameters!DistrictOffices.Value</FilterValue>
+                        </FilterValues>
+                      </Filter>
+                    </Filters>
+                  </Group>
+                  <SortExpressions>
+                    <SortExpression>
+                      <Value>=Fields!DistrictCode.Value</Value>
+                    </SortExpression>
+                  </SortExpressions>
+                  <TablixMembers>
+                    <TablixMember>
+                      <Group Name="DSR_ID2">
+                        <GroupExpressions>
+                          <GroupExpression>=Fields!SalesRepID.Value</GroupExpression>
+                        </GroupExpressions>
+                      </Group>
+                      <SortExpressions>
+                        <SortExpression>
+                          <Value>=Fields!SalesRepID.Value</Value>
+                        </SortExpression>
+                      </SortExpressions>
+                      <TablixHeader>
+                        <Size>1.07013in</Size>
+                        <CellContents>
+                          <Textbox Name="DSR_ID2">
+                            <CanGrow>true</CanGrow>
+                            <KeepTogether>true</KeepTogether>
+                            <Paragraphs>
+                              <Paragraph>
+                                <TextRuns>
+                                  <TextRun>
+                                    <Value>=CDbl(Fields!SalesRepID.Value)</Value>
+                                    <Style>
+                                      <FontSize>8pt</FontSize>
+                                      <Format>0;(0)</Format>
+                                    </Style>
+                                  </TextRun>
+                                </TextRuns>
+                                <Style>
+                                  <TextAlign>Left</TextAlign>
+                                </Style>
+                              </Paragraph>
+                            </Paragraphs>
+                            <rd:DefaultName>DSR_ID1</rd:DefaultName>
+                            <Style>
+                              <Border>
+                                <Color>LightGrey</Color>
+                                <Style>Solid</Style>
+                              </Border>
+                              <LeftBorder>
+                                <Width>2.5pt</Width>
+                              </LeftBorder>
+                              <RightBorder>
+                                <Width>2.5pt</Width>
+                              </RightBorder>
+                              <BackgroundColor>=IIF(Fields!DistrictCode.Value="025",
+ IIF(Fields!SalesRepID.Value="25037" or 
+     Fields!SalesRepID.Value="25055" or 
+     Fields!SalesRepID.Value="25091" or 
+     Fields!SalesRepID.Value="25132" or 
+     Fields!SalesRepID.Value="25228","PaleTurquoise",
+ IIF(Fields!SalesRepID.Value="25073" or 
+     Fields!SalesRepID.Value="25105" or 
+     Fields!SalesRepID.Value="25123" or 
+     Fields!SalesRepID.Value="25141" or 
+     Fields!SalesRepID.Value="25178" or 
+     Fields!SalesRepID.Value="25187" or 
+     Fields!SalesRepID.Value="25196" or 
+     Fields!SalesRepID.Value="25219","Bisque","White")),
+iif( RunningValue(Fields!SalesRepID.Value,CountDistinct,Nothing) Mod 2, "White","AliceBlue"))</BackgroundColor>
+                              <PaddingLeft>2pt</PaddingLeft>
+                              <PaddingRight>2pt</PaddingRight>
+                              <PaddingTop>2pt</PaddingTop>
+                              <PaddingBottom>2pt</PaddingBottom>
+                            </Style>
+                          </Textbox>
+                        </CellContents>
+                      </TablixHeader>
+                    </TablixMember>
+                    <TablixMember>
+                      <TablixHeader>
+                        <Size>1.07013in</Size>
+                        <CellContents>
+                          <Textbox Name="Textbox43">
+                            <CanGrow>true</CanGrow>
+                            <KeepTogether>true</KeepTogether>
+                            <Paragraphs>
+                              <Paragraph>
+                                <TextRuns>
+                                  <TextRun>
+                                    <Value>=Fields!DistrictName.Value</Value>
+                                    <Style>
+                                      <FontSize>9pt</FontSize>
+                                      <FontWeight>Bold</FontWeight>
+                                    </Style>
+                                  </TextRun>
+                                </TextRuns>
+                                <Style />
+                              </Paragraph>
+                            </Paragraphs>
+                            <rd:DefaultName>Textbox41</rd:DefaultName>
+                            <Style>
+                              <Border>
+                                <Color>LightGrey</Color>
+                                <Style>Solid</Style>
+                              </Border>
+                              <LeftBorder>
+                                <Width>2.5pt</Width>
+                              </LeftBorder>
+                              <RightBorder>
+                                <Width>2.5pt</Width>
+                              </RightBorder>
+                              <BackgroundColor>WhiteSmoke</BackgroundColor>
+                              <PaddingLeft>2pt</PaddingLeft>
+                              <PaddingRight>2pt</PaddingRight>
+                              <PaddingTop>2pt</PaddingTop>
+                              <PaddingBottom>2pt</PaddingBottom>
+                            </Style>
+                          </Textbox>
+                        </CellContents>
+                      </TablixHeader>
+                      <KeepWithGroup>Before</KeepWithGroup>
+                    </TablixMember>
+                    <TablixMember>
+                      <TablixHeader>
+                        <Size>1.07013in</Size>
+                        <CellContents>
+                          <Textbox Name="Textbox6">
+                            <CanGrow>true</CanGrow>
+                            <KeepTogether>true</KeepTogether>
+                            <Paragraphs>
+                              <Paragraph>
+                                <TextRuns>
+                                  <TextRun>
+                                    <Value>Statewide</Value>
+                                    <Style>
+                                      <FontSize>9pt</FontSize>
+                                      <FontWeight>Bold</FontWeight>
+                                    </Style>
+                                  </TextRun>
+                                </TextRuns>
+                                <Style />
+                              </Paragraph>
+                            </Paragraphs>
+                            <rd:DefaultName>Textbox2</rd:DefaultName>
+                            <Style>
+                              <Border>
+                                <Color>LightGrey</Color>
+                                <Style>Solid</Style>
+                              </Border>
+                              <BottomBorder>
+                                <Width>2.5pt</Width>
+                              </BottomBorder>
+                              <LeftBorder>
+                                <Width>2.5pt</Width>
+                              </LeftBorder>
+                              <RightBorder>
+                                <Width>2.5pt</Width>
+                              </RightBorder>
+                              <BackgroundColor>WhiteSmoke</BackgroundColor>
+                              <PaddingLeft>2pt</PaddingLeft>
+                              <PaddingRight>2pt</PaddingRight>
+                              <PaddingTop>2pt</PaddingTop>
+                              <PaddingBottom>2pt</PaddingBottom>
+                            </Style>
+                          </Textbox>
+                        </CellContents>
+                      </TablixHeader>
+                      <KeepWithGroup>Before</KeepWithGroup>
+                    </TablixMember>
+                    <TablixMember>
+                      <TablixHeader>
+                        <Size>1.07013in</Size>
+                        <CellContents>
+                          <Image Name="Image5">
+                            <Source>Embedded</Source>
+                            <Value>Pilot</Value>
+                            <Sizing>Clip</Sizing>
+                            <Visibility>
+                              <Hidden>=IIF(Fields!DistrictCode.Value = "025", False, True)</Hidden>
+                            </Visibility>
+                            <Style>
+                              <Border>
+                                <Style>None</Style>
+                              </Border>
+                              <LeftBorder>
+                                <Color>White</Color>
+                              </LeftBorder>
+                            </Style>
+                          </Image>
+                        </CellContents>
+                      </TablixHeader>
+                      <KeepWithGroup>Before</KeepWithGroup>
+                    </TablixMember>
+                    <TablixMember>
+                      <TablixHeader>
+                        <Size>1.07013in</Size>
+                        <CellContents>
+                          <Image Name="Image6">
+                            <Source>Embedded</Source>
+                            <Value>Control</Value>
+                            <Sizing>Clip</Sizing>
+                            <Visibility>
+                              <Hidden>=IIF(Fields!DistrictCode.Value = "025", False, True)</Hidden>
+                            </Visibility>
+                            <Style>
+                              <Border>
+                                <Style>None</Style>
+                              </Border>
+                            </Style>
+                          </Image>
+                        </CellContents>
+                      </TablixHeader>
+                      <KeepWithGroup>Before</KeepWithGroup>
+                    </TablixMember>
+                  </TablixMembers>
+                </TablixMember>
+              </TablixMembers>
+            </TablixRowHierarchy>
+            <RepeatColumnHeaders>true</RepeatColumnHeaders>
+            <RepeatRowHeaders>true</RepeatRowHeaders>
+            <DataSetName>AvgGames</DataSetName>
+            <Top>0.01931in</Top>
+            <Left>0.03125in</Left>
+            <Height>1.74999in</Height>
+            <Width>3.14223in</Width>
+            <ZIndex>3</ZIndex>
+            <Style>
+              <Border>
+                <Color>DimGray</Color>
+                <Style>None</Style>
+                <Width>1.5pt</Width>
+              </Border>
+              <BottomBorder>
+                <Style>None</Style>
+              </BottomBorder>
+              <LeftBorder>
+                <Style>None</Style>
+              </LeftBorder>
+              <RightBorder>
+                <Color>DimGray</Color>
+                <Style>None</Style>
+              </RightBorder>
+            </Style>
+          </Tablix>
+        </ReportItems>
+        <Height>2.43931in</Height>
+        <Style />
+      </Body>
+      <Width>10.48959in</Width>
+      <Page>
+        <PageHeader>
+          <Height>0.62152in</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Textbox Name="Textbox1">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=IIF(Globals!PageName="Ideal Game List",Nothing,"District "+MID(Globals!PageName,2) +" "+Replace(ReportItems!Textbox43.Value," Avg",""))</Value>
+                      <Style>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox1</rd:DefaultName>
+              <Top>0.37152in</Top>
+              <Left>0.03125in</Left>
+              <Height>0.25in</Height>
+              <Width>10.45833in</Width>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox59">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Average Games KPI by DSR (Game Cycle View) </Value>
+                      <Style>
+                        <FontSize>12pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value>="as of Week End Date: " &amp; Format(First(CDate(Fields!CalDayDate.Value), "CompletedWeekend"), "M/d/yy")</Value>
+                      <Style>
+                        <FontSize>12pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                        <Format>0.00;(0.00)</Format>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox59</rd:DefaultName>
+              <Top>0.0625in</Top>
+              <Left>0.03125in</Left>
+              <Height>0.23958in</Height>
+              <Width>10.45833in</Width>
+              <ZIndex>1</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+          </ReportItems>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageHeader>
+        <PageHeight>8.5in</PageHeight>
+        <PageWidth>11in</PageWidth>
+        <LeftMargin>0.25in</LeftMargin>
+        <RightMargin>0.25in</RightMargin>
+        <TopMargin>0.25in</TopMargin>
+        <BottomMargin>0.25in</BottomMargin>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="we">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>CompletedWeekend</DataSetName>
+          <ValueField>WeekEndDateKey</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <Prompt>CompletedWeekend</Prompt>
+      <Hidden>true</Hidden>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>CompletedWeekend</DataSetName>
+          <ValueField>WeekEndDateKey</ValueField>
+          <LabelField>WeekEndDateKey</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="GameSetDates">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>WeekendDates</DataSetName>
+          <ValueField>WeekEndDateKey</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <Prompt>Game Set Dates</Prompt>
+      <Hidden>true</Hidden>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>WeekendDates</DataSetName>
+          <ValueField>WeekEndDateKey</ValueField>
+          <LabelField>WeekEndDateKey</LabelField>
+        </DataSetReference>
+      </ValidValues>
+      <MultiValue>true</MultiValue>
+    </ReportParameter>
+    <ReportParameter Name="DistrictOffices">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>DistrictOffices</DataSetName>
+          <ValueField>DistrictCode</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <Prompt>Select District Office</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>DistrictOffices</DataSetName>
+          <ValueField>DistrictCode</ValueField>
+          <LabelField>DistrictName</LabelField>
+        </DataSetReference>
+      </ValidValues>
+      <MultiValue>true</MultiValue>
+    </ReportParameter>
+    <ReportParameter Name="weDates">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>WeekendDates</DataSetName>
+          <ValueField>WeekEndDateKey</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <Prompt>we Dates</Prompt>
+      <Hidden>true</Hidden>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>WeekendDates</DataSetName>
+          <ValueField>WeekEndDateKey</ValueField>
+          <LabelField>WeekEndDateKey</LabelField>
+        </DataSetReference>
+      </ValidValues>
+      <MultiValue>true</MultiValue>
+    </ReportParameter>
+  </ReportParameters>
+  <EmbeddedImages>
+    <EmbeddedImage Name="Pilot">
+      <MIMEType>image/png</MIMEType>
+      <ImageData>iVBORw0KGgoAAAANSUhEUgAAAD0AAAAWCAIAAAD8awNLAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADLSURBVFhH7ZbbDYAgDEWZy4Gcx038cxl3YAUsUJBqNSRqsQmNH/IQT28vqHE6w+jEdsq5Z2ufXPJFQ72fQMOznbtWga53rVLvzPte73UaDIlhWj277x+X8obNKE+jozLcgQ9jGQ2SY8cF2f2oPHfC5PWGrGLEVA/NPXtxbo8b9Oa491rku6Y+If5G0zDcAJsdlcCbcpf+TrU+cxNEaNCytN6X19zezRr1DtsQz5p/+LvOJ/wBEs//4wrK/2Pf+fgKrtL1FhQbXqVV7w1HKFskvFAVjwAAAABJRU5ErkJggg==</ImageData>
+    </EmbeddedImage>
+    <EmbeddedImage Name="Control">
+      <MIMEType>image/png</MIMEType>
+      <ImageData>iVBORw0KGgoAAAANSUhEUgAAAE4AAAAZCAIAAAAQQ48FAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGzSURBVFhH7ZcxcoMwEEVFrpEWXHg4AZwA3LjyEVBpGncu07mB0hzBVZqgE6ATMC4Mbc5BVoAgGDJgiDT2AOPCo90d7du/WoGSZRmax/M2D0xGOSNUpWzg72iSvO/mpHApwTNSdUGV0lGSN1lUlVxwKdstqkops+RNBKtKsFI9pp8+Cpf6poLJkKgBngJR2e42CuEdJX9C3dVG0A7hHOYjDpWcXOQlZ4vnYZ0TD7mnUqNKbi4aFMb0fd4E+SrBmktRYIOwzIqxCR1S+LfCB9AKQyWfgbHbqL9TUPdRVqATbMdekmuN7Epq6l7WxaITfEC3s+IYyAmLIBqgI9jY/+7wPlphqLCxvmqQ1qlAGZzjPjdaW4devspDzBe1tUGvyX3qzrbskL/Ce1iFoUK68a17DqW3uM4K/PrkuLOPDeeo8Gky5dfOVl3ptVyFmU9JMNX+yZU+iDo2XJiqyDrAFNLqq4INGeQdWBNC1+aHkZ3a9pHuJR8ZLg4VsSkEU4ffq2wQRcUBhYHDrh5mgduIL3YgqpudkU/gpm1oeDOKf5r3lvL1HQSq+mzFWVCfTZH/yGdGqv4AeDPDcOhLPx0AAAAASUVORK5CYII=</ImageData>
+    </EmbeddedImage>
+  </EmbeddedImages>
+  <Language>en-US</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>974c574a-6e5d-49b3-b323-69256bb104c1</rd:ReportID>
+</Report>
