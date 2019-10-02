@@ -1,0 +1,2569 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <Body>
+    <ReportItems>
+      <Textbox Name="textbox1">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>="Count of Registrants from " &amp; Format(First(CDate(Fields!StartDateValue29Days.Value), "DefaultDates"), "M/d/yy") &amp; " - " &amp; Format(First(CDate(Fields!StartDateValue.Value), "DefaultDates"), "M/d/yy")</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Note:  Active Registrants: Activation Status = Yes.</Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                  <FontSize>8pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Active PP/2nd Chance Registrants: Activation Status = Yes, Portal Status = Active, 2nd Chance Status = Active </Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                  <FontSize>8pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Active Comm Opt-In Registrants: Activation Status = Yes, Portal Status = Active, 2nd Chance Status = Active, Email Opt-In = Yes</Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                  <FontSize>8pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Active Jackpot Captain: Activation Status = Yes, Portal Status = Active, 2nd Chance Status = Active, Jackpot Captain = Yes</Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                  <FontSize>8pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Active Logins = Number of Registrants Logins where Activation Status = Yes</Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                  <FontSize>8pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>textbox1</rd:DefaultName>
+        <Top>0.0375in</Top>
+        <Left>0.0625in</Left>
+        <Height>0.96419in</Height>
+        <Width>7.45625in</Width>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Tablix Name="Tablix1">
+        <TablixBody>
+          <TablixColumns>
+            <TablixColumn>
+              <Width>0.8in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.75in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.75in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>1in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.90625in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>1in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.75in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.75in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.75in</Width>
+            </TablixColumn>
+          </TablixColumns>
+          <TablixRows>
+            <TablixRow>
+              <Height>0.5in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox17">
+                      <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=Fields!DateKey.Value</SortExpression>
+                      </UserSort>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Date</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>White</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox17</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>SteelBlue</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox5">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>New </Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>White</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Registrants</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>White</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontSize>8pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox5</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>SteelBlue</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox10">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>New Active Registrants</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>White</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox10</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>SteelBlue</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox19">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Total Active PP/2nd Chance Registrants</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>White</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox19</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>SteelBlue</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox3">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Total Active Comm Opt-In Registrants</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>White</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox2</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>SteelBlue</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox6">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Total Active Jackpot Captain Registrants</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>White</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox6</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>SteelBlue</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox26">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Total</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>White</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Registrants</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>White</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox19</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>SteelBlue</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox43">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Total Active New Logins</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>White</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox43</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>SteelBlue</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox45">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Total Active Logins</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>White</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox45</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>SteelBlue</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>0.18in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="PlayerID3">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Format(CDate(Fields!CalDayStr.Value), "M/d/yy")</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>PlayerID</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </TopBorder>
+                        <BottomBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </RightBorder>
+                        <BackgroundColor>White</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="NewRegistrants">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Sum(Fields!TotalNewRegistrants.Value)</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                                <Format>#,0;(#,0)</Format>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>NewRegistrants</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>White</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="ActiveNewRegistrants1">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Sum(Fields!TotalNewActiveRegistrants.Value)</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                                <Format>#,0;(#,0)</Format>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>ActiveNewRegistrants1</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </TopBorder>
+                        <BottomBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </RightBorder>
+                        <BackgroundColor>White</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="ActivePP2ndChance">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Sum(Fields!ActivePP2ndChance.Value)</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                                <Format>#,0;(#,0)</Format>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>ActivePP2ndChance</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </TopBorder>
+                        <BottomBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </RightBorder>
+                        <BackgroundColor>White</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="ActiveCommOptIn2">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Sum(Fields!ActiveCommOptIn.Value)</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                                <Format>#,0;(#,0)</Format>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>ActiveCommOptIn</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </TopBorder>
+                        <BottomBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </RightBorder>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="ActiveJackpotCaptain">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Sum(Fields!ActiveJackpotCaptain.Value)</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                                <Format>#,0;(#,0)</Format>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>ActiveJackpotCaptain</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </TopBorder>
+                        <BottomBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </RightBorder>
+                        <BackgroundColor>White</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="TotalPlayers3">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Sum(Fields!TotalRegistrants.Value)</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                                <Format>#,0;(#,0)</Format>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>TotalPlayers</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </TopBorder>
+                        <BottomBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </RightBorder>
+                        <BackgroundColor>White</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="TotalActiveNewLogins1">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=iif(Sum(Fields!TotalActiveNewLogins.Value) = 0, nothing, Sum(Fields!TotalActiveNewLogins.Value))</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                                <Format>#,0;(#,0)</Format>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>TotalActiveNewLogins1</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </TopBorder>
+                        <BottomBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </RightBorder>
+                        <BackgroundColor>White</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="TotalActiveLogins">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=iif(Sum(Fields!TotalActiveLogins.Value) = 0, nothing, Sum(Fields!TotalActiveLogins.Value))</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                                <Format>#,0;(#,0)</Format>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>TotalActiveLogins</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </TopBorder>
+                        <BottomBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </RightBorder>
+                        <BackgroundColor>White</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+          </TablixRows>
+        </TablixBody>
+        <TablixColumnHierarchy>
+          <TablixMembers>
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+          </TablixMembers>
+        </TablixColumnHierarchy>
+        <TablixRowHierarchy>
+          <TablixMembers>
+            <TablixMember>
+              <FixedData>true</FixedData>
+              <KeepWithGroup>After</KeepWithGroup>
+              <RepeatOnNewPage>true</RepeatOnNewPage>
+            </TablixMember>
+            <TablixMember>
+              <Group Name="Details" />
+              <SortExpressions>
+                <SortExpression>
+                  <Value>=CInt(Fields!DateKey.Value)</Value>
+                  <Direction>Descending</Direction>
+                </SortExpression>
+              </SortExpressions>
+            </TablixMember>
+          </TablixMembers>
+        </TablixRowHierarchy>
+        <DataSetName>PlayerCounts</DataSetName>
+        <Top>1.02252in</Top>
+        <Left>0.0625in</Left>
+        <Height>0.68in</Height>
+        <Width>7.45625in</Width>
+        <ZIndex>1</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Tablix>
+    </ReportItems>
+    <Height>1.70252in</Height>
+    <Style />
+  </Body>
+  <Width>7.51875in</Width>
+  <Page>
+    <Style />
+  </Page>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="BIDW">
+      <DataSourceReference>BIDW</DataSourceReference>
+      <rd:SecurityType>None</rd:SecurityType>
+      <rd:DataSourceID>26baec9d-925c-4928-b105-1d1aa7f7a9e4</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="DefaultDates">
+      <Query>
+        <DataSourceName>BIDW</DataSourceName>
+        <CommandText>/* Default Dates */
+/* Modified: 2014-07-09 */
+
+-- as of the most recent date with data from the Player Registration table
+
+SELECT StartDateValue = DATEADD(dd, CONVERT(INT, 0), (CONVERT(VARCHAR(10), MAX(EffectiveStartDate), 120)))
+, StartDateValue29Days = DATEADD(dd, CONVERT(INT, -29), (CONVERT(VARCHAR(10), MAX(EffectiveStartDate), 120)))
+FROM BIDW.dbo.DimPlayerRegistration</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="StartDateValue">
+          <DataField>StartDateValue</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="StartDateValue29Days">
+          <DataField>StartDateValue29Days</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="PlayerCounts">
+      <Query>
+        <DataSourceName>BIDW</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@StartDate">
+            <Value>=Parameters!StartDate.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>/* Count of Registrants - Last 30 Days */	 -- will need to be a snapshot report
+/* Modified: 2014-07-09 */
+
+/* Variables for use in SSMS */
+--DECLARE @StartDate DATETIME = '6/25/14'
+
+-- get the remaining 29 previous dates from date passed in
+DECLARE @StartDate1 DATETIME = DATEADD(dd, CONVERT(INT, -1), (CONVERT(VARCHAR(10), @StartDate, 120)))
+DECLARE @StartDate2 DATETIME = DATEADD(dd, CONVERT(INT, -2), (CONVERT(VARCHAR(10), @StartDate, 120)))
+DECLARE @StartDate3 DATETIME = DATEADD(dd, CONVERT(INT, -3), (CONVERT(VARCHAR(10), @StartDate, 120)))
+DECLARE @StartDate4 DATETIME = DATEADD(dd, CONVERT(INT, -4), (CONVERT(VARCHAR(10), @StartDate, 120)))
+DECLARE @StartDate5 DATETIME = DATEADD(dd, CONVERT(INT, -5), (CONVERT(VARCHAR(10), @StartDate, 120)))
+DECLARE @StartDate6 DATETIME = DATEADD(dd, CONVERT(INT, -6), (CONVERT(VARCHAR(10), @StartDate, 120)))
+DECLARE @StartDate7 DATETIME = DATEADD(dd, CONVERT(INT, -7), (CONVERT(VARCHAR(10), @StartDate, 120)))
+DECLARE @StartDate8 DATETIME = DATEADD(dd, CONVERT(INT, -8), (CONVERT(VARCHAR(10), @StartDate, 120)))
+DECLARE @StartDate9 DATETIME = DATEADD(dd, CONVERT(INT, -9), (CONVERT(VARCHAR(10), @StartDate, 120)))
+DECLARE @StartDate10 DATETIME = DATEADD(dd, CONVERT(INT, -10), (CONVERT(VARCHAR(10), @StartDate, 120)))
+DECLARE @StartDate11 DATETIME = DATEADD(dd, CONVERT(INT, -11), (CONVERT(VARCHAR(10), @StartDate, 120)))
+DECLARE @StartDate12 DATETIME = DATEADD(dd, CONVERT(INT, -12), (CONVERT(VARCHAR(10), @StartDate, 120)))
+DECLARE @StartDate13 DATETIME = DATEADD(dd, CONVERT(INT, -13), (CONVERT(VARCHAR(10), @StartDate, 120)))
+DECLARE @StartDate14 DATETIME = DATEADD(dd, CONVERT(INT, -14), (CONVERT(VARCHAR(10), @StartDate, 120)))
+DECLARE @StartDate15 DATETIME = DATEADD(dd, CONVERT(INT, -15), (CONVERT(VARCHAR(10), @StartDate, 120)))
+DECLARE @StartDate16 DATETIME = DATEADD(dd, CONVERT(INT, -16), (CONVERT(VARCHAR(10), @StartDate, 120)))
+DECLARE @StartDate17 DATETIME = DATEADD(dd, CONVERT(INT, -17), (CONVERT(VARCHAR(10), @StartDate, 120)))
+DECLARE @StartDate18 DATETIME = DATEADD(dd, CONVERT(INT, -18), (CONVERT(VARCHAR(10), @StartDate, 120)))
+DECLARE @StartDate19 DATETIME = DATEADD(dd, CONVERT(INT, -19), (CONVERT(VARCHAR(10), @StartDate, 120)))
+DECLARE @StartDate20 DATETIME = DATEADD(dd, CONVERT(INT, -20), (CONVERT(VARCHAR(10), @StartDate, 120)))
+DECLARE @StartDate21 DATETIME = DATEADD(dd, CONVERT(INT, -21), (CONVERT(VARCHAR(10), @StartDate, 120)))
+DECLARE @StartDate22 DATETIME = DATEADD(dd, CONVERT(INT, -22), (CONVERT(VARCHAR(10), @StartDate, 120)))
+DECLARE @StartDate23 DATETIME = DATEADD(dd, CONVERT(INT, -23), (CONVERT(VARCHAR(10), @StartDate, 120)))
+DECLARE @StartDate24 DATETIME = DATEADD(dd, CONVERT(INT, -24), (CONVERT(VARCHAR(10), @StartDate, 120)))
+DECLARE @StartDate25 DATETIME = DATEADD(dd, CONVERT(INT, -25), (CONVERT(VARCHAR(10), @StartDate, 120)))
+DECLARE @StartDate26 DATETIME = DATEADD(dd, CONVERT(INT, -26), (CONVERT(VARCHAR(10), @StartDate, 120)))
+DECLARE @StartDate27 DATETIME = DATEADD(dd, CONVERT(INT, -27), (CONVERT(VARCHAR(10), @StartDate, 120)))
+DECLARE @StartDate28 DATETIME = DATEADD(dd, CONVERT(INT, -28), (CONVERT(VARCHAR(10), @StartDate, 120)))
+DECLARE @StartDate29 DATETIME = DATEADD(dd, CONVERT(INT, -29), (CONVERT(VARCHAR(10), @StartDate, 120)))
+
+-- get the date key values
+DECLARE @StartDateKey INT = (SELECT DateKey FROM BIDW.dbo.DimDate WHERE CalDayStr = @StartDate) 
+DECLARE @StartDateKey1 INT = (SELECT DateKey FROM BIDW.dbo.DimDate WHERE CalDayStr = @StartDate1) 
+DECLARE @StartDateKey2 INT = (SELECT DateKey FROM BIDW.dbo.DimDate WHERE CalDayStr = @StartDate2) 
+DECLARE @StartDateKey3 INT = (SELECT DateKey FROM BIDW.dbo.DimDate WHERE CalDayStr = @StartDate3) 
+DECLARE @StartDateKey4 INT = (SELECT DateKey FROM BIDW.dbo.DimDate WHERE CalDayStr = @StartDate4) 
+DECLARE @StartDateKey5 INT = (SELECT DateKey FROM BIDW.dbo.DimDate WHERE CalDayStr = @StartDate5) 
+DECLARE @StartDateKey6 INT = (SELECT DateKey FROM BIDW.dbo.DimDate WHERE CalDayStr = @StartDate6)
+DECLARE @StartDateKey7 INT = (SELECT DateKey FROM BIDW.dbo.DimDate WHERE CalDayStr = @StartDate7) 
+DECLARE @StartDateKey8 INT = (SELECT DateKey FROM BIDW.dbo.DimDate WHERE CalDayStr = @StartDate8) 
+DECLARE @StartDateKey9 INT = (SELECT DateKey FROM BIDW.dbo.DimDate WHERE CalDayStr = @StartDate9) 
+DECLARE @StartDateKey10 INT = (SELECT DateKey FROM BIDW.dbo.DimDate WHERE CalDayStr = @StartDate10)
+DECLARE @StartDateKey11 INT = (SELECT DateKey FROM BIDW.dbo.DimDate WHERE CalDayStr = @StartDate11) 
+DECLARE @StartDateKey12 INT = (SELECT DateKey FROM BIDW.dbo.DimDate WHERE CalDayStr = @StartDate12) 
+DECLARE @StartDateKey13 INT = (SELECT DateKey FROM BIDW.dbo.DimDate WHERE CalDayStr = @StartDate13) 
+DECLARE @StartDateKey14 INT = (SELECT DateKey FROM BIDW.dbo.DimDate WHERE CalDayStr = @StartDate14) 
+DECLARE @StartDateKey15 INT = (SELECT DateKey FROM BIDW.dbo.DimDate WHERE CalDayStr = @StartDate15) 
+DECLARE @StartDateKey16 INT = (SELECT DateKey FROM BIDW.dbo.DimDate WHERE CalDayStr = @StartDate16)
+DECLARE @StartDateKey17 INT = (SELECT DateKey FROM BIDW.dbo.DimDate WHERE CalDayStr = @StartDate17) 
+DECLARE @StartDateKey18 INT = (SELECT DateKey FROM BIDW.dbo.DimDate WHERE CalDayStr = @StartDate18) 
+DECLARE @StartDateKey19 INT = (SELECT DateKey FROM BIDW.dbo.DimDate WHERE CalDayStr = @StartDate19) 
+DECLARE @StartDateKey20 INT = (SELECT DateKey FROM BIDW.dbo.DimDate WHERE CalDayStr = @StartDate20)  
+DECLARE @StartDateKey21 INT = (SELECT DateKey FROM BIDW.dbo.DimDate WHERE CalDayStr = @StartDate21) 
+DECLARE @StartDateKey22 INT = (SELECT DateKey FROM BIDW.dbo.DimDate WHERE CalDayStr = @StartDate22) 
+DECLARE @StartDateKey23 INT = (SELECT DateKey FROM BIDW.dbo.DimDate WHERE CalDayStr = @StartDate23) 
+DECLARE @StartDateKey24 INT = (SELECT DateKey FROM BIDW.dbo.DimDate WHERE CalDayStr = @StartDate24) 
+DECLARE @StartDateKey25 INT = (SELECT DateKey FROM BIDW.dbo.DimDate WHERE CalDayStr = @StartDate25) 
+DECLARE @StartDateKey26 INT = (SELECT DateKey FROM BIDW.dbo.DimDate WHERE CalDayStr = @StartDate26)
+DECLARE @StartDateKey27 INT = (SELECT DateKey FROM BIDW.dbo.DimDate WHERE CalDayStr = @StartDate27) 
+DECLARE @StartDateKey28 INT = (SELECT DateKey FROM BIDW.dbo.DimDate WHERE CalDayStr = @StartDate28) 
+DECLARE @StartDateKey29 INT = (SELECT DateKey FROM BIDW.dbo.DimDate WHERE CalDayStr = @StartDate29) 
+
+DECLARE @TotalRegistrants TABLE
+(
+	DateKey INT NOT NULL
+	, TotalNewRegistrants INT NULL
+	, TotalNewActiveRegistrants INT NULL
+	, ActivePP2ndChance INT NULL
+	, ActiveCommOptIn INT NULL
+	, ActiveJackpotCaptain INT NULL
+	, ActivePP2ndChance1 INT NULL
+	, ActiveCommOptIn1 INT NULL
+	, ActiveJackpotCaptain1 INT NULL
+	, ActivePP2ndChance2 INT NULL
+	, ActiveCommOptIn2 INT NULL
+	, ActiveJackpotCaptain2 INT NULL
+	, ActivePP2ndChance3 INT NULL
+	, ActiveCommOptIn3 INT NULL
+	, ActiveJackpotCaptain3 INT NULL
+	, ActivePP2ndChance4 INT NULL
+	, ActiveCommOptIn4 INT NULL
+	, ActiveJackpotCaptain4 INT NULL
+	, ActivePP2ndChance5 INT NULL
+	, ActiveCommOptIn5 INT NULL
+	, ActiveJackpotCaptain5 INT NULL
+	, ActivePP2ndChance6 INT NULL
+	, ActiveCommOptIn6 INT NULL
+	, ActiveJackpotCaptain6 INT NULL
+	, ActivePP2ndChance7 INT NULL
+	, ActiveCommOptIn7 INT NULL
+	, ActiveJackpotCaptain7 INT NULL
+	, ActivePP2ndChance8 INT NULL
+	, ActiveCommOptIn8 INT NULL
+	, ActiveJackpotCaptain8 INT NULL
+	, ActivePP2ndChance9 INT NULL
+	, ActiveCommOptIn9 INT NULL
+	, ActiveJackpotCaptain9 INT NULL
+	, ActivePP2ndChance10 INT NULL
+	, ActiveCommOptIn10 INT NULL
+	, ActiveJackpotCaptain10 INT NULL
+	, ActivePP2ndChance11 INT NULL
+	, ActiveCommOptIn11 INT NULL
+	, ActiveJackpotCaptain11 INT NULL
+	, ActivePP2ndChance12 INT NULL
+	, ActiveCommOptIn12 INT NULL
+	, ActiveJackpotCaptain12 INT NULL
+	, ActivePP2ndChance13 INT NULL
+	, ActiveCommOptIn13 INT NULL
+	, ActiveJackpotCaptain13 INT NULL
+	, ActivePP2ndChance14 INT NULL
+	, ActiveCommOptIn14 INT NULL
+	, ActiveJackpotCaptain14 INT NULL
+	, ActivePP2ndChance15 INT NULL
+	, ActiveCommOptIn15 INT NULL
+	, ActiveJackpotCaptain15 INT NULL
+	, ActivePP2ndChance16 INT NULL
+	, ActiveCommOptIn16 INT NULL
+	, ActiveJackpotCaptain16 INT NULL
+	, ActivePP2ndChance17 INT NULL
+	, ActiveCommOptIn17 INT NULL
+	, ActiveJackpotCaptain17 INT NULL
+	, ActivePP2ndChance18 INT NULL
+	, ActiveCommOptIn18 INT NULL
+	, ActiveJackpotCaptain18 INT NULL
+	, ActivePP2ndChance19 INT NULL
+	, ActiveCommOptIn19 INT NULL
+	, ActiveJackpotCaptain19 INT NULL
+	, ActivePP2ndChance20 INT NULL
+	, ActiveCommOptIn20 INT NULL
+	, ActiveJackpotCaptain20 INT NULL
+	, ActivePP2ndChance21 INT NULL
+	, ActiveCommOptIn21 INT NULL
+	, ActiveJackpotCaptain21 INT NULL
+	, ActivePP2ndChance22 INT NULL
+	, ActiveCommOptIn22 INT NULL
+	, ActiveJackpotCaptain22 INT NULL
+	, ActivePP2ndChance23 INT NULL
+	, ActiveCommOptIn23 INT NULL
+	, ActiveJackpotCaptain23 INT NULL
+	, ActivePP2ndChance24 INT NULL
+	, ActiveCommOptIn24 INT NULL
+	, ActiveJackpotCaptain24 INT NULL
+	, ActivePP2ndChance25 INT NULL
+	, ActiveCommOptIn25 INT NULL
+	, ActiveJackpotCaptain25 INT NULL
+	, ActivePP2ndChance26 INT NULL
+	, ActiveCommOptIn26 INT NULL
+	, ActiveJackpotCaptain26 INT NULL
+	, ActivePP2ndChance27 INT NULL
+	, ActiveCommOptIn27 INT NULL
+	, ActiveJackpotCaptain27 INT NULL
+	, ActivePP2ndChance28 INT NULL
+	, ActiveCommOptIn28 INT NULL
+	, ActiveJackpotCaptain28 INT NULL
+	, ActivePP2ndChance29 INT NULL
+	, ActiveCommOptIn29 INT NULL
+	, ActiveJackpotCaptain29 INT NULL
+)
+INSERT INTO @TotalRegistrants
+SELECT  DateKey
+, TotalNewRegistrants = SUM(CASE WHEN PlayerCreateDate = DateKey THEN 1 ELSE 0 END)
+, TotalActiveNewRegistrants = SUM(CASE WHEN PlayerCreateDate = DateKey AND PlayerActivationStatus =1 THEN 1 ELSE 0 END)
+, ActivePP2ndChance = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND @StartDate BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveCommOptIn = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerPromotionalEmails = 1
+								AND @StartDate BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveJackpotCaptain = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerJackpotCaptain = 1	
+								AND @StartDate BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+-- 1 Day Ago from @StartDate
+, ActivePP2ndChance1 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND @StartDate1 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveCommOptIn1 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerPromotionalEmails = 1
+								AND @StartDate1 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveJackpotCaptain1 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerJackpotCaptain = 1	
+								AND @StartDate1 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+
+-- 2 Days Ago from @StartDate
+, ActivePP2ndChance2 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND @StartDate2 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveCommOptIn2 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerPromotionalEmails = 1
+								AND @StartDate2 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveJackpotCaptain2 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerJackpotCaptain = 1	
+								AND @StartDate2 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+
+-- 3 Days Ago from @StartDate
+, ActivePP2ndChance3 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND @StartDate3 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveCommOptIn3 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerPromotionalEmails = 1
+								AND @StartDate3 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveJackpotCaptain3 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerJackpotCaptain = 1	
+								AND @StartDate3 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+
+-- 4 Days Ago from @StartDate
+, ActivePP2ndChance4 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND @StartDate4 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveCommOptIn4 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerPromotionalEmails = 1
+								AND @StartDate4 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveJackpotCaptain4 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerJackpotCaptain = 1	
+								AND @StartDate4 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+
+-- 5 Days Ago from @StartDate
+, ActivePP2ndChance5 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND @StartDate5 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveCommOptIn5 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerPromotionalEmails = 1
+								AND @StartDate5 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveJackpotCaptain5 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerJackpotCaptain = 1	
+								AND @StartDate5 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+
+-- 6 Days Ago from @StartDate
+, ActivePP2ndChance6 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND @StartDate6 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveCommOptIn6 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerPromotionalEmails = 1
+								AND @StartDate6 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveJackpotCaptain6 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerJackpotCaptain = 1	
+								AND @StartDate6 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+-- 7 Days Ago from @StartDate
+, ActivePP2ndChance7 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND @StartDate7 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveCommOptIn7 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerPromotionalEmails = 1
+								AND @StartDate7 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveJackpotCaptain7 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerJackpotCaptain = 1	
+								AND @StartDate7 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+-- 8 Days Ago from @StartDate
+, ActivePP2ndChance8 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND @StartDate8 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveCommOptIn8 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerPromotionalEmails = 1
+								AND @StartDate8 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveJackpotCaptain8 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerJackpotCaptain = 1	
+								AND @StartDate8 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+-- 9 Days Ago from @StartDate
+, ActivePP2ndChance9 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND @StartDate9 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveCommOptIn9 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerPromotionalEmails = 1
+								AND @StartDate9 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveJackpotCaptain9 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerJackpotCaptain = 1	
+								AND @StartDate9 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+-- 10 Days Ago from @StartDate
+, ActivePP2ndChance10 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND @StartDate10 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveCommOptIn10 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerPromotionalEmails = 1
+								AND @StartDate10 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveJackpotCaptain10 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerJackpotCaptain = 1	
+								AND @StartDate10 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+-- 11 Days Ago from @StartDate
+, ActivePP2ndChance11 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND @StartDate11 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveCommOptIn11 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerPromotionalEmails = 1
+								AND @StartDate11 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveJackpotCaptain11 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerJackpotCaptain = 1	
+								AND @StartDate11 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+-- 12 Days Ago from @StartDate
+, ActivePP2ndChance12 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND @StartDate12 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveCommOptIn12 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerPromotionalEmails = 1
+								AND @StartDate12 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveJackpotCaptain12 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerJackpotCaptain = 1	
+								AND @StartDate12 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+-- 13 Days Ago from @StartDate
+, ActivePP2ndChance13 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND @StartDate13 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveCommOptIn13 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerPromotionalEmails = 1
+								AND @StartDate13 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveJackpotCaptain13 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerJackpotCaptain = 1	
+								AND @StartDate13 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+-- 14 Days Ago from @StartDate
+, ActivePP2ndChance14 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND @StartDate14 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveCommOptIn14 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerPromotionalEmails = 1
+								AND @StartDate14 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveJackpotCaptain14 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerJackpotCaptain = 1	
+								AND @StartDate14 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+-- 15 Days Ago from @StartDate
+, ActivePP2ndChance15 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND @StartDate15 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveCommOptIn15 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerPromotionalEmails = 1
+								AND @StartDate15 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveJackpotCaptain15 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerJackpotCaptain = 1	
+								AND @StartDate15 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+-- 16 Days Ago from @StartDate
+, ActivePP2ndChance16 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND @StartDate16 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveCommOptIn16 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerPromotionalEmails = 1
+								AND @StartDate16 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveJackpotCaptain16 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerJackpotCaptain = 1	
+								AND @StartDate16 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+-- 17 Days Ago from @StartDate
+, ActivePP2ndChance17 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND @StartDate17 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveCommOptIn17 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerPromotionalEmails = 1
+								AND @StartDate17 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveJackpotCaptain17 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerJackpotCaptain = 1	
+								AND @StartDate17 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+-- 18 Days Ago from @StartDate
+, ActivePP2ndChance18 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND @StartDate18 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveCommOptIn18 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerPromotionalEmails = 1
+								AND @StartDate18 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveJackpotCaptain18 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerJackpotCaptain = 1	
+								AND @StartDate18 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+-- 19 Days Ago from @StartDate
+, ActivePP2ndChance19 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND @StartDate19 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveCommOptIn19 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerPromotionalEmails = 1
+								AND @StartDate19 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveJackpotCaptain19 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerJackpotCaptain = 1	
+								AND @StartDate19 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+-- 20 Days Ago from @StartDate
+, ActivePP2ndChance20 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND @StartDate20 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveCommOptIn20 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerPromotionalEmails = 1
+								AND @StartDate20 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveJackpotCaptain20 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerJackpotCaptain = 1	
+								AND @StartDate20 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+-- 21 Days Ago from @StartDate
+, ActivePP2ndChance21 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND @StartDate21 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveCommOptIn21 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerPromotionalEmails = 1
+								AND @StartDate21 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveJackpotCaptain21 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerJackpotCaptain = 1	
+								AND @StartDate21 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+-- 22 Days Ago from @StartDate
+, ActivePP2ndChance22 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND @StartDate22 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveCommOptIn22 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerPromotionalEmails = 1
+								AND @StartDate22 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveJackpotCaptain22 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerJackpotCaptain = 1	
+								AND @StartDate22 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+-- 23 Days Ago from @StartDate
+, ActivePP2ndChance23 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND @StartDate23 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveCommOptIn23 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerPromotionalEmails = 1
+								AND @StartDate23 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveJackpotCaptain23 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerJackpotCaptain = 1	
+								AND @StartDate23 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+-- 24 Days Ago from @StartDate
+, ActivePP2ndChance24 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND @StartDate24 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveCommOptIn24 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerPromotionalEmails = 1
+								AND @StartDate24 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveJackpotCaptain24 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerJackpotCaptain = 1	
+								AND @StartDate24 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+-- 25 Days Ago from @StartDate
+, ActivePP2ndChance25 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND @StartDate25 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveCommOptIn25 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerPromotionalEmails = 1
+								AND @StartDate25 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveJackpotCaptain25 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerJackpotCaptain = 1	
+								AND @StartDate25 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+-- 26 Days Ago from @StartDate
+, ActivePP2ndChance26 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND @StartDate26 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveCommOptIn26 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerPromotionalEmails = 1
+								AND @StartDate26 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveJackpotCaptain26 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerJackpotCaptain = 1	
+								AND @StartDate26 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+-- 27 Days Ago from @StartDate
+, ActivePP2ndChance27 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND @StartDate27 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveCommOptIn27 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerPromotionalEmails = 1
+								AND @StartDate27 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveJackpotCaptain27 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerJackpotCaptain = 1	
+								AND @StartDate27 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+-- 28 Days Ago from @StartDate
+, ActivePP2ndChance28 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND @StartDate28 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveCommOptIn28 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerPromotionalEmails = 1
+								AND @StartDate28 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveJackpotCaptain28 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerJackpotCaptain = 1	
+								AND @StartDate28 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+-- 29 Days Ago from @StartDate
+, ActivePP2ndChance29 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND @StartDate29 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveCommOptIn29 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerPromotionalEmails = 1
+								AND @StartDate29 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+, ActiveJackpotCaptain29 = SUM(CASE WHEN PlayerActivationStatus = 1 
+								AND PlayerSecondChanceServiceID = 2 -- Active
+								AND PlayerPortalStatusID = 2 -- Active
+								AND PlayerJackpotCaptain = 1	
+								AND @StartDate29 BETWEEN EffectiveStartDate AND COALESCE(EffectiveEndDate, GETDATE())
+							THEN 1 ELSE 0 END)
+FROM
+(
+		SELECT DateKey = convert(int, convert(varchar(10), PR.EffectiveStartDate, 112))
+		, PlayerCreateDate = convert(int, convert(varchar(10), PR.PlayerCreateDateTime, 112))
+		, PlayerRegistrationKey
+		, PlayerMarketingKey
+		, PR.PlayerID
+		, PlayerActivationStatus
+		, PM.PlayerPromotionalEmails
+		, PlayerSecondChanceServiceID
+		, PlayerPortalStatusID
+		, PR.PlayerJackpotCaptain
+		, PR.EffectiveStartDate
+		, PR.EffectiveEndDate
+		FROM BIDW.dbo.DimPlayerRegistration PR
+		INNER JOIN BIDW.dbo.DimPlayerMarketing PM
+		ON PR.PlayerID = PM.PlayerID
+		WHERE convert(int, convert(varchar(10), PR.EffectiveStartDate, 112)) &gt;= COALESCE(convert(int, convert(varchar(10), PM.EffectiveStartDate, 112)), convert(int, convert(varchar(10), GETDATE(), 112))) -- PR Effective Start has be greater than or equals to PM Effective Start
+		AND COALESCE(convert(int, convert(varchar(10), PR.EffectiveEndDate, 112)), convert(int, convert(varchar(10), GETDATE(), 112))) &lt;= COALESCE(convert(int, convert(varchar(10), PM.EffectiveEndDate, 112)), convert(int, convert(varchar(10), GETDATE(), 112))) -- PR Effective End has to be greater than or equals to PM Effective End	
+		and PR.PlayerID NOT IN  (-1, -2, -3)
+		--AND @StartDate BETWEEN PR.EffectiveStartDate AND ISNULL(PR.EffectiveEndDate,'2021-12-31')			-- StartDate has to be between the Effective Start and End Date
+		--AND @StartDate BETWEEN PR.EffectiveStartDate AND COALESCE(PR.EffectiveEndDate, GETDATE()) --COALESCE(convert(int, convert(varchar(10), PM.EffectiveEndDate, 112)), convert(int, convert(varchar(10), GETDATE(), 112)))
+		group by convert(int, convert(varchar(10), PR.PlayerCreateDateTime, 112))
+		, convert(int, convert(varchar(10), PR.EffectiveStartDate, 112))
+		, PlayerRegistrationKey
+		, PlayerMarketingKey
+		, PR.PlayerID
+		, PlayerActivationStatus
+		, PM.PlayerPromotionalEmails
+		, PlayerSecondChanceServiceID
+		, PlayerPortalStatusID	
+		, PR.PlayerJackpotCaptain
+		, PR.EffectiveStartDate
+		, PR.EffectiveEndDate
+) a
+group by DateKey
+
+/* Total Logins */  -- Login Data Starts on 10/14/13
+DECLARE @TotalLogins TABLE
+(
+	DateKey INT NOT NULL
+	, TotalActiveLogins INT NULL
+	, TotalActiveNewLogins INT NULL
+)
+INSERT INTO @TotalLogins
+SELECT D.DateKey
+, TotalActiveLogins = SUM(CASE WHEN PlayerActivationStatus = 1 THEN VisitCount ELSE 0 END)
+, TotalActiveNewLogins = SUM(CASE WHEN (convert(int, convert(varchar(10), PM.PlayerCreateDateTime, 112)) = D.DateKey) AND PlayerActivationStatus = 1 THEN VisitCount ELSE 0 END)
+FROM BIDW.dbo.DimDate D
+LEFT OUTER JOIN BIDW.dbo.FactLogins FL
+ON D.DateKey = FL.DateKey
+LEFT OUTER JOIN BIDW.dbo.DimPlayerMarketing PM
+ON FL.PlayerMarketingKey = PM.PlayerMarketingKey
+where D.DateKey BETWEEN @StartDateKey29 and @StartDateKey 
+group by D.DateKey
+
+select TR.Datekey
+, CalDayStr
+, TotalNewRegistrants = SUM(TotalNewRegistrants)
+, TotalNewActiveRegistrants = SUM(TotalNewActiveRegistrants)
+, ActivePP2ndChance = (SELECT SUM(ActivePP2ndChance) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveCommOptIn = (SELECT SUM(ActiveCommOptIn) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveJackpotCaptain  = (SELECT SUM(ActiveJackpotCaptain) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalRegistrants = (SELECT SUM(TotalNewRegistrants) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalActiveNewLogins = SUM(TotalActiveNewLogins)
+, TotalActiveLogins = SUM(TotalActiveLogins)
+FROM @TotalRegistrants TR
+INNER JOIN @TotalLogins TL
+ON TR.DateKey = TL.DateKey
+INNER JOIN BIDW.dbo.DimDate D
+ON TR.DateKey = D.DateKey
+WHERE TR.DateKey = @StartDateKey 
+group by TR.Datekey
+, CalDayStr
+
+UNION 
+
+-- 1 Day Ago from @StartDate
+select TR.Datekey
+, CalDayStr
+, TotalNewRegistrants = SUM(TotalNewRegistrants)
+, TotalNewActiveRegistrants = SUM(TotalNewActiveRegistrants)
+, ActivePP2ndChance = (SELECT SUM(ActivePP2ndChance1) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveCommOptIn = (SELECT SUM(ActiveCommOptIn1) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveJackpotCaptain  = (SELECT SUM(ActiveJackpotCaptain1) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalRegistrants = (SELECT SUM(TotalNewRegistrants) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalActiveNewLogins = SUM(TotalActiveNewLogins)
+, TotalActiveLogins = SUM(TotalActiveLogins)
+FROM @TotalRegistrants TR
+INNER JOIN @TotalLogins TL
+ON TR.DateKey = TL.DateKey
+INNER JOIN BIDW.dbo.DimDate D
+ON TR.DateKey = D.DateKey
+WHERE TR.DateKey = @StartDateKey1 
+group by TR.Datekey
+, CalDayStr
+
+UNION
+
+-- 2 Day Ago from @StartDate
+select TR.Datekey
+, CalDayStr
+, TotalNewRegistrants = SUM(TotalNewRegistrants)
+, TotalNewActiveRegistrants = SUM(TotalNewActiveRegistrants)
+, ActivePP2ndChance = (SELECT SUM(ActivePP2ndChance2) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveCommOptIn = (SELECT SUM(ActiveCommOptIn2) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveJackpotCaptain  = (SELECT SUM(ActiveJackpotCaptain2) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalRegistrants = (SELECT SUM(TotalNewRegistrants) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalActiveNewLogins = SUM(TotalActiveNewLogins)
+, TotalActiveLogins = SUM(TotalActiveLogins)
+FROM @TotalRegistrants TR
+INNER JOIN @TotalLogins TL
+ON TR.DateKey = TL.DateKey
+INNER JOIN BIDW.dbo.DimDate D
+ON TR.DateKey = D.DateKey
+WHERE TR.DateKey = @StartDateKey2 
+group by TR.Datekey
+, CalDayStr
+
+UNION
+
+-- 3 Day Ago from @StartDate
+select TR.Datekey
+, CalDayStr
+, TotalNewRegistrants = SUM(TotalNewRegistrants)
+, TotalNewActiveRegistrants = SUM(TotalNewActiveRegistrants)
+, ActivePP2ndChance = (SELECT SUM(ActivePP2ndChance3) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveCommOptIn = (SELECT SUM(ActiveCommOptIn3) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveJackpotCaptain  = (SELECT SUM(ActiveJackpotCaptain3) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalRegistrants = (SELECT SUM(TotalNewRegistrants) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalActiveNewLogins = SUM(TotalActiveNewLogins)
+, TotalActiveLogins = SUM(TotalActiveLogins)
+FROM @TotalRegistrants TR
+INNER JOIN @TotalLogins TL
+ON TR.DateKey = TL.DateKey
+INNER JOIN BIDW.dbo.DimDate D
+ON TR.DateKey = D.DateKey
+WHERE TR.DateKey = @StartDateKey3 
+group by TR.Datekey
+, CalDayStr
+
+UNION
+
+-- 4 Day Ago from @StartDate
+select TR.Datekey
+, CalDayStr
+, TotalNewRegistrants = SUM(TotalNewRegistrants)
+, TotalNewActiveRegistrants = SUM(TotalNewActiveRegistrants)
+, ActivePP2ndChance = (SELECT SUM(ActivePP2ndChance4) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveCommOptIn = (SELECT SUM(ActiveCommOptIn4) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveJackpotCaptain  = (SELECT SUM(ActiveJackpotCaptain4) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalRegistrants = (SELECT SUM(TotalNewRegistrants) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalActiveNewLogins = SUM(TotalActiveNewLogins)
+, TotalActiveLogins = SUM(TotalActiveLogins)
+FROM @TotalRegistrants TR
+INNER JOIN @TotalLogins TL
+ON TR.DateKey = TL.DateKey
+INNER JOIN BIDW.dbo.DimDate D
+ON TR.DateKey = D.DateKey
+WHERE TR.DateKey = @StartDateKey4 
+group by TR.Datekey
+, CalDayStr
+
+UNION
+
+-- 5 Day Ago from @StartDate
+select TR.Datekey
+, CalDayStr
+, TotalNewRegistrants = SUM(TotalNewRegistrants)
+, TotalNewActiveRegistrants = SUM(TotalNewActiveRegistrants)
+, ActivePP2ndChance = (SELECT SUM(ActivePP2ndChance5) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveCommOptIn = (SELECT SUM(ActiveCommOptIn5) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveJackpotCaptain  = (SELECT SUM(ActiveJackpotCaptain5) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalRegistrants = (SELECT SUM(TotalNewRegistrants) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalActiveNewLogins = SUM(TotalActiveNewLogins)
+, TotalActiveLogins = SUM(TotalActiveLogins)
+FROM @TotalRegistrants TR
+INNER JOIN @TotalLogins TL
+ON TR.DateKey = TL.DateKey
+INNER JOIN BIDW.dbo.DimDate D
+ON TR.DateKey = D.DateKey
+WHERE TR.DateKey = @StartDateKey5 
+group by TR.Datekey
+, CalDayStr
+
+UNION
+
+-- 6 Day Ago from @StartDate
+select TR.Datekey
+, CalDayStr
+, TotalNewRegistrants = SUM(TotalNewRegistrants)
+, TotalNewActiveRegistrants = SUM(TotalNewActiveRegistrants)
+, ActivePP2ndChance = (SELECT SUM(ActivePP2ndChance6) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveCommOptIn = (SELECT SUM(ActiveCommOptIn6) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveJackpotCaptain  = (SELECT SUM(ActiveJackpotCaptain6) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalRegistrants = (SELECT SUM(TotalNewRegistrants) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalActiveNewLogins = SUM(TotalActiveNewLogins)
+, TotalActiveLogins = SUM(TotalActiveLogins)
+FROM @TotalRegistrants TR
+INNER JOIN @TotalLogins TL
+ON TR.DateKey = TL.DateKey
+INNER JOIN BIDW.dbo.DimDate D
+ON TR.DateKey = D.DateKey
+WHERE TR.DateKey = @StartDateKey6 
+group by TR.Datekey
+, CalDayStr
+
+UNION
+
+-- 7 Day Ago from @StartDate
+select TR.Datekey
+, CalDayStr
+, TotalNewRegistrants = SUM(TotalNewRegistrants)
+, TotalNewActiveRegistrants = SUM(TotalNewActiveRegistrants)
+, ActivePP2ndChance = (SELECT SUM(ActivePP2ndChance7) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveCommOptIn = (SELECT SUM(ActiveCommOptIn7) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveJackpotCaptain  = (SELECT SUM(ActiveJackpotCaptain7) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalRegistrants = (SELECT SUM(TotalNewRegistrants) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalActiveNewLogins = SUM(TotalActiveNewLogins)
+, TotalActiveLogins = SUM(TotalActiveLogins)
+FROM @TotalRegistrants TR
+INNER JOIN @TotalLogins TL
+ON TR.DateKey = TL.DateKey
+INNER JOIN BIDW.dbo.DimDate D
+ON TR.DateKey = D.DateKey
+WHERE TR.DateKey = @StartDateKey7 
+group by TR.Datekey
+, CalDayStr
+
+UNION
+
+-- 8 Day Ago from @StartDate
+select TR.Datekey
+, CalDayStr
+, TotalNewRegistrants = SUM(TotalNewRegistrants)
+, TotalNewActiveRegistrants = SUM(TotalNewActiveRegistrants)
+, ActivePP2ndChance = (SELECT SUM(ActivePP2ndChance8) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveCommOptIn = (SELECT SUM(ActiveCommOptIn8) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveJackpotCaptain  = (SELECT SUM(ActiveJackpotCaptain8) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalRegistrants = (SELECT SUM(TotalNewRegistrants) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalActiveNewLogins = SUM(TotalActiveNewLogins)
+, TotalActiveLogins = SUM(TotalActiveLogins)
+FROM @TotalRegistrants TR
+INNER JOIN @TotalLogins TL
+ON TR.DateKey = TL.DateKey
+INNER JOIN BIDW.dbo.DimDate D
+ON TR.DateKey = D.DateKey
+WHERE TR.DateKey = @StartDateKey8 
+group by TR.Datekey
+, CalDayStr
+
+UNION
+
+-- 9 Day Ago from @StartDate
+select TR.Datekey
+, CalDayStr
+, TotalNewRegistrants = SUM(TotalNewRegistrants)
+, TotalNewActiveRegistrants = SUM(TotalNewActiveRegistrants)
+, ActivePP2ndChance = (SELECT SUM(ActivePP2ndChance9) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveCommOptIn = (SELECT SUM(ActiveCommOptIn9) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveJackpotCaptain  = (SELECT SUM(ActiveJackpotCaptain9) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalRegistrants = (SELECT SUM(TotalNewRegistrants) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalActiveNewLogins = SUM(TotalActiveNewLogins)
+, TotalActiveLogins = SUM(TotalActiveLogins)
+FROM @TotalRegistrants TR
+INNER JOIN @TotalLogins TL
+ON TR.DateKey = TL.DateKey
+INNER JOIN BIDW.dbo.DimDate D
+ON TR.DateKey = D.DateKey
+WHERE TR.DateKey = @StartDateKey9 
+group by TR.Datekey
+, CalDayStr
+
+UNION
+
+-- 10 Day Ago from @StartDate
+select TR.Datekey
+, CalDayStr
+, TotalNewRegistrants = SUM(TotalNewRegistrants)
+, TotalNewActiveRegistrants = SUM(TotalNewActiveRegistrants)
+, ActivePP2ndChance = (SELECT SUM(ActivePP2ndChance10) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveCommOptIn = (SELECT SUM(ActiveCommOptIn10) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveJackpotCaptain  = (SELECT SUM(ActiveJackpotCaptain10) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalRegistrants = (SELECT SUM(TotalNewRegistrants) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalActiveNewLogins = SUM(TotalActiveNewLogins)
+, TotalActiveLogins = SUM(TotalActiveLogins)
+FROM @TotalRegistrants TR
+INNER JOIN @TotalLogins TL
+ON TR.DateKey = TL.DateKey
+INNER JOIN BIDW.dbo.DimDate D
+ON TR.DateKey = D.DateKey
+WHERE TR.DateKey = @StartDateKey10 
+group by TR.Datekey
+, CalDayStr
+
+UNION
+
+-- 11 Day Ago from @StartDate
+select TR.Datekey
+, CalDayStr
+, TotalNewRegistrants = SUM(TotalNewRegistrants)
+, TotalNewActiveRegistrants = SUM(TotalNewActiveRegistrants)
+, ActivePP2ndChance = (SELECT SUM(ActivePP2ndChance11) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveCommOptIn = (SELECT SUM(ActiveCommOptIn11) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveJackpotCaptain  = (SELECT SUM(ActiveJackpotCaptain11) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalRegistrants = (SELECT SUM(TotalNewRegistrants) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalActiveNewLogins = SUM(TotalActiveNewLogins)
+, TotalActiveLogins = SUM(TotalActiveLogins)
+FROM @TotalRegistrants TR
+INNER JOIN @TotalLogins TL
+ON TR.DateKey = TL.DateKey
+INNER JOIN BIDW.dbo.DimDate D
+ON TR.DateKey = D.DateKey
+WHERE TR.DateKey = @StartDateKey11 
+group by TR.Datekey
+, CalDayStr
+
+UNION
+
+-- 12 Day Ago from @StartDate
+select TR.Datekey
+, CalDayStr
+, TotalNewRegistrants = SUM(TotalNewRegistrants)
+, TotalNewActiveRegistrants = SUM(TotalNewActiveRegistrants)
+, ActivePP2ndChance = (SELECT SUM(ActivePP2ndChance12) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveCommOptIn = (SELECT SUM(ActiveCommOptIn12) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveJackpotCaptain  = (SELECT SUM(ActiveJackpotCaptain12) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalRegistrants = (SELECT SUM(TotalNewRegistrants) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalActiveNewLogins = SUM(TotalActiveNewLogins)
+, TotalActiveLogins = SUM(TotalActiveLogins)
+FROM @TotalRegistrants TR
+INNER JOIN @TotalLogins TL
+ON TR.DateKey = TL.DateKey
+INNER JOIN BIDW.dbo.DimDate D
+ON TR.DateKey = D.DateKey
+WHERE TR.DateKey = @StartDateKey12 
+group by TR.Datekey
+, CalDayStr
+
+UNION
+
+-- 13 Day Ago from @StartDate
+select TR.Datekey
+, CalDayStr
+, TotalNewRegistrants = SUM(TotalNewRegistrants)
+, TotalNewActiveRegistrants = SUM(TotalNewActiveRegistrants)
+, ActivePP2ndChance = (SELECT SUM(ActivePP2ndChance13) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveCommOptIn = (SELECT SUM(ActiveCommOptIn13) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveJackpotCaptain  = (SELECT SUM(ActiveJackpotCaptain13) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalRegistrants = (SELECT SUM(TotalNewRegistrants) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalActiveNewLogins = SUM(TotalActiveNewLogins)
+, TotalActiveLogins = SUM(TotalActiveLogins)
+FROM @TotalRegistrants TR
+INNER JOIN @TotalLogins TL
+ON TR.DateKey = TL.DateKey
+INNER JOIN BIDW.dbo.DimDate D
+ON TR.DateKey = D.DateKey
+WHERE TR.DateKey = @StartDateKey13 
+group by TR.Datekey
+, CalDayStr
+
+UNION
+
+-- 14 Day Ago from @StartDate
+select TR.Datekey
+, CalDayStr
+, TotalNewRegistrants = SUM(TotalNewRegistrants)
+, TotalNewActiveRegistrants = SUM(TotalNewActiveRegistrants)
+, ActivePP2ndChance = (SELECT SUM(ActivePP2ndChance14) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveCommOptIn = (SELECT SUM(ActiveCommOptIn14) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveJackpotCaptain  = (SELECT SUM(ActiveJackpotCaptain14) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalRegistrants = (SELECT SUM(TotalNewRegistrants) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalActiveNewLogins = SUM(TotalActiveNewLogins)
+, TotalActiveLogins = SUM(TotalActiveLogins)
+FROM @TotalRegistrants TR
+INNER JOIN @TotalLogins TL
+ON TR.DateKey = TL.DateKey
+INNER JOIN BIDW.dbo.DimDate D
+ON TR.DateKey = D.DateKey
+WHERE TR.DateKey = @StartDateKey14 
+group by TR.Datekey
+, CalDayStr
+
+UNION
+
+-- 15 Day Ago from @StartDate
+select TR.Datekey
+, CalDayStr
+, TotalNewRegistrants = SUM(TotalNewRegistrants)
+, TotalNewActiveRegistrants = SUM(TotalNewActiveRegistrants)
+, ActivePP2ndChance = (SELECT SUM(ActivePP2ndChance15) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveCommOptIn = (SELECT SUM(ActiveCommOptIn15) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveJackpotCaptain  = (SELECT SUM(ActiveJackpotCaptain15) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalRegistrants = (SELECT SUM(TotalNewRegistrants) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalActiveNewLogins = SUM(TotalActiveNewLogins)
+, TotalActiveLogins = SUM(TotalActiveLogins)
+FROM @TotalRegistrants TR
+INNER JOIN @TotalLogins TL
+ON TR.DateKey = TL.DateKey
+INNER JOIN BIDW.dbo.DimDate D
+ON TR.DateKey = D.DateKey
+WHERE TR.DateKey = @StartDateKey15 
+group by TR.Datekey
+, CalDayStr
+
+UNION
+
+-- 16 Day Ago from @StartDate
+select TR.Datekey
+, CalDayStr
+, TotalNewRegistrants = SUM(TotalNewRegistrants)
+, TotalNewActiveRegistrants = SUM(TotalNewActiveRegistrants)
+, ActivePP2ndChance = (SELECT SUM(ActivePP2ndChance16) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveCommOptIn = (SELECT SUM(ActiveCommOptIn16) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveJackpotCaptain  = (SELECT SUM(ActiveJackpotCaptain16) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalRegistrants = (SELECT SUM(TotalNewRegistrants) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalActiveNewLogins = SUM(TotalActiveNewLogins)
+, TotalActiveLogins = SUM(TotalActiveLogins)
+FROM @TotalRegistrants TR
+INNER JOIN @TotalLogins TL
+ON TR.DateKey = TL.DateKey
+INNER JOIN BIDW.dbo.DimDate D
+ON TR.DateKey = D.DateKey
+WHERE TR.DateKey = @StartDateKey16 
+group by TR.Datekey
+, CalDayStr
+
+UNION
+
+-- 17 Day Ago from @StartDate
+select TR.Datekey
+, CalDayStr
+, TotalNewRegistrants = SUM(TotalNewRegistrants)
+, TotalNewActiveRegistrants = SUM(TotalNewActiveRegistrants)
+, ActivePP2ndChance = (SELECT SUM(ActivePP2ndChance17) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveCommOptIn = (SELECT SUM(ActiveCommOptIn17) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveJackpotCaptain  = (SELECT SUM(ActiveJackpotCaptain17) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalRegistrants = (SELECT SUM(TotalNewRegistrants) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalActiveNewLogins = SUM(TotalActiveNewLogins)
+, TotalActiveLogins = SUM(TotalActiveLogins)
+FROM @TotalRegistrants TR
+INNER JOIN @TotalLogins TL
+ON TR.DateKey = TL.DateKey
+INNER JOIN BIDW.dbo.DimDate D
+ON TR.DateKey = D.DateKey
+WHERE TR.DateKey = @StartDateKey17 
+group by TR.Datekey
+, CalDayStr
+
+UNION
+
+-- 18 Day Ago from @StartDate
+select TR.Datekey
+, CalDayStr
+, TotalNewRegistrants = SUM(TotalNewRegistrants)
+, TotalNewActiveRegistrants = SUM(TotalNewActiveRegistrants)
+, ActivePP2ndChance = (SELECT SUM(ActivePP2ndChance18) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveCommOptIn = (SELECT SUM(ActiveCommOptIn18) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveJackpotCaptain  = (SELECT SUM(ActiveJackpotCaptain18) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalRegistrants = (SELECT SUM(TotalNewRegistrants) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalActiveNewLogins = SUM(TotalActiveNewLogins)
+, TotalActiveLogins = SUM(TotalActiveLogins)
+FROM @TotalRegistrants TR
+INNER JOIN @TotalLogins TL
+ON TR.DateKey = TL.DateKey
+INNER JOIN BIDW.dbo.DimDate D
+ON TR.DateKey = D.DateKey
+WHERE TR.DateKey = @StartDateKey18 
+group by TR.Datekey
+, CalDayStr
+
+UNION
+
+-- 19 Day Ago from @StartDate
+select TR.Datekey
+, CalDayStr
+, TotalNewRegistrants = SUM(TotalNewRegistrants)
+, TotalNewActiveRegistrants = SUM(TotalNewActiveRegistrants)
+, ActivePP2ndChance = (SELECT SUM(ActivePP2ndChance19) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveCommOptIn = (SELECT SUM(ActiveCommOptIn19) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveJackpotCaptain  = (SELECT SUM(ActiveJackpotCaptain19) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalRegistrants = (SELECT SUM(TotalNewRegistrants) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalActiveNewLogins = SUM(TotalActiveNewLogins)
+, TotalActiveLogins = SUM(TotalActiveLogins)
+FROM @TotalRegistrants TR
+INNER JOIN @TotalLogins TL
+ON TR.DateKey = TL.DateKey
+INNER JOIN BIDW.dbo.DimDate D
+ON TR.DateKey = D.DateKey
+WHERE TR.DateKey = @StartDateKey19 
+group by TR.Datekey
+, CalDayStr
+
+UNION
+
+-- 20 Day Ago from @StartDate
+select TR.Datekey
+, CalDayStr
+, TotalNewRegistrants = SUM(TotalNewRegistrants)
+, TotalNewActiveRegistrants = SUM(TotalNewActiveRegistrants)
+, ActivePP2ndChance = (SELECT SUM(ActivePP2ndChance20) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveCommOptIn = (SELECT SUM(ActiveCommOptIn20) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveJackpotCaptain  = (SELECT SUM(ActiveJackpotCaptain20) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalRegistrants = (SELECT SUM(TotalNewRegistrants) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalActiveNewLogins = SUM(TotalActiveNewLogins)
+, TotalActiveLogins = SUM(TotalActiveLogins)
+FROM @TotalRegistrants TR
+INNER JOIN @TotalLogins TL
+ON TR.DateKey = TL.DateKey
+INNER JOIN BIDW.dbo.DimDate D
+ON TR.DateKey = D.DateKey
+WHERE TR.DateKey = @StartDateKey20 
+group by TR.Datekey
+, CalDayStr
+
+UNION
+
+-- 21 Day Ago from @StartDate
+select TR.Datekey
+, CalDayStr
+, TotalNewRegistrants = SUM(TotalNewRegistrants)
+, TotalNewActiveRegistrants = SUM(TotalNewActiveRegistrants)
+, ActivePP2ndChance = (SELECT SUM(ActivePP2ndChance21) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveCommOptIn = (SELECT SUM(ActiveCommOptIn21) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveJackpotCaptain  = (SELECT SUM(ActiveJackpotCaptain21) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalRegistrants = (SELECT SUM(TotalNewRegistrants) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalActiveNewLogins = SUM(TotalActiveNewLogins)
+, TotalActiveLogins = SUM(TotalActiveLogins)
+FROM @TotalRegistrants TR
+INNER JOIN @TotalLogins TL
+ON TR.DateKey = TL.DateKey
+INNER JOIN BIDW.dbo.DimDate D
+ON TR.DateKey = D.DateKey
+WHERE TR.DateKey = @StartDateKey21 
+group by TR.Datekey
+, CalDayStr
+
+UNION
+
+-- 22 Day Ago from @StartDate
+select TR.Datekey
+, CalDayStr
+, TotalNewRegistrants = SUM(TotalNewRegistrants)
+, TotalNewActiveRegistrants = SUM(TotalNewActiveRegistrants)
+, ActivePP2ndChance = (SELECT SUM(ActivePP2ndChance22) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveCommOptIn = (SELECT SUM(ActiveCommOptIn22) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveJackpotCaptain  = (SELECT SUM(ActiveJackpotCaptain22) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalRegistrants = (SELECT SUM(TotalNewRegistrants) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalActiveNewLogins = SUM(TotalActiveNewLogins)
+, TotalActiveLogins = SUM(TotalActiveLogins)
+FROM @TotalRegistrants TR
+INNER JOIN @TotalLogins TL
+ON TR.DateKey = TL.DateKey
+INNER JOIN BIDW.dbo.DimDate D
+ON TR.DateKey = D.DateKey
+WHERE TR.DateKey = @StartDateKey22 
+group by TR.Datekey
+, CalDayStr
+
+UNION
+
+-- 23 Day Ago from @StartDate
+select TR.Datekey
+, CalDayStr
+, TotalNewRegistrants = SUM(TotalNewRegistrants)
+, TotalNewActiveRegistrants = SUM(TotalNewActiveRegistrants)
+, ActivePP2ndChance = (SELECT SUM(ActivePP2ndChance23) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveCommOptIn = (SELECT SUM(ActiveCommOptIn23) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveJackpotCaptain  = (SELECT SUM(ActiveJackpotCaptain23) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalRegistrants = (SELECT SUM(TotalNewRegistrants) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalActiveNewLogins = SUM(TotalActiveNewLogins)
+, TotalActiveLogins = SUM(TotalActiveLogins)
+FROM @TotalRegistrants TR
+INNER JOIN @TotalLogins TL
+ON TR.DateKey = TL.DateKey
+INNER JOIN BIDW.dbo.DimDate D
+ON TR.DateKey = D.DateKey
+WHERE TR.DateKey = @StartDateKey23 
+group by TR.Datekey
+, CalDayStr
+
+UNION
+
+-- 24 Day Ago from @StartDate
+select TR.Datekey
+, CalDayStr
+, TotalNewRegistrants = SUM(TotalNewRegistrants)
+, TotalNewActiveRegistrants = SUM(TotalNewActiveRegistrants)
+, ActivePP2ndChance = (SELECT SUM(ActivePP2ndChance24) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveCommOptIn = (SELECT SUM(ActiveCommOptIn24) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveJackpotCaptain  = (SELECT SUM(ActiveJackpotCaptain24) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalRegistrants = (SELECT SUM(TotalNewRegistrants) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalActiveNewLogins = SUM(TotalActiveNewLogins)
+, TotalActiveLogins = SUM(TotalActiveLogins)
+FROM @TotalRegistrants TR
+INNER JOIN @TotalLogins TL
+ON TR.DateKey = TL.DateKey
+INNER JOIN BIDW.dbo.DimDate D
+ON TR.DateKey = D.DateKey
+WHERE TR.DateKey = @StartDateKey24 
+group by TR.Datekey
+, CalDayStr
+
+UNION
+
+-- 25 Day Ago from @StartDate
+select TR.Datekey
+, CalDayStr
+, TotalNewRegistrants = SUM(TotalNewRegistrants)
+, TotalNewActiveRegistrants = SUM(TotalNewActiveRegistrants)
+, ActivePP2ndChance = (SELECT SUM(ActivePP2ndChance25) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveCommOptIn = (SELECT SUM(ActiveCommOptIn25) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveJackpotCaptain  = (SELECT SUM(ActiveJackpotCaptain25) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalRegistrants = (SELECT SUM(TotalNewRegistrants) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalActiveNewLogins = SUM(TotalActiveNewLogins)
+, TotalActiveLogins = SUM(TotalActiveLogins)
+FROM @TotalRegistrants TR
+INNER JOIN @TotalLogins TL
+ON TR.DateKey = TL.DateKey
+INNER JOIN BIDW.dbo.DimDate D
+ON TR.DateKey = D.DateKey
+WHERE TR.DateKey = @StartDateKey25 
+group by TR.Datekey
+, CalDayStr
+
+UNION
+
+-- 26 Day Ago from @StartDate
+select TR.Datekey
+, CalDayStr
+, TotalNewRegistrants = SUM(TotalNewRegistrants)
+, TotalNewActiveRegistrants = SUM(TotalNewActiveRegistrants)
+, ActivePP2ndChance = (SELECT SUM(ActivePP2ndChance26) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveCommOptIn = (SELECT SUM(ActiveCommOptIn26) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveJackpotCaptain  = (SELECT SUM(ActiveJackpotCaptain26) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalRegistrants = (SELECT SUM(TotalNewRegistrants) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalActiveNewLogins = SUM(TotalActiveNewLogins)
+, TotalActiveLogins = SUM(TotalActiveLogins)
+FROM @TotalRegistrants TR
+INNER JOIN @TotalLogins TL
+ON TR.DateKey = TL.DateKey
+INNER JOIN BIDW.dbo.DimDate D
+ON TR.DateKey = D.DateKey
+WHERE TR.DateKey = @StartDateKey26 
+group by TR.Datekey
+, CalDayStr
+
+UNION
+
+-- 27 Day Ago from @StartDate
+select TR.Datekey
+, CalDayStr
+, TotalNewRegistrants = SUM(TotalNewRegistrants)
+, TotalNewActiveRegistrants = SUM(TotalNewActiveRegistrants)
+, ActivePP2ndChance = (SELECT SUM(ActivePP2ndChance27) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveCommOptIn = (SELECT SUM(ActiveCommOptIn27) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveJackpotCaptain  = (SELECT SUM(ActiveJackpotCaptain27) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalRegistrants = (SELECT SUM(TotalNewRegistrants) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalActiveNewLogins = SUM(TotalActiveNewLogins)
+, TotalActiveLogins = SUM(TotalActiveLogins)
+FROM @TotalRegistrants TR
+INNER JOIN @TotalLogins TL
+ON TR.DateKey = TL.DateKey
+INNER JOIN BIDW.dbo.DimDate D
+ON TR.DateKey = D.DateKey
+WHERE TR.DateKey = @StartDateKey27 
+group by TR.Datekey
+, CalDayStr
+
+UNION
+
+-- 28 Day Ago from @StartDate
+select TR.Datekey
+, CalDayStr
+, TotalNewRegistrants = SUM(TotalNewRegistrants)
+, TotalNewActiveRegistrants = SUM(TotalNewActiveRegistrants)
+, ActivePP2ndChance = (SELECT SUM(ActivePP2ndChance28) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveCommOptIn = (SELECT SUM(ActiveCommOptIn28) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveJackpotCaptain  = (SELECT SUM(ActiveJackpotCaptain28) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalRegistrants = (SELECT SUM(TotalNewRegistrants) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalActiveNewLogins = SUM(TotalActiveNewLogins)
+, TotalActiveLogins = SUM(TotalActiveLogins)
+FROM @TotalRegistrants TR
+INNER JOIN @TotalLogins TL
+ON TR.DateKey = TL.DateKey
+INNER JOIN BIDW.dbo.DimDate D
+ON TR.DateKey = D.DateKey
+WHERE TR.DateKey = @StartDateKey28 
+group by TR.Datekey
+, CalDayStr
+
+UNION
+
+-- 29 Day Ago from @StartDate
+select TR.Datekey
+, CalDayStr
+, TotalNewRegistrants = SUM(TotalNewRegistrants)
+, TotalNewActiveRegistrants = SUM(TotalNewActiveRegistrants)
+, ActivePP2ndChance = (SELECT SUM(ActivePP2ndChance29) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveCommOptIn = (SELECT SUM(ActiveCommOptIn29) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, ActiveJackpotCaptain  = (SELECT SUM(ActiveJackpotCaptain29) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalRegistrants = (SELECT SUM(TotalNewRegistrants) FROM @TotalRegistrants t WHERE t.DateKey &lt;= TR.DateKey)
+, TotalActiveNewLogins = SUM(TotalActiveNewLogins)
+, TotalActiveLogins = SUM(TotalActiveLogins)
+FROM @TotalRegistrants TR
+INNER JOIN @TotalLogins TL
+ON TR.DateKey = TL.DateKey
+INNER JOIN BIDW.dbo.DimDate D
+ON TR.DateKey = D.DateKey
+WHERE TR.DateKey = @StartDateKey29 
+group by TR.Datekey
+, CalDayStr</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="DateKey">
+          <DataField>Datekey</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="TotalNewRegistrants">
+          <DataField>TotalNewRegistrants</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="CalDayStr">
+          <DataField>CalDayStr</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TotalNewActiveRegistrants">
+          <DataField>TotalNewActiveRegistrants</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="TotalActiveLogins">
+          <DataField>TotalActiveLogins</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="TotalActiveNewLogins">
+          <DataField>TotalActiveNewLogins</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="TotalRegistrants">
+          <DataField>TotalRegistrants</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ActivePP2ndChance">
+          <DataField>ActivePP2ndChance</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ActiveCommOptIn">
+          <DataField>ActiveCommOptIn</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ActiveJackpotCaptain">
+          <DataField>ActiveJackpotCaptain</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportParameters>
+    <ReportParameter Name="StartDate">
+      <DataType>DateTime</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>DefaultDates</DataSetName>
+          <ValueField>StartDateValue</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <Prompt>Start Date</Prompt>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+  </ReportParameters>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>84947aec-9a3b-416c-b0d0-2abcee7c8d1b</rd:ReportID>
+</Report>

@@ -1,0 +1,2712 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <Body>
+    <ReportItems>
+      <Tablix Name="Tablix8">
+        <TablixBody>
+          <TablixColumns>
+            <TablixColumn>
+              <Width>0.6214in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.74574in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.37074in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.41241in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.78017in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.81846in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.58799in</Width>
+            </TablixColumn>
+          </TablixColumns>
+          <TablixRows>
+            <TablixRow>
+              <Height>0.36458in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox64">
+                      <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=Fields!Draw_Number.Value * -1</SortExpression>
+                        <SortExpressionScope>SLP_Details4</SortExpressionScope>
+                      </UserSort>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Draw #</Value>
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>White</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox33</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>SteelBlue</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox65">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Draw Date</Value>
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>White</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox35</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>SteelBlue</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox66">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Day</Value>
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>White</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox38</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>SteelBlue</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox67">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>JP</Value>
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>White</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox41</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>SteelBlue</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox68">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Sales</Value>
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>White</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox51</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>SteelBlue</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox25">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>% of Adv Play Sales</Value>
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>White</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox19</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>SteelBlue</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox71">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value># of Rolls</Value>
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>White</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox45</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>SteelBlue</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>0.18779in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="DrawNumber5">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=CDbl(Fields!Draw_Number.Value)</Value>
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                                <Format>0;(0)</Format>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>DrawNumber</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>=iif(Fields!Draw_Date.Value &gt;= Today(), "Orange", "White")</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                    <rd:Selected>true</rd:Selected>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="DrawDate7">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=CDate(Fields!Draw_Date.Value)</Value>
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                                <Format>M/d/yy</Format>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>DrawDate1</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>=iif(Fields!Draw_Date.Value &gt;= Today(), "Orange", "White")</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="DrawDate8">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Format(CDate(Fields!Draw_Date.Value), "ddd")</Value>
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                                <Format>D</Format>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>DrawDate</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>=iif(Fields!Draw_Date.Value &gt;= Today(), "Orange", "White")</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="EstimatedJackpotAmount4">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Cint(Fields!Est_Jackpot_Amt.Value)</Value>
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                                <Format>'$'0,,;('$'0,,)</Format>
+                                <rd:FormatSymbolCulture>en-US</rd:FormatSymbolCulture>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>EstimatedJackpotAmount1</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>=iif(Fields!Draw_Date.Value &gt;= Today(), "Orange", "White")</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <rd:FormatSymbolCulture>en-US</rd:FormatSymbolCulture>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox72">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!Net_Wager_Amt.Value</Value>
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                                <Format>'$'#,0;('$'#,0)</Format>
+                                <rd:FormatSymbolCulture>en-US</rd:FormatSymbolCulture>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox52</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>=iif(Fields!Draw_Date.Value &gt;= Today(), "Orange", "White")</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <rd:FormatSymbolCulture>en-US</rd:FormatSymbolCulture>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox26">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Sum(Fields!Advance_Play__.Value)</Value>
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                                <Format>=iif(value=0.00, "0%", "0.00%")</Format>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox20</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>=iif(Fields!Draw_Date.Value &gt;= Today(), "Orange", "White")</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="NumberOfRolls4">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=CDec(IIf(Len(Fields!Number_Of_Rolls.Value)&gt;0,Fields!Number_Of_Rolls.Value,Nothing))</Value>
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>NumberOfRolls</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>=iif(Fields!Draw_Date.Value &gt;= Today(), "Orange", "White")</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+          </TablixRows>
+        </TablixBody>
+        <TablixColumnHierarchy>
+          <TablixMembers>
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+          </TablixMembers>
+        </TablixColumnHierarchy>
+        <TablixRowHierarchy>
+          <TablixMembers>
+            <TablixMember>
+              <KeepWithGroup>After</KeepWithGroup>
+            </TablixMember>
+            <TablixMember>
+              <Group Name="SLP_Details4">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!Draw_Number.Value</GroupExpression>
+                </GroupExpressions>
+                <Filters>
+                  <Filter>
+                    <FilterExpression>=CDbl(Fields!Draw_Number.Value)</FilterExpression>
+                    <Operator>TopN</Operator>
+                    <FilterValues>
+                      <FilterValue>=Parameters!DrawSalesNumOfDays.Value</FilterValue>
+                    </FilterValues>
+                  </Filter>
+                </Filters>
+              </Group>
+              <SortExpressions>
+                <SortExpression>
+                  <Value>=CInt(Fields!Draw_Number.Value)</Value>
+                </SortExpression>
+              </SortExpressions>
+            </TablixMember>
+          </TablixMembers>
+        </TablixRowHierarchy>
+        <RepeatColumnHeaders>true</RepeatColumnHeaders>
+        <FixedColumnHeaders>true</FixedColumnHeaders>
+        <FixedRowHeaders>true</FixedRowHeaders>
+        <KeepTogether>true</KeepTogether>
+        <DataSetName>MEGAMillions</DataSetName>
+        <Filters>
+          <Filter>
+            <FilterExpression>=CDate(Fields!Draw_Date.Value)</FilterExpression>
+            <Operator>LessThanOrEqual</Operator>
+            <FilterValues>
+              <FilterValue>=iif(Format(Today(), "ddd") = "Sun", DateAdd("d", +2, Today()), iif(Format(Today(), "ddd") = "Mon", DateAdd("d", +1, Today()), iif(Format(Today(), "ddd") = "Tue", DateAdd("d", +0, Today()), iif(Format(Today(), "ddd") = "Wed", DateAdd("d", +2, Today()), iif(Format(Today(), "ddd") = "Thu", DateAdd("d", +1, Today()), iif(Format(Today(), "ddd") = "Fri", DateAdd("d", +0, Today()), DateAdd("d", +3, Today())))))))</FilterValue>
+            </FilterValues>
+          </Filter>
+          <Filter>
+            <FilterExpression>=CDate(Fields!Draw_Date.Value)</FilterExpression>
+            <Operator>GreaterThan</Operator>
+            <FilterValues>
+              <FilterValue DataType="DateTime">=CDate("1975-01-01")</FilterValue>
+            </FilterValues>
+          </Filter>
+        </Filters>
+        <SortExpressions>
+          <SortExpression>
+            <Value>=CDate(Fields!Draw_Date.Value)</Value>
+          </SortExpression>
+        </SortExpressions>
+        <Top>3.44986in</Top>
+        <Left>0.125in</Left>
+        <Height>0.55237in</Height>
+        <Width>4.33691in</Width>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Tablix>
+      <Textbox Name="Textbox1">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Note: Current Draw for MEGA Millions is highlighted in orange </Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                  <FontSize>8pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox1</rd:DefaultName>
+        <Top>4.02167in</Top>
+        <Left>0.125in</Left>
+        <Height>0.1875in</Height>
+        <Width>4.33691in</Width>
+        <ZIndex>1</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="textbox1">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>MEGA Millions Dashboard</Value>
+                <Style>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>textbox1</rd:DefaultName>
+        <Top>0.0375in</Top>
+        <Left>0.125in</Left>
+        <Height>0.25583in</Height>
+        <Width>9.56826in</Width>
+        <ZIndex>2</ZIndex>
+        <Style>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox29">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Draw Information (</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=Parameters!DrawSalesNumOfDays.Label</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>)</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox29</rd:DefaultName>
+        <Top>3.17542in</Top>
+        <Left>0.125in</Left>
+        <Height>0.23in</Height>
+        <Width>4.76885in</Width>
+        <ZIndex>3</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Chart Name="Chart5">
+        <ChartCategoryHierarchy>
+          <ChartMembers>
+            <ChartMember>
+              <Group Name="Chart1_CategoryGroup5">
+                <GroupExpressions>
+                  <GroupExpression>=CDbl(Fields!Number_Of_Rolls.Value)</GroupExpression>
+                </GroupExpressions>
+              </Group>
+              <SortExpressions>
+                <SortExpression>
+                  <Value>=CDbl(Fields!Number_Of_Rolls.Value)</Value>
+                </SortExpression>
+              </SortExpressions>
+              <Label>=CDbl(Fields!Number_Of_Rolls.Value)</Label>
+            </ChartMember>
+          </ChartMembers>
+        </ChartCategoryHierarchy>
+        <ChartSeriesHierarchy>
+          <ChartMembers>
+            <ChartMember>
+              <Group Name="Chart1_SeriesGroup5">
+                <GroupExpressions>
+                  <GroupExpression>=CDate(Fields!Roll_Start_Date.Value)</GroupExpression>
+                </GroupExpressions>
+                <Filters>
+                  <Filter>
+                    <FilterExpression>=CDate(Fields!Draw_Date_1.Value)</FilterExpression>
+                    <Operator>LessThanOrEqual</Operator>
+                    <FilterValues>
+                      <FilterValue>=iif(Format(Today(), "ddd") = "Sun", DateAdd("d", +3, Today()), iif(Format(Today(), "ddd") = "Mon", DateAdd("d", +2, Today()), iif(Format(Today(), "ddd") = "Tue", DateAdd("d", + 1, Today()), iif(Format(Today(), "ddd") = "Wed", DateAdd("d", +0, Today()), iif(Format(Today(), "ddd") = "Thu", DateAdd("d", +2, Today()), iif(Format(Today(), "ddd") = "Fri", DateAdd("d", +1, Today()), DateAdd("d", +0, Today())))))))</FilterValue>
+                    </FilterValues>
+                  </Filter>
+                  <Filter>
+                    <FilterExpression>=CDate(Fields!Roll_Start_Date.Value)</FilterExpression>
+                    <Operator>TopN</Operator>
+                    <FilterValues>
+                      <FilterValue>4</FilterValue>
+                    </FilterValues>
+                  </Filter>
+                  <Filter>
+                    <FilterExpression>=CDbl(Fields!Number_Of_Rolls.Value)</FilterExpression>
+                    <Operator>Equal</Operator>
+                    <FilterValues>
+                      <FilterValue DataType="Float">=0</FilterValue>
+                    </FilterValues>
+                  </Filter>
+                  <Filter>
+                    <FilterExpression>=Fields!Net_Wager_Amt.Value</FilterExpression>
+                    <Operator>NotEqual</Operator>
+                    <FilterValues>
+                      <FilterValue>=Nothing</FilterValue>
+                    </FilterValues>
+                  </Filter>
+                </Filters>
+              </Group>
+              <SortExpressions>
+                <SortExpression>
+                  <Value>=CDate(Fields!Roll_Start_Date.Value)</Value>
+                </SortExpression>
+              </SortExpressions>
+              <Label>=CDate(Fields!Roll_Start_Date.Value)</Label>
+            </ChartMember>
+          </ChartMembers>
+        </ChartSeriesHierarchy>
+        <ChartData>
+          <ChartSeriesCollection>
+            <ChartSeries Name="Net_Wager_Amt">
+              <ChartDataPoints>
+                <ChartDataPoint>
+                  <ChartDataPointValues>
+                    <X>=Fields!Number_Of_Rolls.Value</X>
+                    <Y>=Sum(Fields!Net_Wager_Amt.Value)</Y>
+                  </ChartDataPointValues>
+                  <ChartDataLabel>
+                    <Style />
+                  </ChartDataLabel>
+                  <ToolTip>=Fields!Draw_Number.Value &amp; Chr(13) &amp; Format(CDate(Fields!Draw_Date_1.Value), "M/d/y") &amp; Chr(13) &amp; "Roll: " &amp; Fields!Number_Of_Rolls.Value &amp; Chr(13) &amp; "Sales: $" &amp; Round(Sum(Fields!Net_Wager_Amt.Value) * 1E-06, 2) &amp; "M"</ToolTip>
+                  <Style>
+                    <Border>
+                      <Width>=iif(Fields!Roll_Start_Date.Value = Last(Fields!Roll_Start_Date.Value, "MMGraph"), "3pt", "1pt")</Width>
+                    </Border>
+                  </Style>
+                  <ChartMarker>
+                    <Size>=iif(Fields!Roll_Start_Date.Value = Last(Fields!Roll_Start_Date.Value, "MMGraph"), "3.75pt", "2.5pt")</Size>
+                    <Style>
+                      <Border>
+                        <Color>=iif(Fields!Roll_Start_Date.Value = Last(Fields!Roll_Start_Date.Value, "MMGraph"), "Orange", "Black")</Color>
+                      </Border>
+                      <Color>=iif(Fields!Roll_Start_Date.Value = Last(Fields!Roll_Start_Date.Value, "MMGraph"), "Orange", "Black")</Color>
+                    </Style>
+                  </ChartMarker>
+                  <DataElementOutput>Output</DataElementOutput>
+                </ChartDataPoint>
+              </ChartDataPoints>
+              <Style />
+              <ChartEmptyPoints>
+                <Style />
+                <ChartMarker>
+                  <Style />
+                </ChartMarker>
+                <ChartDataLabel>
+                  <Style />
+                </ChartDataLabel>
+              </ChartEmptyPoints>
+              <ChartItemInLegend>
+                <LegendText>=iif(Fields!Roll_Start_Date.Value = Last(Fields!Roll_Start_Date.Value, "MMGraph"), (Format(CDate(Fields!Roll_Start_Date.Value), "M/d/y") &amp; "(Current)"), Format(CDate(Fields!Roll_Start_Date.Value), "M/d/y"))</LegendText>
+              </ChartItemInLegend>
+              <ValueAxisName>Primary</ValueAxisName>
+              <CategoryAxisName>Primary</CategoryAxisName>
+              <ChartSmartLabel>
+                <CalloutLineColor>Black</CalloutLineColor>
+                <MinMovingDistance>0pt</MinMovingDistance>
+              </ChartSmartLabel>
+            </ChartSeries>
+          </ChartSeriesCollection>
+        </ChartData>
+        <ChartAreas>
+          <ChartArea Name="Default">
+            <ChartCategoryAxes>
+              <ChartAxis Name="Primary">
+                <Style>
+                  <FontFamily>Verdana</FontFamily>
+                  <FontSize>8pt</FontSize>
+                  <Format>0;(0)</Format>
+                </Style>
+                <ChartAxisTitle>
+                  <Caption>Roll Number</Caption>
+                  <Style>
+                    <FontFamily>Verdana</FontFamily>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </ChartAxisTitle>
+                <IntervalType>Number</IntervalType>
+                <ChartMajorGridLines>
+                  <Enabled>False</Enabled>
+                  <Style>
+                    <Border>
+                      <Color>Gainsboro</Color>
+                    </Border>
+                  </Style>
+                </ChartMajorGridLines>
+                <ChartMinorGridLines>
+                  <Enabled>False</Enabled>
+                  <Style>
+                    <Border>
+                      <Color>Gainsboro</Color>
+                      <Style>Dotted</Style>
+                    </Border>
+                  </Style>
+                </ChartMinorGridLines>
+                <ChartMinorTickMarks>
+                  <Length>0.5</Length>
+                </ChartMinorTickMarks>
+                <CrossAt>NaN</CrossAt>
+                <InterlacedColor>Khaki</InterlacedColor>
+                <Scalar>true</Scalar>
+                <Minimum>=Parameters!NumOfRollStart.Value -.4</Minimum>
+                <Maximum>=Parameters!NumOfRollsEnd.Value + .4</Maximum>
+                <Angle>-90</Angle>
+                <PreventFontShrink>true</PreventFontShrink>
+                <PreventFontGrow>true</PreventFontGrow>
+                <PreventLabelOffset>true</PreventLabelOffset>
+                <LabelsAutoFitDisabled>true</LabelsAutoFitDisabled>
+                <ChartAxisScaleBreak>
+                  <Style />
+                </ChartAxisScaleBreak>
+              </ChartAxis>
+              <ChartAxis Name="Secondary">
+                <Style>
+                  <FontSize>8pt</FontSize>
+                </Style>
+                <ChartAxisTitle>
+                  <Caption>Axis Title</Caption>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </ChartAxisTitle>
+                <ChartMajorGridLines>
+                  <Enabled>False</Enabled>
+                  <Style>
+                    <Border>
+                      <Color>Gainsboro</Color>
+                    </Border>
+                  </Style>
+                </ChartMajorGridLines>
+                <ChartMinorGridLines>
+                  <Style>
+                    <Border>
+                      <Color>Gainsboro</Color>
+                      <Style>Dotted</Style>
+                    </Border>
+                  </Style>
+                </ChartMinorGridLines>
+                <ChartMinorTickMarks>
+                  <Length>0.5</Length>
+                </ChartMinorTickMarks>
+                <CrossAt>NaN</CrossAt>
+                <Location>Opposite</Location>
+                <Minimum>NaN</Minimum>
+                <Maximum>NaN</Maximum>
+                <ChartAxisScaleBreak>
+                  <Style />
+                </ChartAxisScaleBreak>
+              </ChartAxis>
+            </ChartCategoryAxes>
+            <ChartValueAxes>
+              <ChartAxis Name="Primary">
+                <Style>
+                  <FontFamily>Verdana</FontFamily>
+                  <FontSize>8pt</FontSize>
+                  <Format>0,,.0M;(0,,.0M)</Format>
+                </Style>
+                <ChartAxisTitle>
+                  <Caption>Sales</Caption>
+                  <Style>
+                    <FontFamily>Verdana</FontFamily>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </ChartAxisTitle>
+                <ChartMajorGridLines>
+                  <Style>
+                    <Border>
+                      <Color>Gainsboro</Color>
+                      <Style>Dotted</Style>
+                    </Border>
+                  </Style>
+                </ChartMajorGridLines>
+                <ChartMinorGridLines>
+                  <Style>
+                    <Border>
+                      <Color>Gainsboro</Color>
+                      <Style>Dotted</Style>
+                    </Border>
+                  </Style>
+                </ChartMinorGridLines>
+                <ChartMinorTickMarks>
+                  <Length>0.5</Length>
+                </ChartMinorTickMarks>
+                <CrossAt>NaN</CrossAt>
+                <ChartStripLines>
+                  <ChartStripLine>
+                    <Style>
+                      <Border>
+                        <Color>Silver</Color>
+                        <Style>Solid</Style>
+                      </Border>
+                      <BackgroundGradientType>None</BackgroundGradientType>
+                      <FontSize>8pt</FontSize>
+                      <TextAlign>General</TextAlign>
+                      <VerticalAlign>Top</VerticalAlign>
+                    </Style>
+                  </ChartStripLine>
+                </ChartStripLines>
+                <Minimum>0</Minimum>
+                <Maximum>NaN</Maximum>
+                <PreventFontShrink>true</PreventFontShrink>
+                <PreventFontGrow>true</PreventFontGrow>
+                <PreventWordWrap>true</PreventWordWrap>
+                <ChartAxisScaleBreak>
+                  <Style />
+                </ChartAxisScaleBreak>
+              </ChartAxis>
+              <ChartAxis Name="Secondary">
+                <Style>
+                  <FontSize>8pt</FontSize>
+                </Style>
+                <ChartAxisTitle>
+                  <Caption>Axis Title</Caption>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </ChartAxisTitle>
+                <ChartMajorGridLines>
+                  <Style>
+                    <Border>
+                      <Color>Gainsboro</Color>
+                    </Border>
+                  </Style>
+                </ChartMajorGridLines>
+                <ChartMinorGridLines>
+                  <Style>
+                    <Border>
+                      <Color>Gainsboro</Color>
+                      <Style>Dotted</Style>
+                    </Border>
+                  </Style>
+                </ChartMinorGridLines>
+                <ChartMinorTickMarks>
+                  <Length>0.5</Length>
+                </ChartMinorTickMarks>
+                <CrossAt>NaN</CrossAt>
+                <Location>Opposite</Location>
+                <Minimum>NaN</Minimum>
+                <Maximum>NaN</Maximum>
+                <ChartAxisScaleBreak>
+                  <Style />
+                </ChartAxisScaleBreak>
+              </ChartAxis>
+            </ChartValueAxes>
+            <Style>
+              <BackgroundGradientType>None</BackgroundGradientType>
+            </Style>
+          </ChartArea>
+        </ChartAreas>
+        <ChartLegends>
+          <ChartLegend Name="Default">
+            <Style>
+              <BackgroundGradientType>None</BackgroundGradientType>
+              <FontSize>8pt</FontSize>
+            </Style>
+            <Position>TopCenter</Position>
+            <DockToChartArea>Default</DockToChartArea>
+            <DockOutsideChartArea>true</DockOutsideChartArea>
+            <ChartLegendTitle>
+              <Caption />
+              <Style>
+                <FontSize>8pt</FontSize>
+                <FontWeight>Bold</FontWeight>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </ChartLegendTitle>
+            <AutoFitTextDisabled>true</AutoFitTextDisabled>
+            <HeaderSeparatorColor>Black</HeaderSeparatorColor>
+            <ColumnSeparatorColor>Black</ColumnSeparatorColor>
+          </ChartLegend>
+        </ChartLegends>
+        <Palette>Custom</Palette>
+        <ChartCustomPaletteColors>
+          <ChartCustomPaletteColor>CornflowerBlue</ChartCustomPaletteColor>
+          <ChartCustomPaletteColor>Green</ChartCustomPaletteColor>
+          <ChartCustomPaletteColor>SlateBlue</ChartCustomPaletteColor>
+          <ChartCustomPaletteColor>SaddleBrown</ChartCustomPaletteColor>
+        </ChartCustomPaletteColors>
+        <ChartBorderSkin>
+          <Style>
+            <BackgroundColor>Gray</BackgroundColor>
+            <BackgroundGradientType>None</BackgroundGradientType>
+            <Color>White</Color>
+          </Style>
+        </ChartBorderSkin>
+        <ChartNoDataMessage Name="NoDataMessage">
+          <Caption>No Data Available</Caption>
+          <Hidden>true</Hidden>
+          <Style>
+            <BackgroundGradientType>None</BackgroundGradientType>
+            <TextAlign>General</TextAlign>
+            <VerticalAlign>Top</VerticalAlign>
+          </Style>
+        </ChartNoDataMessage>
+        <DataSetName>MMGraph</DataSetName>
+        <Filters>
+          <Filter>
+            <FilterExpression>=Fields!Roll_Start_Date.Value</FilterExpression>
+            <Operator>NotEqual</Operator>
+            <FilterValues>
+              <FilterValue>=""</FilterValue>
+            </FilterValues>
+          </Filter>
+          <Filter>
+            <FilterExpression>=Fields!Number_Of_Rolls.Value</FilterExpression>
+            <Operator>In</Operator>
+            <FilterValues>
+              <FilterValue>0</FilterValue>
+              <FilterValue>1</FilterValue>
+              <FilterValue>2</FilterValue>
+              <FilterValue>3</FilterValue>
+              <FilterValue>4</FilterValue>
+              <FilterValue>5</FilterValue>
+              <FilterValue>6</FilterValue>
+              <FilterValue>7</FilterValue>
+              <FilterValue>8</FilterValue>
+              <FilterValue>9</FilterValue>
+              <FilterValue>10</FilterValue>
+              <FilterValue>11</FilterValue>
+              <FilterValue>12</FilterValue>
+              <FilterValue>13</FilterValue>
+              <FilterValue>14</FilterValue>
+              <FilterValue>15</FilterValue>
+              <FilterValue>16</FilterValue>
+              <FilterValue>17</FilterValue>
+              <FilterValue>18</FilterValue>
+              <FilterValue>19</FilterValue>
+              <FilterValue>20</FilterValue>
+              <FilterValue>21</FilterValue>
+              <FilterValue>22</FilterValue>
+              <FilterValue>23</FilterValue>
+              <FilterValue>24</FilterValue>
+              <FilterValue>25</FilterValue>
+              <FilterValue>26</FilterValue>
+              <FilterValue>27</FilterValue>
+              <FilterValue>28</FilterValue>
+              <FilterValue>29</FilterValue>
+              <FilterValue>30</FilterValue>
+              <FilterValue>31</FilterValue>
+              <FilterValue>32</FilterValue>
+              <FilterValue>33</FilterValue>
+              <FilterValue>34</FilterValue>
+              <FilterValue>35</FilterValue>
+              <FilterValue>36</FilterValue>
+              <FilterValue>37</FilterValue>
+              <FilterValue>38</FilterValue>
+              <FilterValue>39</FilterValue>
+              <FilterValue>40</FilterValue>
+              <FilterValue>41</FilterValue>
+              <FilterValue>42</FilterValue>
+              <FilterValue>43</FilterValue>
+              <FilterValue>44</FilterValue>
+              <FilterValue>45</FilterValue>
+              <FilterValue>46</FilterValue>
+              <FilterValue>47</FilterValue>
+              <FilterValue>48</FilterValue>
+              <FilterValue>49</FilterValue>
+              <FilterValue>50</FilterValue>
+            </FilterValues>
+          </Filter>
+          <Filter>
+            <FilterExpression>=CDate(Fields!Draw_Date_1.Value)</FilterExpression>
+            <Operator>LessThan</Operator>
+            <FilterValues>
+              <FilterValue DataType="DateTime">=CDate(Parameters!DataAsOfDateParam.Value)</FilterValue>
+            </FilterValues>
+          </Filter>
+          <Filter>
+            <FilterExpression>=Fields!Roll_Start_Day.Value</FilterExpression>
+            <Operator>Equal</Operator>
+            <FilterValues>
+              <FilterValue>="Tue"</FilterValue>
+            </FilterValues>
+          </Filter>
+        </Filters>
+        <Top>0.57889in</Top>
+        <Left>0.125in</Left>
+        <Height>2.56042in</Height>
+        <Width>4.76885in</Width>
+        <ZIndex>4</ZIndex>
+        <Style>
+          <Border>
+            <Color>LightGrey</Color>
+            <Style>None</Style>
+          </Border>
+          <BackgroundColor>White</BackgroundColor>
+          <BackgroundGradientType>None</BackgroundGradientType>
+        </Style>
+      </Chart>
+      <Textbox Name="Textbox30">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Tuesday Roll Sequence Start</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox29</rd:DefaultName>
+        <Top>0.32111in</Top>
+        <Left>0.125in</Left>
+        <Height>0.23in</Height>
+        <Width>4.76885in</Width>
+        <ZIndex>5</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox31">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Friday Roll Sequence Start</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox29</rd:DefaultName>
+        <Top>0.30722in</Top>
+        <Left>4.92441in</Left>
+        <Height>0.23in</Height>
+        <Width>4.76885in</Width>
+        <ZIndex>6</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Chart Name="Chart6">
+        <ChartCategoryHierarchy>
+          <ChartMembers>
+            <ChartMember>
+              <Group Name="Chart1_CategoryGroup6">
+                <GroupExpressions>
+                  <GroupExpression>=CDbl(Fields!Number_Of_Rolls.Value)</GroupExpression>
+                </GroupExpressions>
+              </Group>
+              <SortExpressions>
+                <SortExpression>
+                  <Value>=CDbl(Fields!Number_Of_Rolls.Value)</Value>
+                </SortExpression>
+              </SortExpressions>
+              <Label>=CDbl(Fields!Number_Of_Rolls.Value)</Label>
+            </ChartMember>
+          </ChartMembers>
+        </ChartCategoryHierarchy>
+        <ChartSeriesHierarchy>
+          <ChartMembers>
+            <ChartMember>
+              <Group Name="Chart1_SeriesGroup6">
+                <GroupExpressions>
+                  <GroupExpression>=CDate(Fields!Roll_Start_Date.Value)</GroupExpression>
+                </GroupExpressions>
+                <Filters>
+                  <Filter>
+                    <FilterExpression>=CDate(Fields!Draw_Date_1.Value)</FilterExpression>
+                    <Operator>LessThanOrEqual</Operator>
+                    <FilterValues>
+                      <FilterValue>=iif(Format(Today(), "ddd") = "Sun", DateAdd("d", +3, Today()), iif(Format(Today(), "ddd") = "Mon", DateAdd("d", +2, Today()), iif(Format(Today(), "ddd") = "Tue", DateAdd("d", + 1, Today()), iif(Format(Today(), "ddd") = "Wed", DateAdd("d", +0, Today()), iif(Format(Today(), "ddd") = "Thu", DateAdd("d", +2, Today()), iif(Format(Today(), "ddd") = "Fri", DateAdd("d", +1, Today()), DateAdd("d", +0, Today())))))))</FilterValue>
+                    </FilterValues>
+                  </Filter>
+                  <Filter>
+                    <FilterExpression>=CDate(Fields!Roll_Start_Date.Value)</FilterExpression>
+                    <Operator>TopN</Operator>
+                    <FilterValues>
+                      <FilterValue>4</FilterValue>
+                    </FilterValues>
+                  </Filter>
+                  <Filter>
+                    <FilterExpression>=CDbl(Fields!Number_Of_Rolls.Value)</FilterExpression>
+                    <Operator>Equal</Operator>
+                    <FilterValues>
+                      <FilterValue DataType="Float">=0</FilterValue>
+                    </FilterValues>
+                  </Filter>
+                  <Filter>
+                    <FilterExpression>=Fields!Net_Wager_Amt.Value</FilterExpression>
+                    <Operator>NotEqual</Operator>
+                    <FilterValues>
+                      <FilterValue>=Nothing</FilterValue>
+                    </FilterValues>
+                  </Filter>
+                </Filters>
+              </Group>
+              <SortExpressions>
+                <SortExpression>
+                  <Value>=CDate(Fields!Roll_Start_Date.Value)</Value>
+                </SortExpression>
+              </SortExpressions>
+              <Label>=CDate(Fields!Roll_Start_Date.Value)</Label>
+            </ChartMember>
+          </ChartMembers>
+        </ChartSeriesHierarchy>
+        <ChartData>
+          <ChartSeriesCollection>
+            <ChartSeries Name="Net_Wager_Amt">
+              <ChartDataPoints>
+                <ChartDataPoint>
+                  <ChartDataPointValues>
+                    <X>=Fields!Number_Of_Rolls.Value</X>
+                    <Y>=Sum(Fields!Net_Wager_Amt.Value)</Y>
+                  </ChartDataPointValues>
+                  <ChartDataLabel>
+                    <Style />
+                  </ChartDataLabel>
+                  <ToolTip>=Fields!Draw_Number.Value &amp; Chr(13) &amp; Format(CDate(Fields!Draw_Date_1.Value), "M/d/y") &amp; Chr(13) &amp; "Roll: " &amp; Fields!Number_Of_Rolls.Value &amp; Chr(13) &amp; "Sales: $" &amp; Round(Sum(Fields!Net_Wager_Amt.Value) * 1E-06, 2) &amp; "M"</ToolTip>
+                  <Style>
+                    <Border>
+                      <Width>=iif(Fields!Roll_Start_Date.Value = Last(Fields!Roll_Start_Date.Value, "MMGraph"), "3pt", "1pt")</Width>
+                    </Border>
+                  </Style>
+                  <ChartMarker>
+                    <Size>=iif(Fields!Roll_Start_Date.Value = Last(Fields!Roll_Start_Date.Value, "MMGraph"), "3.75pt", "2.5pt")</Size>
+                    <Style>
+                      <Border>
+                        <Color>=iif(Fields!Roll_Start_Date.Value = Last(Fields!Roll_Start_Date.Value, "MMGraph"), "Orange", "Black")</Color>
+                      </Border>
+                      <Color>=iif(Fields!Roll_Start_Date.Value = Last(Fields!Roll_Start_Date.Value, "MMGraph"), "Orange", "Black")</Color>
+                    </Style>
+                  </ChartMarker>
+                  <DataElementOutput>Output</DataElementOutput>
+                </ChartDataPoint>
+              </ChartDataPoints>
+              <Style />
+              <ChartEmptyPoints>
+                <Style />
+                <ChartMarker>
+                  <Style />
+                </ChartMarker>
+                <ChartDataLabel>
+                  <Style />
+                </ChartDataLabel>
+              </ChartEmptyPoints>
+              <ChartItemInLegend>
+                <LegendText>=iif(Fields!Roll_Start_Date.Value = Last(Fields!Roll_Start_Date.Value, "MMGraph"), (Format(CDate(Fields!Roll_Start_Date.Value), "M/d/y") &amp; "(Current)"), Format(CDate(Fields!Roll_Start_Date.Value), "M/d/y"))</LegendText>
+              </ChartItemInLegend>
+              <ValueAxisName>Primary</ValueAxisName>
+              <CategoryAxisName>Primary</CategoryAxisName>
+              <ChartSmartLabel>
+                <CalloutLineColor>Black</CalloutLineColor>
+                <MinMovingDistance>0pt</MinMovingDistance>
+              </ChartSmartLabel>
+            </ChartSeries>
+          </ChartSeriesCollection>
+        </ChartData>
+        <ChartAreas>
+          <ChartArea Name="Default">
+            <ChartCategoryAxes>
+              <ChartAxis Name="Primary">
+                <Style>
+                  <FontFamily>Verdana</FontFamily>
+                  <FontSize>8pt</FontSize>
+                  <Format>0;(0)</Format>
+                </Style>
+                <ChartAxisTitle>
+                  <Caption>Roll Number</Caption>
+                  <Style>
+                    <FontFamily>Verdana</FontFamily>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </ChartAxisTitle>
+                <IntervalType>Number</IntervalType>
+                <ChartMajorGridLines>
+                  <Enabled>False</Enabled>
+                  <Style>
+                    <Border>
+                      <Color>Gainsboro</Color>
+                    </Border>
+                  </Style>
+                </ChartMajorGridLines>
+                <ChartMinorGridLines>
+                  <Enabled>False</Enabled>
+                  <Style>
+                    <Border>
+                      <Color>Gainsboro</Color>
+                      <Style>Dotted</Style>
+                    </Border>
+                  </Style>
+                </ChartMinorGridLines>
+                <ChartMinorTickMarks>
+                  <Length>0.5</Length>
+                </ChartMinorTickMarks>
+                <CrossAt>NaN</CrossAt>
+                <InterlacedColor>Khaki</InterlacedColor>
+                <Scalar>true</Scalar>
+                <Minimum>=Parameters!NumOfRollStart.Value -.4</Minimum>
+                <Maximum>=Parameters!NumOfRollsEnd.Value + .4</Maximum>
+                <Angle>-90</Angle>
+                <PreventFontShrink>true</PreventFontShrink>
+                <PreventFontGrow>true</PreventFontGrow>
+                <PreventLabelOffset>true</PreventLabelOffset>
+                <LabelsAutoFitDisabled>true</LabelsAutoFitDisabled>
+                <ChartAxisScaleBreak>
+                  <Style />
+                </ChartAxisScaleBreak>
+              </ChartAxis>
+              <ChartAxis Name="Secondary">
+                <Style>
+                  <FontSize>8pt</FontSize>
+                </Style>
+                <ChartAxisTitle>
+                  <Caption>Axis Title</Caption>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </ChartAxisTitle>
+                <ChartMajorGridLines>
+                  <Enabled>False</Enabled>
+                  <Style>
+                    <Border>
+                      <Color>Gainsboro</Color>
+                    </Border>
+                  </Style>
+                </ChartMajorGridLines>
+                <ChartMinorGridLines>
+                  <Style>
+                    <Border>
+                      <Color>Gainsboro</Color>
+                      <Style>Dotted</Style>
+                    </Border>
+                  </Style>
+                </ChartMinorGridLines>
+                <ChartMinorTickMarks>
+                  <Length>0.5</Length>
+                </ChartMinorTickMarks>
+                <CrossAt>NaN</CrossAt>
+                <Location>Opposite</Location>
+                <Minimum>NaN</Minimum>
+                <Maximum>NaN</Maximum>
+                <ChartAxisScaleBreak>
+                  <Style />
+                </ChartAxisScaleBreak>
+              </ChartAxis>
+            </ChartCategoryAxes>
+            <ChartValueAxes>
+              <ChartAxis Name="Primary">
+                <Style>
+                  <FontFamily>Verdana</FontFamily>
+                  <FontSize>8pt</FontSize>
+                  <Format>0,,.0M;(0,,.0M)</Format>
+                </Style>
+                <ChartAxisTitle>
+                  <Caption>Sales</Caption>
+                  <Style>
+                    <FontFamily>Verdana</FontFamily>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </ChartAxisTitle>
+                <ChartMajorGridLines>
+                  <Style>
+                    <Border>
+                      <Color>Gainsboro</Color>
+                      <Style>Dotted</Style>
+                    </Border>
+                  </Style>
+                </ChartMajorGridLines>
+                <ChartMinorGridLines>
+                  <Style>
+                    <Border>
+                      <Color>Gainsboro</Color>
+                      <Style>Dotted</Style>
+                    </Border>
+                  </Style>
+                </ChartMinorGridLines>
+                <ChartMinorTickMarks>
+                  <Length>0.5</Length>
+                </ChartMinorTickMarks>
+                <CrossAt>NaN</CrossAt>
+                <ChartStripLines>
+                  <ChartStripLine>
+                    <Style>
+                      <Border>
+                        <Color>Silver</Color>
+                        <Style>Solid</Style>
+                      </Border>
+                      <BackgroundGradientType>None</BackgroundGradientType>
+                      <FontSize>8pt</FontSize>
+                      <TextAlign>General</TextAlign>
+                      <VerticalAlign>Top</VerticalAlign>
+                    </Style>
+                  </ChartStripLine>
+                </ChartStripLines>
+                <Minimum>0</Minimum>
+                <Maximum>NaN</Maximum>
+                <PreventFontShrink>true</PreventFontShrink>
+                <PreventFontGrow>true</PreventFontGrow>
+                <PreventWordWrap>true</PreventWordWrap>
+                <ChartAxisScaleBreak>
+                  <Style />
+                </ChartAxisScaleBreak>
+              </ChartAxis>
+              <ChartAxis Name="Secondary">
+                <Style>
+                  <FontSize>8pt</FontSize>
+                </Style>
+                <ChartAxisTitle>
+                  <Caption>Axis Title</Caption>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </ChartAxisTitle>
+                <ChartMajorGridLines>
+                  <Style>
+                    <Border>
+                      <Color>Gainsboro</Color>
+                    </Border>
+                  </Style>
+                </ChartMajorGridLines>
+                <ChartMinorGridLines>
+                  <Style>
+                    <Border>
+                      <Color>Gainsboro</Color>
+                      <Style>Dotted</Style>
+                    </Border>
+                  </Style>
+                </ChartMinorGridLines>
+                <ChartMinorTickMarks>
+                  <Length>0.5</Length>
+                </ChartMinorTickMarks>
+                <CrossAt>NaN</CrossAt>
+                <Location>Opposite</Location>
+                <Minimum>NaN</Minimum>
+                <Maximum>NaN</Maximum>
+                <ChartAxisScaleBreak>
+                  <Style />
+                </ChartAxisScaleBreak>
+              </ChartAxis>
+            </ChartValueAxes>
+            <Style>
+              <BackgroundGradientType>None</BackgroundGradientType>
+            </Style>
+          </ChartArea>
+        </ChartAreas>
+        <ChartLegends>
+          <ChartLegend Name="Default">
+            <Style>
+              <BackgroundGradientType>None</BackgroundGradientType>
+              <FontSize>8pt</FontSize>
+            </Style>
+            <Position>TopCenter</Position>
+            <DockToChartArea>Default</DockToChartArea>
+            <DockOutsideChartArea>true</DockOutsideChartArea>
+            <ChartLegendTitle>
+              <Caption />
+              <Style>
+                <FontSize>8pt</FontSize>
+                <FontWeight>Bold</FontWeight>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </ChartLegendTitle>
+            <AutoFitTextDisabled>true</AutoFitTextDisabled>
+            <HeaderSeparatorColor>Black</HeaderSeparatorColor>
+            <ColumnSeparatorColor>Black</ColumnSeparatorColor>
+          </ChartLegend>
+        </ChartLegends>
+        <Palette>Custom</Palette>
+        <ChartCustomPaletteColors>
+          <ChartCustomPaletteColor>CornflowerBlue</ChartCustomPaletteColor>
+          <ChartCustomPaletteColor>Green</ChartCustomPaletteColor>
+          <ChartCustomPaletteColor>SlateBlue</ChartCustomPaletteColor>
+          <ChartCustomPaletteColor>SaddleBrown</ChartCustomPaletteColor>
+        </ChartCustomPaletteColors>
+        <ChartBorderSkin>
+          <Style>
+            <BackgroundColor>Gray</BackgroundColor>
+            <BackgroundGradientType>None</BackgroundGradientType>
+            <Color>White</Color>
+          </Style>
+        </ChartBorderSkin>
+        <ChartNoDataMessage Name="NoDataMessage">
+          <Caption>No Data Available</Caption>
+          <Hidden>true</Hidden>
+          <Style>
+            <BackgroundGradientType>None</BackgroundGradientType>
+            <TextAlign>General</TextAlign>
+            <VerticalAlign>Top</VerticalAlign>
+          </Style>
+        </ChartNoDataMessage>
+        <DataSetName>MMGraph</DataSetName>
+        <Filters>
+          <Filter>
+            <FilterExpression>=Fields!Roll_Start_Date.Value</FilterExpression>
+            <Operator>NotEqual</Operator>
+            <FilterValues>
+              <FilterValue>=""</FilterValue>
+            </FilterValues>
+          </Filter>
+          <Filter>
+            <FilterExpression>=Fields!Number_Of_Rolls.Value</FilterExpression>
+            <Operator>In</Operator>
+            <FilterValues>
+              <FilterValue>0</FilterValue>
+              <FilterValue>1</FilterValue>
+              <FilterValue>2</FilterValue>
+              <FilterValue>3</FilterValue>
+              <FilterValue>4</FilterValue>
+              <FilterValue>5</FilterValue>
+              <FilterValue>6</FilterValue>
+              <FilterValue>7</FilterValue>
+              <FilterValue>8</FilterValue>
+              <FilterValue>9</FilterValue>
+              <FilterValue>10</FilterValue>
+              <FilterValue>11</FilterValue>
+              <FilterValue>12</FilterValue>
+              <FilterValue>13</FilterValue>
+              <FilterValue>14</FilterValue>
+              <FilterValue>15</FilterValue>
+              <FilterValue>16</FilterValue>
+              <FilterValue>17</FilterValue>
+              <FilterValue>18</FilterValue>
+              <FilterValue>19</FilterValue>
+              <FilterValue>20</FilterValue>
+              <FilterValue>21</FilterValue>
+              <FilterValue>22</FilterValue>
+              <FilterValue>23</FilterValue>
+              <FilterValue>24</FilterValue>
+              <FilterValue>25</FilterValue>
+              <FilterValue>26</FilterValue>
+              <FilterValue>27</FilterValue>
+              <FilterValue>28</FilterValue>
+              <FilterValue>29</FilterValue>
+              <FilterValue>30</FilterValue>
+              <FilterValue>31</FilterValue>
+              <FilterValue>32</FilterValue>
+              <FilterValue>33</FilterValue>
+              <FilterValue>34</FilterValue>
+              <FilterValue>35</FilterValue>
+              <FilterValue>36</FilterValue>
+              <FilterValue>37</FilterValue>
+              <FilterValue>38</FilterValue>
+              <FilterValue>39</FilterValue>
+              <FilterValue>40</FilterValue>
+              <FilterValue>41</FilterValue>
+              <FilterValue>42</FilterValue>
+              <FilterValue>43</FilterValue>
+              <FilterValue>44</FilterValue>
+              <FilterValue>45</FilterValue>
+              <FilterValue>46</FilterValue>
+              <FilterValue>47</FilterValue>
+              <FilterValue>48</FilterValue>
+              <FilterValue>49</FilterValue>
+              <FilterValue>50</FilterValue>
+            </FilterValues>
+          </Filter>
+          <Filter>
+            <FilterExpression>=CDate(Fields!Draw_Date_1.Value)</FilterExpression>
+            <Operator>LessThanOrEqual</Operator>
+            <FilterValues>
+              <FilterValue DataType="DateTime">=CDate(Parameters!DataAsOfDateParam.Value)</FilterValue>
+            </FilterValues>
+          </Filter>
+          <Filter>
+            <FilterExpression>=Fields!Roll_Start_Day.Value</FilterExpression>
+            <Operator>Equal</Operator>
+            <FilterValues>
+              <FilterValue>="Fri"</FilterValue>
+            </FilterValues>
+          </Filter>
+        </Filters>
+        <Top>0.57055in</Top>
+        <Left>4.93552in</Left>
+        <Height>2.56042in</Height>
+        <Width>4.76885in</Width>
+        <ZIndex>7</ZIndex>
+        <Style>
+          <Border>
+            <Color>LightGrey</Color>
+            <Style>None</Style>
+          </Border>
+          <BackgroundColor>White</BackgroundColor>
+          <BackgroundGradientType>None</BackgroundGradientType>
+        </Style>
+      </Chart>
+    </ReportItems>
+    <Height>4.20917in</Height>
+    <Style />
+  </Body>
+  <Width>9.70437in</Width>
+  <Page>
+    <Style />
+  </Page>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DRAW_OLAP">
+      <DataSourceReference>DRAW_OLAP</DataSourceReference>
+      <rd:SecurityType>None</rd:SecurityType>
+      <rd:DataSourceID>7e4f436a-1635-4615-96d2-b452dcb2ea01</rd:DataSourceID>
+    </DataSource>
+    <DataSource Name="BIDW">
+      <DataSourceReference>BIDW</DataSourceReference>
+      <rd:SecurityType>None</rd:SecurityType>
+      <rd:DataSourceID>d9b191c4-f8d7-4301-9315-cf1f2321c572</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="MEGAMillions">
+      <Query>
+        <DataSourceName>DRAW_OLAP</DataSourceName>
+        <CommandText> SELECT NON EMPTY { [Measures].[Advance Play %], [Measures].[Transaction Ct], [Measures].[Net Wager Amt] } ON COLUMNS, NON EMPTY { ([Draw Info].[Game Name - Draw Number].[Draw Number].ALLMEMBERS * [Draw Info].[Draw Date].[Draw Date].ALLMEMBERS * [Draw Info].[Number Of Rolls].[Number Of Rolls].ALLMEMBERS * [Draw Info].[Roll Start Date].[Roll Start Date].ALLMEMBERS * [Draw Info].[Est Jackpot Amt].[Est Jackpot Amt].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( { [Draw Info].[Game Name - Draw Date].[Game Name].&amp;[MEGA Millions] } ) ON COLUMNS FROM ( SELECT ( LastPeriods (2, Tail(Filter([Draw Info].[Fiscal Year - Draw Date].[Fiscal Year].Members, 
+                 NOT IsEmpty(([Report  Date].[Fiscal Year - Week].CurrentMember,
+				 [Measures].[Avg JP in Millions YTD]))),1).item(0)) ) ON COLUMNS FROM [Draw])) WHERE ( [Draw Info].[Game Name - Draw Date].[Game Name].&amp;[MEGA Millions] ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</CommandText>
+        <rd:DesignerState>
+          <QueryDefinition xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
+            <CommandType>MDX</CommandType>
+            <QuerySpecification xsi:type="MDXQuerySpecification" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+              <Select>
+                <Items>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Draw Info</DimensionName>
+                      <HierarchyName>Game Name - Draw Number</HierarchyName>
+                      <HierarchyUniqueName>[Draw Info].[Game Name - Draw Number]</HierarchyUniqueName>
+                      <LevelName>Draw Number</LevelName>
+                      <UniqueName>[Draw Info].[Game Name - Draw Number].[Draw Number]</UniqueName>
+                    </ID>
+                    <ItemCaption>Draw Number</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Draw Info</DimensionName>
+                      <HierarchyName>Draw Date</HierarchyName>
+                      <HierarchyUniqueName>[Draw Info].[Draw Date]</HierarchyUniqueName>
+                      <LevelName>Draw Date</LevelName>
+                      <UniqueName>[Draw Info].[Draw Date].[Draw Date]</UniqueName>
+                    </ID>
+                    <ItemCaption>Draw Date</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Draw Info</DimensionName>
+                      <HierarchyName>Number Of Rolls</HierarchyName>
+                      <HierarchyUniqueName>[Draw Info].[Number Of Rolls]</HierarchyUniqueName>
+                      <LevelName>Number Of Rolls</LevelName>
+                      <UniqueName>[Draw Info].[Number Of Rolls].[Number Of Rolls]</UniqueName>
+                    </ID>
+                    <ItemCaption>Number Of Rolls</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Draw Info</DimensionName>
+                      <HierarchyName>Roll Start Date</HierarchyName>
+                      <HierarchyUniqueName>[Draw Info].[Roll Start Date]</HierarchyUniqueName>
+                      <LevelName>Roll Start Date</LevelName>
+                      <UniqueName>[Draw Info].[Roll Start Date].[Roll Start Date]</UniqueName>
+                    </ID>
+                    <ItemCaption>Roll Start Date</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Draw Info</DimensionName>
+                      <HierarchyName>Est Jackpot Amt</HierarchyName>
+                      <HierarchyUniqueName>[Draw Info].[Est Jackpot Amt]</HierarchyUniqueName>
+                      <LevelName>Est Jackpot Amt</LevelName>
+                      <UniqueName>[Draw Info].[Est Jackpot Amt].[Est Jackpot Amt]</UniqueName>
+                    </ID>
+                    <ItemCaption>Est Jackpot Amt</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Measure">
+                      <MeasureName>Advance Play %</MeasureName>
+                      <UniqueName>[Measures].[Advance Play %]</UniqueName>
+                    </ID>
+                    <ItemCaption>Advance Play %</ItemCaption>
+                    <BackColor>true</BackColor>
+                    <ForeColor>true</ForeColor>
+                    <FontFamily>true</FontFamily>
+                    <FontSize>true</FontSize>
+                    <FontWeight>true</FontWeight>
+                    <FontStyle>true</FontStyle>
+                    <FontDecoration>true</FontDecoration>
+                    <FormattedValue>true</FormattedValue>
+                    <FormatString>true</FormatString>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Measure">
+                      <MeasureName>Transaction Ct</MeasureName>
+                      <UniqueName>[Measures].[Transaction Ct]</UniqueName>
+                    </ID>
+                    <ItemCaption>Transaction Ct</ItemCaption>
+                    <BackColor>true</BackColor>
+                    <ForeColor>true</ForeColor>
+                    <FontFamily>true</FontFamily>
+                    <FontSize>true</FontSize>
+                    <FontWeight>true</FontWeight>
+                    <FontStyle>true</FontStyle>
+                    <FontDecoration>true</FontDecoration>
+                    <FormattedValue>true</FormattedValue>
+                    <FormatString>true</FormatString>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Measure">
+                      <MeasureName>Net Wager Amt</MeasureName>
+                      <UniqueName>[Measures].[Net Wager Amt]</UniqueName>
+                    </ID>
+                    <ItemCaption>Net Wager Amt</ItemCaption>
+                    <BackColor>true</BackColor>
+                    <ForeColor>true</ForeColor>
+                    <FontFamily>true</FontFamily>
+                    <FontSize>true</FontSize>
+                    <FontWeight>true</FontWeight>
+                    <FontStyle>true</FontStyle>
+                    <FontDecoration>true</FontDecoration>
+                    <FormattedValue>true</FormattedValue>
+                    <FormatString>true</FormatString>
+                  </Item>
+                </Items>
+              </Select>
+              <From>Draw</From>
+              <Filter>
+                <FilterItems>
+                  <FilterItem>
+                    <HierarchyUniqueName>[Draw Info].[Fiscal Year - Draw Date]</HierarchyUniqueName>
+                    <Condition xsi:type="MDX">
+                      <Text>LastPeriods (2, Tail(Filter([Draw Info].[Fiscal Year - Draw Date].[Fiscal Year].Members, 
+                 NOT IsEmpty(([Report  Date].[Fiscal Year - Week].CurrentMember,
+				 [Measures].[Avg JP in Millions YTD]))),1).item(0))</Text>
+                    </Condition>
+                  </FilterItem>
+                  <FilterItem>
+                    <HierarchyUniqueName>[Draw Info].[Game Name - Draw Date]</HierarchyUniqueName>
+                    <Condition xsi:type="EqualTo">
+                      <Members>
+                        <Member>
+                          <MemberUniqueName>[Draw Info].[Game Name - Draw Date].[Game Name].&amp;[MEGA Millions]</MemberUniqueName>
+                        </Member>
+                      </Members>
+                    </Condition>
+                  </FilterItem>
+                </FilterItems>
+              </Filter>
+              <Calculations />
+              <Aggregates />
+              <QueryProperties />
+            </QuerySpecification>
+            <Query>
+              <Statement> SELECT NON EMPTY { [Measures].[Advance Play %], [Measures].[Transaction Ct], [Measures].[Net Wager Amt] } ON COLUMNS, NON EMPTY { ([Draw Info].[Game Name - Draw Number].[Draw Number].ALLMEMBERS * [Draw Info].[Draw Date].[Draw Date].ALLMEMBERS * [Draw Info].[Number Of Rolls].[Number Of Rolls].ALLMEMBERS * [Draw Info].[Roll Start Date].[Roll Start Date].ALLMEMBERS * [Draw Info].[Est Jackpot Amt].[Est Jackpot Amt].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( { [Draw Info].[Game Name - Draw Date].[Game Name].&amp;[MEGA Millions] } ) ON COLUMNS FROM ( SELECT ( LastPeriods (2, Tail(Filter([Draw Info].[Fiscal Year - Draw Date].[Fiscal Year].Members, 
+                 NOT IsEmpty(([Report  Date].[Fiscal Year - Week].CurrentMember,
+				 [Measures].[Avg JP in Millions YTD]))),1).item(0)) ) ON COLUMNS FROM [Draw])) WHERE ( [Draw Info].[Game Name - Draw Date].[Game Name].&amp;[MEGA Millions] ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</Statement>
+              <ParameterDefinitions />
+            </Query>
+          </QueryDefinition>
+        </rd:DesignerState>
+      </Query>
+      <Fields>
+        <Field Name="Draw_Number">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Draw Info].[Game Name - Draw Number].[Draw Number]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Number_Of_Rolls">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Draw Info].[Number Of Rolls].[Number Of Rolls]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Draw_Date">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Draw Info].[Draw Date].[Draw Date]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Roll_Start_Date">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Draw Info].[Roll Start Date].[Roll Start Date]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Transaction_Ct">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[Transaction Ct]" /&gt;</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Est_Jackpot_Amt">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Draw Info].[Est Jackpot Amt].[Est Jackpot Amt]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Net_Wager_Amt">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[Net Wager Amt]" /&gt;</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Advance_Play__">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[Advance Play %]" /&gt;</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="DataAsOfDate">
+      <Query>
+        <DataSourceName>DRAW_OLAP</DataSourceName>
+        <CommandText> SELECT NON EMPTY { [Measures].[Net Wager Amt] } ON COLUMNS, NON EMPTY { ([Report  Date].[Calendar Day].[Calendar Day].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( { [Draw Products].[Game Type - Game Name].[Game Name2].&amp;[MEGA Millions] } ) ON COLUMNS FROM ( SELECT ( LastPeriods (1, Tail(Filter([Report  Date].[Calendar Day].[Calendar Day].Members, 
+NOT IsEmpty(([Report  Date].[Calendar Day].CurrentMember,[Measures].[Net Wager Amt]))),1).item(0)) ) ON COLUMNS FROM [Draw])) WHERE ( [Draw Products].[Game Type - Game Name].[Game Name2].&amp;[MEGA Millions] ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</CommandText>
+        <rd:DesignerState>
+          <QueryDefinition xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
+            <CommandType>MDX</CommandType>
+            <QuerySpecification xsi:type="MDXQuerySpecification" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+              <Select>
+                <Items>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Report  Date</DimensionName>
+                      <HierarchyName>Calendar Day</HierarchyName>
+                      <HierarchyUniqueName>[Report  Date].[Calendar Day]</HierarchyUniqueName>
+                      <LevelName>Calendar Day</LevelName>
+                      <UniqueName>[Report  Date].[Calendar Day].[Calendar Day]</UniqueName>
+                    </ID>
+                    <ItemCaption>Calendar Day</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Measure">
+                      <MeasureName>Net Wager Amt</MeasureName>
+                      <UniqueName>[Measures].[Net Wager Amt]</UniqueName>
+                    </ID>
+                    <ItemCaption>Net Wager Amt</ItemCaption>
+                    <BackColor>true</BackColor>
+                    <ForeColor>true</ForeColor>
+                    <FontFamily>true</FontFamily>
+                    <FontSize>true</FontSize>
+                    <FontWeight>true</FontWeight>
+                    <FontStyle>true</FontStyle>
+                    <FontDecoration>true</FontDecoration>
+                    <FormattedValue>true</FormattedValue>
+                    <FormatString>true</FormatString>
+                  </Item>
+                </Items>
+              </Select>
+              <From>Draw</From>
+              <Filter>
+                <FilterItems>
+                  <FilterItem>
+                    <HierarchyUniqueName>[Report  Date].[Calendar Day]</HierarchyUniqueName>
+                    <Condition xsi:type="MDX">
+                      <Text>LastPeriods (1, Tail(Filter([Report  Date].[Calendar Day].[Calendar Day].Members, 
+NOT IsEmpty(([Report  Date].[Calendar Day].CurrentMember,[Measures].[Net Wager Amt]))),1).item(0))</Text>
+                    </Condition>
+                  </FilterItem>
+                  <FilterItem>
+                    <HierarchyUniqueName>[Draw Products].[Game Type - Game Name]</HierarchyUniqueName>
+                    <Condition xsi:type="EqualTo">
+                      <Members>
+                        <Member>
+                          <MemberUniqueName>[Draw Products].[Game Type - Game Name].[Game Name2].&amp;[MEGA Millions]</MemberUniqueName>
+                        </Member>
+                      </Members>
+                    </Condition>
+                  </FilterItem>
+                </FilterItems>
+              </Filter>
+              <Calculations />
+              <Aggregates />
+              <QueryProperties />
+            </QuerySpecification>
+            <Query>
+              <Statement> SELECT NON EMPTY { [Measures].[Net Wager Amt] } ON COLUMNS, NON EMPTY { ([Report  Date].[Calendar Day].[Calendar Day].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM ( SELECT ( { [Draw Products].[Game Type - Game Name].[Game Name2].&amp;[MEGA Millions] } ) ON COLUMNS FROM ( SELECT ( LastPeriods (1, Tail(Filter([Report  Date].[Calendar Day].[Calendar Day].Members, 
+NOT IsEmpty(([Report  Date].[Calendar Day].CurrentMember,[Measures].[Net Wager Amt]))),1).item(0)) ) ON COLUMNS FROM [Draw])) WHERE ( [Draw Products].[Game Type - Game Name].[Game Name2].&amp;[MEGA Millions] ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</Statement>
+              <ParameterDefinitions />
+            </Query>
+          </QueryDefinition>
+        </rd:DesignerState>
+      </Query>
+      <Fields>
+        <Field Name="Calendar_Day">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Report  Date].[Calendar Day].[Calendar Day]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Net_Wager_Amt">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[Net Wager Amt]" /&gt;</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="MMGraph">
+      <Query>
+        <DataSourceName>DRAW_OLAP</DataSourceName>
+        <CommandText> SELECT NON EMPTY { 
+ [Measures].[Jackpot Amt]
+ , [Measures].[Net Wager Amt] } ON COLUMNS, 
+ NON EMPTY { (
+ [Draw Info].[Game Name - Draw Number].[Draw Number].ALLMEMBERS 
+ * [Draw Info].[Game Name - Draw Date].[Draw Date 1].ALLMEMBERS
+ * [Draw Info].[Number Of Rolls].[Number Of Rolls].ALLMEMBERS 
+ * [Draw Info].[Roll Start Date].[Roll Start Date].ALLMEMBERS 
+ * [Draw Info].[Roll Start Day].[Roll Start Day].ALLMEMBERS ) } 
+ DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS 
+ FROM ( SELECT ( { [Draw Info].[Roll Start Day].&amp;[703]&amp;[3], [Draw Info].[Roll Start Day].&amp;[703]&amp;[6] } ) ON COLUMNS 
+ FROM ( SELECT ( { [Draw Info].[Game Name - Draw Number].[Game Name].&amp;[MEGA Millions] } ) ON COLUMNS
+ FROM ( SELECT ( -{[Draw Info].[Roll Start Date].&amp;[703]&amp;[2011-05-31T00:00:00],
+				  [Draw Info].[Roll Start Date].&amp;[703]&amp;[2011-07-01T00:00:00],
+				  [Draw Info].[Roll Start Date].&amp;[703]&amp;[2011-07-05T00:00:00],
+				  [Draw Info].[Roll Start Date].&amp;[703]&amp;[2011-08-09T00:00:00],
+				  [Draw Info].[Roll Start Date].&amp;[703]&amp;[2011-08-23T00:00:00],
+				  [Draw Info].[Roll Start Date].&amp;[703]&amp;[2011-10-04T00:00:00],
+				  [Draw Info].[Roll Start Date].&amp;[703]&amp;[2011-10-07T00:00:00],
+				  [Draw Info].[Roll Start Date].&amp;[703]&amp;[2011-10-11T00:00:00],
+				  [Draw Info].[Roll Start Date].&amp;[703]&amp;[2011-10-14T00:00:00],
+				  [Draw Info].[Roll Start Date].&amp;[703]&amp;[2011-10-18T00:00:00],
+				  [Draw Info].[Roll Start Date].&amp;[703]&amp;[2011-10-21T00:00:00],
+				  [Draw Info].[Roll Start Date].&amp;[703]&amp;[2011-10-25T00:00:00],
+				  [Draw Info].[Roll Start Date].&amp;[703]&amp;[2011-10-28T00:00:00],
+				  [Draw Info].[Roll Start Date].&amp;[703]&amp;[2011-10-28T00:00:00],
+				  [Draw Info].[Roll Start Date].&amp;[703]&amp;[2011-11-04T00:00:00],
+				  [Draw Info].[Roll Start Date].&amp;[703]&amp;[2011-12-30T00:00:00],
+				  [Draw Info].[Roll Start Date].&amp;[703]&amp;[2012-01-27T00:00:00]
+					  } ) ON COLUMNS 
+ FROM [Draw])))
+ CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</CommandText>
+        <rd:DesignerState>
+          <QueryDefinition xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
+            <CommandType>MDX</CommandType>
+            <Type>Query</Type>
+            <QuerySpecification xsi:type="MDXQuerySpecification" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+              <Select>
+                <Items>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Draw Info</DimensionName>
+                      <HierarchyName>Game Name - Draw Number</HierarchyName>
+                      <HierarchyUniqueName>[Draw Info].[Game Name - Draw Number]</HierarchyUniqueName>
+                      <LevelName>Game Name</LevelName>
+                      <UniqueName>[Draw Info].[Game Name - Draw Number].[Game Name]</UniqueName>
+                    </ID>
+                    <ItemCaption>Game Name</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Draw Info</DimensionName>
+                      <HierarchyName>Game Name - Draw Number</HierarchyName>
+                      <HierarchyUniqueName>[Draw Info].[Game Name - Draw Number]</HierarchyUniqueName>
+                      <LevelName>Draw Number</LevelName>
+                      <UniqueName>[Draw Info].[Game Name - Draw Number].[Draw Number]</UniqueName>
+                    </ID>
+                    <ItemCaption>Draw Number</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Draw Info</DimensionName>
+                      <HierarchyName>Game Name - Draw Date</HierarchyName>
+                      <HierarchyUniqueName>[Draw Info].[Game Name - Draw Date]</HierarchyUniqueName>
+                      <LevelName>Game Name</LevelName>
+                      <UniqueName>[Draw Info].[Game Name - Draw Date].[Game Name]</UniqueName>
+                    </ID>
+                    <ItemCaption>Game Name</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Draw Info</DimensionName>
+                      <HierarchyName>Game Name - Draw Date</HierarchyName>
+                      <HierarchyUniqueName>[Draw Info].[Game Name - Draw Date]</HierarchyUniqueName>
+                      <LevelName>Draw Date 1</LevelName>
+                      <UniqueName>[Draw Info].[Game Name - Draw Date].[Draw Date 1]</UniqueName>
+                    </ID>
+                    <ItemCaption>Draw Date 1</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Draw Info</DimensionName>
+                      <HierarchyName>Number Of Rolls</HierarchyName>
+                      <HierarchyUniqueName>[Draw Info].[Number Of Rolls]</HierarchyUniqueName>
+                      <LevelName>Number Of Rolls</LevelName>
+                      <UniqueName>[Draw Info].[Number Of Rolls].[Number Of Rolls]</UniqueName>
+                    </ID>
+                    <ItemCaption>Number Of Rolls</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Draw Info</DimensionName>
+                      <HierarchyName>Roll Start Date</HierarchyName>
+                      <HierarchyUniqueName>[Draw Info].[Roll Start Date]</HierarchyUniqueName>
+                      <LevelName>Roll Start Date</LevelName>
+                      <UniqueName>[Draw Info].[Roll Start Date].[Roll Start Date]</UniqueName>
+                    </ID>
+                    <ItemCaption>Roll Start Date</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Draw Info</DimensionName>
+                      <HierarchyName>Roll Start Day</HierarchyName>
+                      <HierarchyUniqueName>[Draw Info].[Roll Start Day]</HierarchyUniqueName>
+                      <LevelName>Roll Start Day</LevelName>
+                      <UniqueName>[Draw Info].[Roll Start Day].[Roll Start Day]</UniqueName>
+                    </ID>
+                    <ItemCaption>Roll Start Day</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Measure">
+                      <MeasureName>Jackpot Amt</MeasureName>
+                      <UniqueName>[Measures].[Jackpot Amt]</UniqueName>
+                    </ID>
+                    <ItemCaption>Jackpot Amt</ItemCaption>
+                    <BackColor>true</BackColor>
+                    <ForeColor>true</ForeColor>
+                    <FontFamily>true</FontFamily>
+                    <FontSize>true</FontSize>
+                    <FontWeight>true</FontWeight>
+                    <FontStyle>true</FontStyle>
+                    <FontDecoration>true</FontDecoration>
+                    <FormattedValue>true</FormattedValue>
+                    <FormatString>true</FormatString>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Measure">
+                      <MeasureName>Net Wager Amt</MeasureName>
+                      <UniqueName>[Measures].[Net Wager Amt]</UniqueName>
+                    </ID>
+                    <ItemCaption>Net Wager Amt</ItemCaption>
+                    <BackColor>true</BackColor>
+                    <ForeColor>true</ForeColor>
+                    <FontFamily>true</FontFamily>
+                    <FontSize>true</FontSize>
+                    <FontWeight>true</FontWeight>
+                    <FontStyle>true</FontStyle>
+                    <FontDecoration>true</FontDecoration>
+                    <FormattedValue>true</FormattedValue>
+                    <FormatString>true</FormatString>
+                  </Item>
+                </Items>
+              </Select>
+              <From>Draw</From>
+              <Filter>
+                <FilterItems />
+              </Filter>
+              <Calculations />
+              <Aggregates />
+              <QueryProperties />
+            </QuerySpecification>
+            <Query>
+              <Statement> SELECT NON EMPTY { 
+ [Measures].[Jackpot Amt]
+ , [Measures].[Net Wager Amt] } ON COLUMNS, 
+ NON EMPTY { (
+ [Draw Info].[Game Name - Draw Number].[Draw Number].ALLMEMBERS 
+ * [Draw Info].[Game Name - Draw Date].[Draw Date 1].ALLMEMBERS
+ * [Draw Info].[Number Of Rolls].[Number Of Rolls].ALLMEMBERS 
+ * [Draw Info].[Roll Start Date].[Roll Start Date].ALLMEMBERS 
+ * [Draw Info].[Roll Start Day].[Roll Start Day].ALLMEMBERS ) } 
+ DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS 
+ FROM ( SELECT ( { [Draw Info].[Roll Start Day].&amp;[703]&amp;[3], [Draw Info].[Roll Start Day].&amp;[703]&amp;[6] } ) ON COLUMNS 
+ FROM ( SELECT ( { [Draw Info].[Game Name - Draw Number].[Game Name].&amp;[MEGA Millions] } ) ON COLUMNS
+ FROM ( SELECT ( -{[Draw Info].[Roll Start Date].&amp;[703]&amp;[2011-05-31T00:00:00],
+				  [Draw Info].[Roll Start Date].&amp;[703]&amp;[2011-07-01T00:00:00],
+				  [Draw Info].[Roll Start Date].&amp;[703]&amp;[2011-07-05T00:00:00],
+				  [Draw Info].[Roll Start Date].&amp;[703]&amp;[2011-08-09T00:00:00],
+				  [Draw Info].[Roll Start Date].&amp;[703]&amp;[2011-08-23T00:00:00],
+				  [Draw Info].[Roll Start Date].&amp;[703]&amp;[2011-10-04T00:00:00],
+				  [Draw Info].[Roll Start Date].&amp;[703]&amp;[2011-10-07T00:00:00],
+				  [Draw Info].[Roll Start Date].&amp;[703]&amp;[2011-10-11T00:00:00],
+				  [Draw Info].[Roll Start Date].&amp;[703]&amp;[2011-10-14T00:00:00],
+				  [Draw Info].[Roll Start Date].&amp;[703]&amp;[2011-10-18T00:00:00],
+				  [Draw Info].[Roll Start Date].&amp;[703]&amp;[2011-10-21T00:00:00],
+				  [Draw Info].[Roll Start Date].&amp;[703]&amp;[2011-10-25T00:00:00],
+				  [Draw Info].[Roll Start Date].&amp;[703]&amp;[2011-10-28T00:00:00],
+				  [Draw Info].[Roll Start Date].&amp;[703]&amp;[2011-10-28T00:00:00],
+				  [Draw Info].[Roll Start Date].&amp;[703]&amp;[2011-11-04T00:00:00],
+				  [Draw Info].[Roll Start Date].&amp;[703]&amp;[2011-12-30T00:00:00],
+				  [Draw Info].[Roll Start Date].&amp;[703]&amp;[2012-01-27T00:00:00]
+					  } ) ON COLUMNS 
+ FROM [Draw])))
+ CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</Statement>
+              <ParameterDefinitions />
+            </Query>
+          </QueryDefinition>
+        </rd:DesignerState>
+      </Query>
+      <Fields>
+        <Field Name="Game_Name">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Draw Info].[Game Name - Draw Number].[Game Name]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Draw_Number">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Draw Info].[Game Name - Draw Number].[Draw Number]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Game_Name2">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Draw Info].[Game Name - Draw Date].[Game Name]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Draw_Date_1">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Draw Info].[Game Name - Draw Date].[Draw Date 1]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Number_Of_Rolls">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Draw Info].[Number Of Rolls].[Number Of Rolls]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Roll_Start_Date">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Draw Info].[Roll Start Date].[Roll Start Date]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Roll_Start_Day">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Draw Info].[Roll Start Day].[Roll Start Day]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Jackpot_Amt">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[Jackpot Amt]" /&gt;</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Net_Wager_Amt">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[Net Wager Amt]" /&gt;</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="NumRolls">
+      <Query>
+        <DataSourceName>DRAW_OLAP</DataSourceName>
+        <CommandText> /* Number of Rolls - Mega Millions */
+ /* Modified: 2014-02-03 */
+ 
+ SELECT NON EMPTY { 
+  [Measures].[Net Wager Amt] } ON COLUMNS, 
+ NON EMPTY { (
+  [Draw Info].[Number Of Rolls].[Number Of Rolls].ALLMEMBERS 
+ ) } 
+ DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS 
+ FROM ( SELECT ( { [Draw Info].[Roll Start Day].&amp;[703]&amp;[3], [Draw Info].[Roll Start Day].&amp;[703]&amp;[6] } ) ON COLUMNS 
+ FROM ( SELECT ( { [Draw Info].[Game Name - Draw Number].[Game Name].&amp;[MEGA Millions] } ) ON COLUMNS
+ FROM [Draw]))
+ CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</CommandText>
+        <rd:DesignerState>
+          <QueryDefinition xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
+            <CommandType>MDX</CommandType>
+            <Type>Query</Type>
+            <QuerySpecification xsi:type="MDXQuerySpecification" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+              <Select>
+                <Items>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Draw Info</DimensionName>
+                      <HierarchyName>Number Of Rolls</HierarchyName>
+                      <HierarchyUniqueName>[Draw Info].[Number Of Rolls]</HierarchyUniqueName>
+                      <LevelName>Number Of Rolls</LevelName>
+                      <UniqueName>[Draw Info].[Number Of Rolls].[Number Of Rolls]</UniqueName>
+                    </ID>
+                    <ItemCaption>Number Of Rolls</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Measure">
+                      <MeasureName>Net Wager Amt</MeasureName>
+                      <UniqueName>[Measures].[Net Wager Amt]</UniqueName>
+                    </ID>
+                    <ItemCaption>Net Wager Amt</ItemCaption>
+                    <BackColor>true</BackColor>
+                    <ForeColor>true</ForeColor>
+                    <FontFamily>true</FontFamily>
+                    <FontSize>true</FontSize>
+                    <FontWeight>true</FontWeight>
+                    <FontStyle>true</FontStyle>
+                    <FontDecoration>true</FontDecoration>
+                    <FormattedValue>true</FormattedValue>
+                    <FormatString>true</FormatString>
+                  </Item>
+                </Items>
+              </Select>
+              <From>Draw</From>
+              <Filter>
+                <FilterItems />
+              </Filter>
+              <Calculations />
+              <Aggregates />
+              <QueryProperties />
+            </QuerySpecification>
+            <Query>
+              <Statement> /* Number of Rolls - Mega Millions */
+ /* Modified: 2014-02-03 */
+ 
+ SELECT NON EMPTY { 
+  [Measures].[Net Wager Amt] } ON COLUMNS, 
+ NON EMPTY { (
+  [Draw Info].[Number Of Rolls].[Number Of Rolls].ALLMEMBERS 
+ ) } 
+ DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS 
+ FROM ( SELECT ( { [Draw Info].[Roll Start Day].&amp;[703]&amp;[3], [Draw Info].[Roll Start Day].&amp;[703]&amp;[6] } ) ON COLUMNS 
+ FROM ( SELECT ( { [Draw Info].[Game Name - Draw Number].[Game Name].&amp;[MEGA Millions] } ) ON COLUMNS
+ FROM [Draw]))
+ CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</Statement>
+              <ParameterDefinitions />
+            </Query>
+          </QueryDefinition>
+        </rd:DesignerState>
+      </Query>
+      <Fields>
+        <Field Name="Number_Of_Rolls">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Draw Info].[Number Of Rolls].[Number Of Rolls]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Net_Wager_Amt">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[Net Wager Amt]" /&gt;</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="NumOfRollEndDefault">
+      <Query>
+        <DataSourceName>DRAW_OLAP</DataSourceName>
+        <CommandText> /* Num of Rolls End - Default Value Mega Millions*/
+ /* Modified: 2014-02-03 */
+ 
+ SELECT NON EMPTY { 
+  [Measures].[Net Wager Amt] } ON COLUMNS, 
+ NON EMPTY { (
+ BottomCount({[Draw Info].[Number Of Rolls].[Number Of Rolls].Members }, 1, 1)
+ ) } 
+ DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS 
+ FROM ( SELECT ( { [Draw Info].[Roll Start Day].&amp;[703]&amp;[3], [Draw Info].[Roll Start Day].&amp;[703]&amp;[6] } ) ON COLUMNS 
+ FROM ( SELECT ( { [Draw Info].[Game Name - Draw Number].[Game Name].&amp;[MEGA Millions] } ) ON COLUMNS
+ FROM [Draw]))
+ CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</CommandText>
+        <rd:DesignerState>
+          <QueryDefinition xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
+            <CommandType>MDX</CommandType>
+            <Type>Query</Type>
+            <QuerySpecification xsi:type="MDXQuerySpecification" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+              <Select>
+                <Items>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Draw Info</DimensionName>
+                      <HierarchyName>Number Of Rolls</HierarchyName>
+                      <HierarchyUniqueName>[Draw Info].[Number Of Rolls]</HierarchyUniqueName>
+                      <LevelName>Number Of Rolls</LevelName>
+                      <UniqueName>[Draw Info].[Number Of Rolls].[Number Of Rolls]</UniqueName>
+                    </ID>
+                    <ItemCaption>Number Of Rolls</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Measure">
+                      <MeasureName>Net Wager Amt</MeasureName>
+                      <UniqueName>[Measures].[Net Wager Amt]</UniqueName>
+                    </ID>
+                    <ItemCaption>Net Wager Amt</ItemCaption>
+                    <BackColor>true</BackColor>
+                    <ForeColor>true</ForeColor>
+                    <FontFamily>true</FontFamily>
+                    <FontSize>true</FontSize>
+                    <FontWeight>true</FontWeight>
+                    <FontStyle>true</FontStyle>
+                    <FontDecoration>true</FontDecoration>
+                    <FormattedValue>true</FormattedValue>
+                    <FormatString>true</FormatString>
+                  </Item>
+                </Items>
+              </Select>
+              <From>Draw</From>
+              <Filter>
+                <FilterItems />
+              </Filter>
+              <Calculations />
+              <Aggregates />
+              <QueryProperties />
+            </QuerySpecification>
+            <Query>
+              <Statement> /* Num of Rolls End - Default Value Mega Millions*/
+ /* Modified: 2014-02-03 */
+ 
+ SELECT NON EMPTY { 
+  [Measures].[Net Wager Amt] } ON COLUMNS, 
+ NON EMPTY { (
+ BottomCount({[Draw Info].[Number Of Rolls].[Number Of Rolls].Members }, 1, 1)
+ ) } 
+ DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS 
+ FROM ( SELECT ( { [Draw Info].[Roll Start Day].&amp;[703]&amp;[3], [Draw Info].[Roll Start Day].&amp;[703]&amp;[6] } ) ON COLUMNS 
+ FROM ( SELECT ( { [Draw Info].[Game Name - Draw Number].[Game Name].&amp;[MEGA Millions] } ) ON COLUMNS
+ FROM [Draw]))
+ CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</Statement>
+              <ParameterDefinitions />
+            </Query>
+          </QueryDefinition>
+        </rd:DesignerState>
+      </Query>
+      <Fields>
+        <Field Name="Number_Of_Rolls">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Draw Info].[Number Of Rolls].[Number Of Rolls]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Net_Wager_Amt">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[Net Wager Amt]" /&gt;</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="DrawSalesNumOfDays">
+      <Query>
+        <DataSourceName>BIDW</DataSourceName>
+        <CommandText>/* Returns counts from 1 to 200 in multiples of 10 */
+/* Modified: 2014-02-04 */
+
+SELECT DISTINCT NumOfDays = CONVERT(INT,CalYearDayNum) * 10
+, NumOfDaysLabel = 'Latest ' + CONVERT(VARCHAR(25),CONVERT(INT,CalYearDayNum) * 10)
+FROM BIDW.dbo.DimDate
+WHERE CalYearDayNum BETWEEN 1 AND 20
+ORDER BY NumOfDays</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="NumOfDays">
+          <DataField>NumOfDays</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="NumOfDaysLabel">
+          <DataField>NumOfDaysLabel</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="MaxRolls">
+      <Query>
+        <DataSourceName>DRAW_OLAP</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="NumOfRollsEnd">
+            <Value>="[Draw Info].[Number Of Rolls].&amp;[" + Parameters!NumOfRollsEnd.Value + "]"</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText> SELECT NON EMPTY { 
+  [Measures].[Net Wager Amt] } ON COLUMNS, 
+ NON EMPTY { (
+ [Draw Info].[Game Name - Draw Number].[Draw Number].ALLMEMBERS 
+ * [Draw Info].[Game Name - Draw Date].[Draw Date 1].ALLMEMBERS
+ * [Draw Info].[Number Of Rolls].[Number Of Rolls].ALLMEMBERS 
+ * [Draw Info].[Roll Start Date].[Roll Start Date].ALLMEMBERS 
+ * [Draw Info].[Roll Start Day].[Roll Start Day].ALLMEMBERS
+ ) } 
+ DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS 
+ FROM ( SELECT ( { [Draw Info].[Roll Start Day].&amp;[703]&amp;[3], [Draw Info].[Roll Start Day].&amp;[703]&amp;[6] } ) ON COLUMNS 
+ FROM ( SELECT ( { [Draw Info].[Game Name - Draw Number].[Game Name].&amp;[MEGA Millions] } ) ON COLUMNS
+ FROM ( SELECT ( STRTOSET(@NumOfRollsEnd) ) ON COLUMNS
+ FROM [Draw])))
+ CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</CommandText>
+        <rd:DesignerState>
+          <QueryDefinition xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
+            <CommandType>MDX</CommandType>
+            <Type>Query</Type>
+            <QuerySpecification xsi:type="MDXQuerySpecification" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+              <Select>
+                <Items>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Draw Info</DimensionName>
+                      <HierarchyName>Game Name - Draw Number</HierarchyName>
+                      <HierarchyUniqueName>[Draw Info].[Game Name - Draw Number]</HierarchyUniqueName>
+                      <LevelName>Game Name</LevelName>
+                      <UniqueName>[Draw Info].[Game Name - Draw Number].[Game Name]</UniqueName>
+                    </ID>
+                    <ItemCaption>Game Name</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Draw Info</DimensionName>
+                      <HierarchyName>Game Name - Draw Number</HierarchyName>
+                      <HierarchyUniqueName>[Draw Info].[Game Name - Draw Number]</HierarchyUniqueName>
+                      <LevelName>Draw Number</LevelName>
+                      <UniqueName>[Draw Info].[Game Name - Draw Number].[Draw Number]</UniqueName>
+                    </ID>
+                    <ItemCaption>Draw Number</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Draw Info</DimensionName>
+                      <HierarchyName>Game Name - Draw Date</HierarchyName>
+                      <HierarchyUniqueName>[Draw Info].[Game Name - Draw Date]</HierarchyUniqueName>
+                      <LevelName>Game Name</LevelName>
+                      <UniqueName>[Draw Info].[Game Name - Draw Date].[Game Name]</UniqueName>
+                    </ID>
+                    <ItemCaption>Game Name</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Draw Info</DimensionName>
+                      <HierarchyName>Game Name - Draw Date</HierarchyName>
+                      <HierarchyUniqueName>[Draw Info].[Game Name - Draw Date]</HierarchyUniqueName>
+                      <LevelName>Draw Date 1</LevelName>
+                      <UniqueName>[Draw Info].[Game Name - Draw Date].[Draw Date 1]</UniqueName>
+                    </ID>
+                    <ItemCaption>Draw Date 1</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Draw Info</DimensionName>
+                      <HierarchyName>Number Of Rolls</HierarchyName>
+                      <HierarchyUniqueName>[Draw Info].[Number Of Rolls]</HierarchyUniqueName>
+                      <LevelName>Number Of Rolls</LevelName>
+                      <UniqueName>[Draw Info].[Number Of Rolls].[Number Of Rolls]</UniqueName>
+                    </ID>
+                    <ItemCaption>Number Of Rolls</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Draw Info</DimensionName>
+                      <HierarchyName>Roll Start Date</HierarchyName>
+                      <HierarchyUniqueName>[Draw Info].[Roll Start Date]</HierarchyUniqueName>
+                      <LevelName>Roll Start Date</LevelName>
+                      <UniqueName>[Draw Info].[Roll Start Date].[Roll Start Date]</UniqueName>
+                    </ID>
+                    <ItemCaption>Roll Start Date</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Draw Info</DimensionName>
+                      <HierarchyName>Roll Start Day</HierarchyName>
+                      <HierarchyUniqueName>[Draw Info].[Roll Start Day]</HierarchyUniqueName>
+                      <LevelName>Roll Start Day</LevelName>
+                      <UniqueName>[Draw Info].[Roll Start Day].[Roll Start Day]</UniqueName>
+                    </ID>
+                    <ItemCaption>Roll Start Day</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Measure">
+                      <MeasureName>Net Wager Amt</MeasureName>
+                      <UniqueName>[Measures].[Net Wager Amt]</UniqueName>
+                    </ID>
+                    <ItemCaption>Net Wager Amt</ItemCaption>
+                    <BackColor>true</BackColor>
+                    <ForeColor>true</ForeColor>
+                    <FontFamily>true</FontFamily>
+                    <FontSize>true</FontSize>
+                    <FontWeight>true</FontWeight>
+                    <FontStyle>true</FontStyle>
+                    <FontDecoration>true</FontDecoration>
+                    <FormattedValue>true</FormattedValue>
+                    <FormatString>true</FormatString>
+                  </Item>
+                </Items>
+              </Select>
+              <From>Draw</From>
+              <Filter>
+                <FilterItems />
+              </Filter>
+              <Calculations />
+              <Aggregates />
+              <QueryProperties />
+            </QuerySpecification>
+            <Query>
+              <Statement> SELECT NON EMPTY { 
+  [Measures].[Net Wager Amt] } ON COLUMNS, 
+ NON EMPTY { (
+ [Draw Info].[Game Name - Draw Number].[Draw Number].ALLMEMBERS 
+ * [Draw Info].[Game Name - Draw Date].[Draw Date 1].ALLMEMBERS
+ * [Draw Info].[Number Of Rolls].[Number Of Rolls].ALLMEMBERS 
+ * [Draw Info].[Roll Start Date].[Roll Start Date].ALLMEMBERS 
+ * [Draw Info].[Roll Start Day].[Roll Start Day].ALLMEMBERS
+ ) } 
+ DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS 
+ FROM ( SELECT ( { [Draw Info].[Roll Start Day].&amp;[703]&amp;[3], [Draw Info].[Roll Start Day].&amp;[703]&amp;[6] } ) ON COLUMNS 
+ FROM ( SELECT ( { [Draw Info].[Game Name - Draw Number].[Game Name].&amp;[MEGA Millions] } ) ON COLUMNS
+ FROM ( SELECT ( STRTOSET(@NumOfRollsEnd) ) ON COLUMNS
+ FROM [Draw])))
+ CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS</Statement>
+              <ParameterDefinitions>
+                <ParameterDefinition>
+                  <Name>NumOfRollsEnd</Name>
+                  <DefaultValues>
+                    <DefaultValue>[Draw Info].[Number Of Rolls].&amp;[4]</DefaultValue>
+                  </DefaultValues>
+                  <Caption>NumOfRollsEnd</Caption>
+                  <HierarchyUniqueName>[Draw Info].[Number Of Rolls]</HierarchyUniqueName>
+                  <ParameterValuesQuery>
+                    <Statement>WITH MEMBER [Measures].[ParameterCaption] AS [Draw Info].[Number Of Rolls].CURRENTMEMBER.MEMBER_CAPTION MEMBER [Measures].[ParameterValue] AS [Draw Info].[Number Of Rolls].CURRENTMEMBER.UNIQUENAME MEMBER [Measures].[ParameterLevel] AS [Draw Info].[Number Of Rolls].CURRENTMEMBER.LEVEL.ORDINAL SELECT {[Measures].[ParameterCaption], [Measures].[ParameterValue], [Measures].[ParameterLevel]} ON COLUMNS , [Draw Info].[Number Of Rolls].ALLMEMBERS ON ROWS FROM [Draw]</Statement>
+                    <ParameterizedStatement>
+                      <ReferencedParameters />
+                    </ParameterizedStatement>
+                  </ParameterValuesQuery>
+                </ParameterDefinition>
+              </ParameterDefinitions>
+            </Query>
+          </QueryDefinition>
+        </rd:DesignerState>
+      </Query>
+      <Fields>
+        <Field Name="Game_Name">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Draw Info].[Game Name - Draw Number].[Game Name]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Draw_Number">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Draw Info].[Game Name - Draw Number].[Draw Number]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Game_Name2">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Draw Info].[Game Name - Draw Date].[Game Name]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Draw_Date_1">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Draw Info].[Game Name - Draw Date].[Draw Date 1]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Number_Of_Rolls">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Draw Info].[Number Of Rolls].[Number Of Rolls]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Roll_Start_Date">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Draw Info].[Roll Start Date].[Roll Start Date]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Roll_Start_Day">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Level" UniqueName="[Draw Info].[Roll Start Day].[Roll Start Day]" /&gt;</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Net_Wager_Amt">
+          <DataField>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Field xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Measure" UniqueName="[Measures].[Net Wager Amt]" /&gt;</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportParameters>
+    <ReportParameter Name="DataAsOfDateParam">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>DataAsOfDate</DataSetName>
+          <ValueField>Calendar_Day</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <Prompt>Date</Prompt>
+      <Hidden>true</Hidden>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>DataAsOfDate</DataSetName>
+          <ValueField>Calendar_Day</ValueField>
+          <LabelField>Calendar_Day</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="NumOfRollStart">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>NumRolls</DataSetName>
+          <ValueField>Number_Of_Rolls</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <Prompt>Roll Number Start</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>NumRolls</DataSetName>
+          <ValueField>Number_Of_Rolls</ValueField>
+          <LabelField>Number_Of_Rolls</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="NumOfRollsEnd">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>NumOfRollEndDefault</DataSetName>
+          <ValueField>Number_Of_Rolls</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <Prompt>Roll Number End</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>NumRolls</DataSetName>
+          <ValueField>Number_Of_Rolls</ValueField>
+          <LabelField>Number_Of_Rolls</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="DrawSalesNumOfDays">
+      <DataType>Integer</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>10</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt># of Draws to List</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>DrawSalesNumOfDays</DataSetName>
+          <ValueField>NumOfDays</ValueField>
+          <LabelField>NumOfDaysLabel</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+  </ReportParameters>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>985ff606-337f-4ea5-a9fc-50d567b59e0f</rd:ReportID>
+</Report>
